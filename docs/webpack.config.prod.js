@@ -34,10 +34,11 @@ module.exports = {
   },
   plugins: [
     new CopyWebpackPlugin([{ from: "assets/**/*", ignore:"index.*" }]),
+    new CopyWebpackPlugin([{ from: ".htaccess" }]),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
-      //inject: false,
+      inject: false,
       //env:{}
     }),
     new UglifyJsPlugin()

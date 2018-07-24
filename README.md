@@ -6,6 +6,10 @@ HBP-QuickFire is a React components library built on top of MobX and React-Boots
 
 Its goal is to provide a set of useful react components that let you build a consistent user interface with very little boilerplate code. The main focus of the framework is to provide a simple but powerful entry forms management for React applications.
 
+A documentation application is available here : [https://hbp-quickfire.apps.hbp.eu/](https://hbp-quickfire.apps.hbp.eu/)
+
+The source code is available here : [https://github.com/HumanBrainProject/hbp-quickfire](https://github.com/HumanBrainProject/hbp-quickfire)
+
 ## Installation:
 
 ```

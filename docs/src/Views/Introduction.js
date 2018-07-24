@@ -50,6 +50,12 @@ export default class Introduction extends View{
           <p>
             The main focus of the framework is to provide a simple but powerful entry forms management for React applications.
           </p>
+          <p>
+            The source code is available on GitHub at this address :&nbsp;
+            <a href="https://github.com/HumanBrainProject/hbp-quickfire" target="_blank">
+              https://github.com/HumanBrainProject/hbp-quickfire
+            </a>
+          </p>
         </div>
 
         <h3>Installation:</h3>
