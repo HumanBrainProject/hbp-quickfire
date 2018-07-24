@@ -41,7 +41,7 @@ publish:
     # Install dependencies
     - npm install
     # Publish to npm registry
-    - npm publish
+    - npm --unsafe-perm publish
     # Move to the docs folder, install the dependencies of the docs app and create a build
     - cd docs
     - npm install
@@ -65,7 +65,7 @@ publish_unstable:
   script:
     - npm version $(echo $CI_COMMIT_REF_NAME | sed 's/.*unstable-v\(.*\)$/\1-unstable/g')
     - npm install
-    - npm publish --tag=unstable
+    - npm --unsafe-perm publish --tag=unstable
   tags:
     - docker-runner
 
