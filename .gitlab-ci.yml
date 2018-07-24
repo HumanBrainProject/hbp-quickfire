@@ -8,7 +8,6 @@ testing:
   except: 
     - /^publish-v[0-9]+\.[0-9]+\.[0-9]+$/
     - /^unstable-v[0-9]+\.[0-9]+\.[0-9]+$/
-    - master
   script:
     - npm install
     - npm run build
