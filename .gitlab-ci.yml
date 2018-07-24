@@ -59,6 +59,8 @@ publish_unstable:
     - /^unstable-v[0-9]+\.[0-9]+\.[0-9]+$/
   stage: deploy
   before_script:
+    - git config --global user.email "platform@humanbrainproject.eu"
+    - git config --global user.name "HumanBrainProject"
     - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
   script:
     - npm version $(echo $CI_COMMIT_REF_NAME | sed 's/.*unstable-v\(.*\)$/\1-unstable/g')
