@@ -1,0 +1,2 @@
+# This htaccess file will be included in the build root
+FallbackResource /index.html

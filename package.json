@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "description": "A library of useful user-interface components built with React on top of React Bootstrap and MobX",
   "homepage": "https://github.com/owner/project#readme",
-  "repository" :{ 
-    "type" : "git",
-    "url" : "https://github.com/HumanBrainProject/hbp-quickfire.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HumanBrainProject/hbp-quickfire.git"
   },
   "main": "./lib/index.js",
   "devDependencies": {
@@ -58,7 +58,12 @@
     "prepublishOnly": "npm run build"
   },
   "keywords": [
-    "HBP","React","Form","React Bootstrap","MobX","Form management"
+    "HBP",
+    "React",
+    "Form",
+    "React Bootstrap",
+    "MobX",
+    "Form management"
   ],
   "author": "Human Brain Project",
   "license": "MIT"
