@@ -1,0 +1,70 @@
+stages:
+  - test
+  - deploy
+
+testing:
+  image: node:8.9.4-stretch
+  stage: test
+  except: 
+    - /^publish-v[0-9]+\.[0-9]+\.[0-9]+$/
+    - /^unstable-v[0-9]+\.[0-9]+\.[0-9]+$/
+    - master
+  script:
+    - npm install
+    - npm run build
+    - npm run lint
+    - npm run test
+  coverage: /All files\s*\|\s*([\d\.]+)/
+  tags:
+    - docker-runner
+
+publish:
+  image: node:8.9.4-stretch
+  only:
+    - /^publish-v[0-9]+\.[0-9]+\.[0-9]+$/
+  stage: deploy
+  before_script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_DEPLOY" | tr -d '\r' | ssh-add - > /dev/null
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - git config --global user.email "platform@humanbrainproject.eu"
+    - git config --global user.name "HumanBrainProject"
+    - ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+    - ssh-keyscan -H gitlab.humanbrainproject.org >> ~/.ssh/known_hosts
+    - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
+  script:
+    # Force push tag's HEAD to master branch on the github repository
+    - git push --force git@github.com:HumanBrainProject/hbp-quickfire.git HEAD:master
+    # Resolve the number version from the tag name
+    - npm version $(echo $CI_COMMIT_REF_NAME | sed 's/.*publish-v\(.*\)$/\1/g')
+    # Install dependencies
+    - npm install
+    # Publish to npm registry
+    - npm publish
+    # Move to the docs folder, install the dependencies of the docs app and create a build
+    - cd docs
+    - npm install
+    - npm run build
+    - cd build
+    # Push it to a repository that will inform via a webhook the platform in charge of deploying it
+    - git init && git add . && git commit -m"CI auto-build commit"
+    - git push --force git@gitlab.humanbrainproject.org:HumanBrainProject/hbp-quickfire-docs-app.git HEAD:master
+  tags:
+    - docker-runner
+
+publish_unstable:
+  image: node:8.9.4-stretch
+  only:
+    - /^unstable-v[0-9]+\.[0-9]+\.[0-9]+$/
+  stage: deploy
+  before_script:
+    - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
+  script:
+    - npm version $(echo $CI_COMMIT_REF_NAME | sed 's/.*unstable-v\(.*\)$/\1-unstable/g')
+    - npm install
+    - npm publish --tag=unstable
+  tags:
+    - docker-runner
+

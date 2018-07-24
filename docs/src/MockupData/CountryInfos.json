@@ -1,0 +1,5 @@
+[
+  { "name": "France", "inhabitants": "67 million", "motto": "Liberté, égalité, fraternité " },
+  { "name": "Germany", "inhabitants": "82 million", "motto": "Einigkeit und Recht und Freiheit" },
+  { "name": "Switzerland", "inhabitants": "8 million", "motto": "Unus pro omnibus, omnes pro uno" }
+]

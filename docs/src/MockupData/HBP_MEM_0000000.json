@@ -1,0 +1,938 @@
+{
+   "value": "HBP_MEM:0000000",
+   "name": "Method",
+   "children": [
+      {
+         "value": "HBP_MEM:0000119",
+         "name": "Endogenous genes manipulation",
+         "children": [
+            {
+               "value": "HBP_MEM:0000125",
+               "name": "Dominant-negative inhibition"
+            },
+            {
+               "value": "HBP_MEM:0000124",
+               "name": "Morpholino"
+            },
+            {
+               "value": "HBP_MEM:0000121",
+               "name": "Knockin"
+            },
+            {
+               "value": "HBP_MEM:0000120",
+               "name": "Knockout"
+            },
+            {
+               "value": "HBP_MEM:0000122",
+               "name": "Conditional knockout"
+            },
+            {
+               "value": "HBP_MEM:0000123",
+               "name": "RNA interference"
+            }
+         ]
+      },
+      {
+         "value": "HBP_MEM:0000014",
+         "name": "Electrophysiology recording",
+         "children": [
+            {
+               "value": "HBP_MEM:0000017",
+               "name": "Patch clamp techniques",
+               "children": [
+                  {
+                     "value": "HBP_MEM:0000026",
+                     "name": "Outside-out patch"
+                  },
+                  {
+                     "value": "HBP_MEM:0000025",
+                     "name": "Perforated patch"
+                  },
+                  {
+                     "value": "HBP_MEM:0000024",
+                     "name": "Loose patch"
+                  },
+                  {
+                     "value": "HBP_MEM:0000028",
+                     "name": "Inside-out patch"
+                  },
+                  {
+                     "value": "HBP_MEM:0000029",
+                     "name": "Cell-attached patch"
+                  },
+                  {
+                     "value": "HBP_MEM:0000027",
+                     "name": "Whole-cell patch",
+                     "children": [
+                        {
+                           "value": "HBP_MEM:0000203",
+                           "name": "Voltage clamp recording"
+                        },
+                        {
+                           "value": "HBP_MEM:0000204",
+                           "name": "Current clamp recording"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "value": "HBP_MEM:0000023",
+               "name": "Sharp electrode technique",
+               "children": [
+                  {
+                     "value": "HBP_MEM:0000022",
+                     "name": "Voltage clamp recording"
+                  },
+                  {
+                     "value": "HBP_MEM:0000021",
+                     "name": "Current clamp recording"
+                  }
+               ]
+            },
+            {
+               "value": "HBP_MEM:0000015",
+               "name": "Extracellular recording",
+               "children": [
+                  {
+                     "value": "HBP_MEM:0000019",
+                     "name": "Single electrode recording"
+                  },
+                  {
+                     "value": "HBP_MEM:0000207",
+                     "name": "Single unit activity (SUA)"
+                  },
+                  {
+                     "value": "HBP_MEM:0000206",
+                     "name": "Multiunit activity (MUA)"
+                  },
+                  {
+                     "value": "HBP_MEM:0000020",
+                     "name": "Field potential recording"
+                  },
+                  {
+                     "value": "HBP_MEM:0000018",
+                     "name": "Multiple electrode recording"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "value": "HBP_MEM:0000007",
+         "name": "Functional brain imaging",
+         "children": [
+            {
+               "value": "HBP_MEM:0000013",
+               "name": "Optical imaging"
+            },
+            {
+               "value": "HBP_MEM:0000009",
+               "name": "Positron emission tomography"
+            },
+            {
+               "value": "HBP_MEM:0000008",
+               "name": "Functional magnetic resonance imaging"
+            },
+            {
+               "value": "HBP_MEM:0000012",
+               "name": "Magnetoencephalography"
+            },
+            {
+               "value": "HBP_MEM:0000011",
+               "name": "Electroencephalography"
+            },
+            {
+               "value": "HBP_MEM:0000010",
+               "name": "Single-Proton emission computerized tomography"
+            }
+         ]
+      },
+      {
+         "value": "HBP_MEM:0000111",
+         "name": "Protein expression measurement/visualization",
+         "children": [
+            {
+               "value": "HBP_MEM:0000115",
+               "name": "Immunohistochemistry",
+               "children": [
+                  {
+                     "value": "HBP_MEM:0000116",
+                     "name": "Immunoelectron microscopy"
+                  }
+               ]
+            },
+            {
+               "value": "HBP_MEM:0000118",
+               "name": "Mass spectrometry",
+               "children": [
+                  {
+                     "value": "HBP_MEM:0000195",
+                     "name": "Ion sources",
+                     "children": [
+                        {
+                           "value": "HBP_MEM:0000197",
+                           "name": "Chemical ionization"
+                        },
+                        {
+                           "value": "HBP_MEM:0000127",
+                           "name": "Electrospray ionization"
+                        },
+                        {
+                           "value": "HBP_MEM:0000126",
+                           "name": "Matrix-assisted laser desorption ionization"
+                        },
+                        {
+                           "value": "HBP_MEM:0000196",
+                           "name": "Fast atom bombardment"
+                        }
+                     ]
+                  },
+                  {
+                     "value": "HBP_MEM:0000198",
+                     "name": "Mass analyser",
+                     "children": [
+                        {
+                           "value": "HBP_MEM:0000199",
+                           "name": "Time-of-flight"
+                        },
+                        {
+                           "value": "HBP_MEM:0000202",
+                           "name": "Ion traps"
+                        },
+                        {
+                           "value": "HBP_MEM:0000201",
+                           "name": "Fourier transform ion cyclotron resonance mass analyzer"
+                        },
+                        {
+                           "value": "HBP_MEM:0000200",
+                           "name": "Quadrupole mass analyzer"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "value": "HBP_MEM:0000113",
+               "name": "Enzyme-linked immunosorbent assay"
+            },
+            {
+               "value": "HBP_MEM:0000112",
+               "name": "Western blot"
+            },
+            {
+               "value": "HBP_MEM:0000117",
+               "name": "Reporter proteins"
+            },
+            {
+               "value": "HBP_MEM:0000114",
+               "name": "Radioimmunoassay"
+            }
+         ]
+      },
+      {
+         "value": "HBP_MEM:0000128",
+         "name": "Behaviour assay",
+         "children": [
+            {
+               "value": "HBP_MEM:0000138",
+               "name": "Anxiety assay",
+               "children": [
+                  {
+                     "value": "HBP_MEM:0000146",
+                     "name": "Marble burying test"
+                  },
+                  {
+                     "value": "HBP_MEM:0000143",
+                     "name": "Open field test"
+                  },
+                  {
+                     "value": "HBP_MEM:0000145",
+                     "name": "Geller–Seifter conflict test"
+                  },
+                  {
+                     "value": "HBP_MEM:0000144",
+                     "name": "Elevated plus maze"
+                  }
+               ]
+            },
+            {
+               "value": "HBP_MEM:0000132",
+               "name": "Nociception assay",
+               "children": [
+                  {
+                     "value": "HBP_MEM:0000166",
+                     "name": "Formalin assay"
+                  },
+                  {
+                     "value": "HBP_MEM:0000162",
+                     "name": "Tail flick assay"
+                  },
+                  {
+                     "value": "HBP_MEM:0000163",
+                     "name": "Hargreaves assay"
+                  },
+                  {
+                     "value": "HBP_MEM:0000165",
+                     "name": "Von Frey assay"
+                  },
+                  {
+                     "value": "HBP_MEM:0000164",
+                     "name": "Hot plate assay"
+                  }
+               ]
+            },
+            {
+               "value": "HBP_MEM:0000135",
+               "name": "Attention and impulsivity assay",
+               "children": [
+                  {
+                     "value": "HBP_MEM:0000153",
+                     "name": "Five choice serial reaction time task"
+                  },
+                  {
+                     "value": "HBP_MEM:0000152",
+                     "name": "Go/no-go task"
+                  }
+               ]
+            },
+            {
+               "value": "HBP_MEM:0000136",
+               "name": "Reward-system assay",
+               "children": [
+                  {
+                     "value": "HBP_MEM:0000150",
+                     "name": "Progressive ratio"
+                  },
+                  {
+                     "value": "HBP_MEM:0000151",
+                     "name": "Conditioned place preference and aversion"
+                  },
+                  {
+                     "value": "HBP_MEM:0000149",
+                     "name": "Self-administration"
+                  }
+               ]
+            },
+            {
+               "value": "HBP_MEM:0000131",
+               "name": "Sensory function assay",
+               "children": [
+                  {
+                     "value": "HBP_MEM:0000168",
+                     "name": "Startle response"
+                  },
+                  {
+                     "value": "HBP_MEM:0000167",
+                     "name": "Visual cliff assay"
+                  },
+                  {
+                     "value": "HBP_MEM:0000170",
+                     "name": "Olfactory assays"
+                  },
+                  {
+                     "value": "HBP_MEM:0000169",
+                     "name": "Taste assays"
+                  }
+               ]
+            },
+            {
+               "value": "HBP_MEM:0000139",
+               "name": "Depression assay",
+               "children": [
+                  {
+                     "value": "HBP_MEM:0000141",
+                     "name": "Tail suspension test"
+                  },
+                  {
+                     "value": "HBP_MEM:0000142",
+                     "name": "Sucrose preference test"
+                  },
+                  {
+                     "value": "HBP_MEM:0000140",
+                     "name": "Forced swim test"
+                  }
+               ]
+            },
+            {
+               "value": "HBP_MEM:0000137",
+               "name": "Social behavior assay",
+               "children": [
+                  {
+                     "value": "HBP_MEM:0000148",
+                     "name": "Social approach/avoidance assay"
+                  },
+                  {
+                     "value": "HBP_MEM:0000147",
+                     "name": "Resident–intruder assay"
+                  }
+               ]
+            },
+            {
+               "value": "HBP_MEM:0000134",
+               "name": "Nonspatial learning and memory assay",
+               "children": [
+                  {
+                     "value": "HBP_MEM:0000155",
+                     "name": "Operant conditioning"
+                  },
+                  {
+                     "value": "HBP_MEM:0000157",
+                     "name": "Delayed match to sample"
+                  },
+                  {
+                     "value": "HBP_MEM:0000154",
+                     "name": "Classical conditioning"
+                  },
+                  {
+                     "value": "HBP_MEM:0000158",
+                     "name": "Delayed nonmatch to sample"
+                  },
+                  {
+                     "value": "HBP_MEM:0000156",
+                     "name": "Novel object recognition"
+                  }
+               ]
+            },
+            {
+               "value": "HBP_MEM:0000130",
+               "name": "Motor coordination assay",
+               "children": [
+                  {
+                     "value": "HBP_MEM:0000175",
+                     "name": "Footprint pattern assay"
+                  },
+                  {
+                     "value": "HBP_MEM:0000176",
+                     "name": "Hanging wire assay"
+                  },
+                  {
+                     "value": "HBP_MEM:0000174",
+                     "name": "Rotarod test"
+                  },
+                  {
+                     "value": "HBP_MEM:0000177",
+                     "name": "Vertical pole test"
+                  }
+               ]
+            },
+            {
+               "value": "HBP_MEM:0000129",
+               "name": "Locomotor activity assay",
+               "children": [
+                  {
+                     "value": "HBP_MEM:0000171",
+                     "name": "Running wheel"
+                  },
+                  {
+                     "value": "HBP_MEM:0000173",
+                     "name": "Open field test"
+                  },
+                  {
+                     "value": "HBP_MEM:0000172",
+                     "name": "Homecage activity"
+                  }
+               ]
+            },
+            {
+               "value": "HBP_MEM:0000133",
+               "name": "Spatial learning and memory assay",
+               "children": [
+                  {
+                     "value": "HBP_MEM:0000160",
+                     "name": "Barnes maze"
+                  },
+                  {
+                     "value": "HBP_MEM:0000161",
+                     "name": "Radial arm maze"
+                  },
+                  {
+                     "value": "HBP_MEM:0000159",
+                     "name": "Morris water maze"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "value": "HBP_MEM:0000088",
+         "name": "Microscopy",
+         "children": [
+            {
+               "value": "HBP_MEM:0000099",
+               "name": "Electron microscopy",
+               "children": [
+                  {
+                     "value": "HBP_MEM:0000102",
+                     "name": "Electron tomography"
+                  },
+                  {
+                     "value": "HBP_MEM:0000101",
+                     "name": "Scanning electron microscopy"
+                  },
+                  {
+                     "value": "HBP_MEM:0000100",
+                     "name": "Transmission electron microscopy"
+                  }
+               ]
+            },
+            {
+               "value": "HBP_MEM:0000089",
+               "name": "Light Microscopy",
+               "children": [
+                  {
+                     "value": "HBP_MEM:0000092",
+                     "name": "Darkfield microscopy"
+                  },
+                  {
+                     "value": "HBP_MEM:0000093",
+                     "name": "Differential interference contrast microscopy"
+                  },
+                  {
+                     "value": "HBP_MEM:0000090",
+                     "name": "Brightfield microscopy"
+                  },
+                  {
+                     "value": "HBP_MEM:0000091",
+                     "name": "Phase-contrast microscopy"
+                  }
+               ]
+            },
+            {
+               "value": "HBP_MEM:0000094",
+               "name": "Fluorescence microscopy",
+               "children": [
+                  {
+                     "value": "HBP_MEM:0000095",
+                     "name": "Epifluorescent microscopy"
+                  },
+                  {
+                     "value": "HBP_MEM:0000098",
+                     "name": "Total internal reflection fluorescence microscopy"
+                  },
+                  {
+                     "value": "HBP_MEM:0000096",
+                     "name": "Confocal microscopy"
+                  },
+                  {
+                     "value": "HBP_MEM:0000097",
+                     "name": "Two-photon microscopy"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "value": "HBP_MEM:0000103",
+         "name": "Gene expression measurement/visualization",
+         "children": [
+            {
+               "value": "HBP_MEM:0000108",
+               "name": "Northern blot"
+            },
+            {
+               "value": "HBP_MEM:0000105",
+               "name": "Microarrays"
+            },
+            {
+               "value": "HBP_MEM:0000110",
+               "name": "Reporter genes"
+            },
+            {
+               "value": "HBP_MEM:0000104",
+               "name": "In situ hybridization"
+            },
+            {
+               "value": "HBP_MEM:0000109",
+               "name": "Serial analysis of gene expression"
+            },
+            {
+               "value": "HBP_MEM:0000107",
+               "name": "Polymerase chain reaction"
+            },
+            {
+               "value": "HBP_MEM:0000106",
+               "name": "Next generation sequencing"
+            }
+         ]
+      },
+      {
+         "value": "HBP_MEM:0000002",
+         "name": "Structural brain imaging",
+         "children": [
+            {
+               "value": "HBP_MEM:0000006",
+               "name": "Diffusion magnetic resonance imaging",
+               "children": [
+                  {
+                     "value": "HBP_MEM:0000178",
+                     "name": "Diffusion tensor imaging"
+                  }
+               ]
+            },
+            {
+               "value": "HBP_MEM:0000005",
+               "name": "Magnetic resonance imaging"
+            },
+            {
+               "value": "HBP_MEM:0000004",
+               "name": "Computerized tomography"
+            },
+            {
+               "value": "HBP_MEM:0000003",
+               "name": "Cerebral angiography"
+            }
+         ]
+      },
+      {
+         "value": "HBP_MEM:0000030",
+         "name": "Neural structure visualization",
+         "children": [
+            {
+               "value": "HBP_MEM:0000055",
+               "name": "Gene and protein expression visualization",
+               "children": [
+                  {
+                     "value": "HBP_MEM:0000060",
+                     "name": "Immunohistochemistry",
+                     "children": [
+                        {
+                           "value": "HBP_MEM:0000064",
+                           "name": "Indirect immunohistochemistry"
+                        },
+                        {
+                           "value": "HBP_MEM:0000063",
+                           "name": "Direct immunohistochemistry"
+                        },
+                        {
+                           "value": "HBP_MEM:0000065",
+                           "name": "Array tomography"
+                        }
+                     ]
+                  },
+                  {
+                     "value": "HBP_MEM:0000061",
+                     "name": "Enzymatic histochemistry"
+                  },
+                  {
+                     "value": "HBP_MEM:0000062",
+                     "name": "Reporter gene"
+                  },
+                  {
+                     "value": "HBP_MEM:0000056",
+                     "name": "In situ hybridization"
+                  }
+               ]
+            },
+            {
+               "value": "HBP_MEM:0000031",
+               "name": "Morphology visualization",
+               "children": [
+                  {
+                     "value": "HBP_MEM:0000033",
+                     "name": "Cell body stains",
+                     "children": [
+                        {
+                           "value": "HBP_MEM:0000191",
+                           "name": "Methylene blue stain"
+                        },
+                        {
+                           "value": "HBP_MEM:0000182",
+                           "name": "Basophilic stain",
+                           "children": [
+                              {
+                                 "value": "HBP_MEM:0000187",
+                                 "name": "Thionine"
+                              },
+                              {
+                                 "value": "HBP_MEM:0000183",
+                                 "name": "Nissl stain",
+                                 "children": [
+                                    {
+                                       "value": "HBP_MEM:0000188",
+                                       "name": "Cresyl violet"
+                                    },
+                                    {
+                                       "value": "HBP_MEM:0000189",
+                                       "name": "Toluidine blue"
+                                    }
+                                 ]
+                              },
+                              {
+                                 "value": "HBP_MEM:0000190",
+                                 "name": "Eosin Y"
+                              },
+                              {
+                                 "value": "HBP_MEM:0000186",
+                                 "name": "Hematoxylin"
+                              }
+                           ]
+                        },
+                        {
+                           "value": "HBP_MEM:0000192",
+                           "name": "Hoechst stain"
+                        },
+                        {
+                           "value": "HBP_MEM:0000185",
+                           "name": "Propidium iodide stain"
+                        },
+                        {
+                           "value": "HBP_MEM:0000184",
+                           "name": "DAPI stain"
+                        }
+                     ]
+                  },
+                  {
+                     "value": "HBP_MEM:0000035",
+                     "name": "Golgi stain"
+                  },
+                  {
+                     "value": "HBP_MEM:0000036",
+                     "name": "Intracellular and juxtacellular labeling",
+                     "children": [
+                        {
+                           "value": "HBP_MEM:0000194",
+                           "name": "Neurobiotin stain"
+                        },
+                        {
+                           "value": "HBP_MEM:0000193",
+                           "name": "Biocytin stain"
+                        }
+                     ]
+                  },
+                  {
+                     "value": "HBP_MEM:0000034",
+                     "name": "Fiber stains",
+                     "children": [
+                        {
+                           "value": "HBP_MEM:0000179",
+                           "name": "Weigert stain"
+                        },
+                        {
+                           "value": "HBP_MEM:0000180",
+                           "name": "Weil stain"
+                        },
+                        {
+                           "value": "HBP_MEM:0000181",
+                           "name": "Luxon fast blue"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "value": "HBP_MEM:0000032",
+               "name": "Circuitry visualization",
+               "children": [
+                  {
+                     "value": "HBP_MEM:0000039",
+                     "name": "Anterograde tracers",
+                     "children": [
+                        {
+                           "value": "HBP_MEM:0000040",
+                           "name": "Biotinylated dextran amine"
+                        },
+                        {
+                           "value": "HBP_MEM:0000041",
+                           "name": "Phaseolus vulgaris- leucoagglutinin"
+                        },
+                        {
+                           "value": "HBP_MEM:0000205",
+                           "name": "Wheat germ agglutinin-horseradish peroxidase"
+                        },
+                        {
+                           "value": "HBP_MEM:0000053",
+                           "name": "DiI and DiO lipophilic dyes"
+                        },
+                        {
+                           "value": "HBP_MEM:0000042",
+                           "name": "Tritiated amino acids",
+                           "children": [
+                              {
+                                 "value": "HBP_MEM:0000001",
+                                 "name": "3H-proline"
+                              },
+                              {
+                                 "value": "HBP_MEM:0000057",
+                                 "name": "3H-leucine"
+                              }
+                           ]
+                        }
+                     ]
+                  },
+                  {
+                     "value": "HBP_MEM:0000038",
+                     "name": "Retrograde tracers",
+                     "children": [
+                        {
+                           "value": "HBP_MEM:0000047",
+                           "name": "Biotinylated dextran amine"
+                        },
+                        {
+                           "value": "HBP_MEM:0000046",
+                           "name": "Cholera toxin, subunit B"
+                        },
+                        {
+                           "value": "HBP_MEM:0000043",
+                           "name": "Horseradish peroxidase"
+                        },
+                        {
+                           "value": "HBP_MEM:0000045",
+                           "name": "Fluoro-gold diamidino yellow fast blue"
+                        },
+                        {
+                           "value": "HBP_MEM:0000044",
+                           "name": "Fluorescent microspheres"
+                        },
+                        {
+                           "value": "HBP_MEM:0000054",
+                           "name": "DiI and DiO lipophilic dyes"
+                        }
+                     ]
+                  },
+                  {
+                     "value": "HBP_MEM:0000037",
+                     "name": "Transsynaptic tracers",
+                     "children": [
+                        {
+                           "value": "HBP_MEM:0000049",
+                           "name": "Wheat-germ agglutinin"
+                        },
+                        {
+                           "value": "HBP_MEM:0000048",
+                           "name": "Tritiated amino acids",
+                           "children": [
+                              {
+                                 "value": "HBP_MEM:0000059",
+                                 "name": "3H-leucine"
+                              },
+                              {
+                                 "value": "HBP_MEM:0000058",
+                                 "name": "3H-proline"
+                              }
+                           ]
+                        },
+                        {
+                           "value": "HBP_MEM:0000052",
+                           "name": "Herpes simplex virus"
+                        },
+                        {
+                           "value": "HBP_MEM:0000051",
+                           "name": "Pseudorabies virus"
+                        },
+                        {
+                           "value": "HBP_MEM:0000050",
+                           "name": "Tetanus toxin, fragment C"
+                        }
+                     ]
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "value": "HBP_MEM:0000066",
+         "name": "Neural function visualization",
+         "children": [
+            {
+               "value": "HBP_MEM:0000080",
+               "name": "Protein function visualization",
+               "children": [
+                  {
+                     "value": "HBP_MEM:0000085",
+                     "name": "Photoactivation and photoconversion"
+                  },
+                  {
+                     "value": "HBP_MEM:0000083",
+                     "name": "Bimolecular fluorescence complementation"
+                  },
+                  {
+                     "value": "HBP_MEM:0000084",
+                     "name": "Fluorescence recovery after photobleaching"
+                  },
+                  {
+                     "value": "HBP_MEM:0000082",
+                     "name": "Fluorescence resonance energy transfer"
+                  },
+                  {
+                     "value": "HBP_MEM:0000081",
+                     "name": "Time-lapse imaging with reporter genes"
+                  }
+               ]
+            },
+            {
+               "value": "HBP_MEM:0000067",
+               "name": "Neural activity visualization",
+               "children": [
+                  {
+                     "value": "HBP_MEM:0000072",
+                     "name": "Imaging calcium dynamics",
+                     "children": [
+                        {
+                           "value": "HBP_MEM:0000076",
+                           "name": "Genetically encoded calcium indicators"
+                        },
+                        {
+                           "value": "HBP_MEM:0000073",
+                           "name": "Calcium indicator dyes",
+                           "children": [
+                              {
+                                 "value": "HBP_MEM:0000074",
+                                 "name": "Nonratiometric calcium indicator dyes"
+                              },
+                              {
+                                 "value": "HBP_MEM:0000075",
+                                 "name": "Ratiometric calcium indicator dyes"
+                              }
+                           ]
+                        }
+                     ]
+                  },
+                  {
+                     "value": "HBP_MEM:0000069",
+                     "name": "Imaging voltage",
+                     "children": [
+                        {
+                           "value": "HBP_MEM:0000071",
+                           "name": "Genetically encoded voltage indicators"
+                        },
+                        {
+                           "value": "HBP_MEM:0000070",
+                           "name": "Voltage-sensitive dye imaging"
+                        }
+                     ]
+                  },
+                  {
+                     "value": "HBP_MEM:0000077",
+                     "name": "Imaging synaptic transmission",
+                     "children": [
+                        {
+                           "value": "HBP_MEM:0000079",
+                           "name": "pH sensitive fluorescent proteins"
+                        },
+                        {
+                           "value": "HBP_MEM:0000078",
+                           "name": "Fei Mao dyes"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "value": "HBP_MEM:0000068",
+               "name": "Static markers of activity",
+               "children": [
+                  {
+                     "value": "HBP_MEM:0000087",
+                     "name": "Cellular function in a fixed tissue"
+                  },
+                  {
+                     "value": "HBP_MEM:0000086",
+                     "name": "Neural activity in a fixed tissue"
+                  }
+               ]
+            }
+         ]
+      }
+   ]
+}

@@ -1,0 +1,8 @@
+.DS_Store
+dist/*
+!dist/.gitkeep
+lib/*
+!lib/.gitkeep
+node_modules
+coverage/
+docs/build/

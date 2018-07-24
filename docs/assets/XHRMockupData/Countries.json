@@ -1,0 +1,28 @@
+[{
+  "value": "us",
+  "label": "United States"
+}, {
+  "value": "fr",
+  "label": "France"
+}, {
+  "value": "de",
+  "label": "Germany"
+}, {
+  "value": "uk",
+  "label": "UK"
+}, {
+  "value": "ch",
+  "label": "Switzerland"
+}, {
+  "value": "es",
+  "label": "Spain"
+}, {
+  "value": "pt",
+  "label": "Portugal"
+}, {
+  "value": "it",
+  "label": "Italy"
+}, {
+  "value": "be",
+  "label": "Belgium"
+}]

@@ -1,0 +1,11 @@
+docs
+**/*.test.js
+jest.config.js
+jest.setup.js
+jsconfig.json
+.babelrc
+.eslintignore
+.eslintrc.json
+.gitlab-ci.yml
+src
+README.prepend.md
