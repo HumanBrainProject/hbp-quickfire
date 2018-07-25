@@ -118,7 +118,7 @@ export default class DropdownSelect extends View{
             `
             handleCustomValue = (value, field, formStore) => {
               field.options.push({[field.mappingValue]:value, [field.mappingLabel]:value});
-              formStore.addValue(field.path, field.options[field.options.length-1]);
+              field.addValue(field.options[field.options.length-1]);
             }
             `
           ]}
