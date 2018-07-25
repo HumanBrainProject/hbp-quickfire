@@ -16,3 +16,4 @@ export { default as Field } from "./Field";
 export { default as SingleField } from "./SingleField";
 export { default as FormStore } from "./FormStore";
 export { default as ClipboardStore } from "./ClipboardStore";
+export { default as License } from "./License";

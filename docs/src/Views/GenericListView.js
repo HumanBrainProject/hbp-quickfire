@@ -5,7 +5,6 @@ import { Col, Row } from "react-bootstrap";
 import injectStyles from "react-jss";
 import countryInfos from "../MockupData/CountryInfos.json";
 import SyntaxHighlighter from "react-syntax-highlighter/prism-light";
-import jsx from "react-syntax-highlighter/languages/prism/jsx";
 import darcula from "react-syntax-highlighter/styles/prism/darcula";
 import { stripIndent } from "common-tags";
 

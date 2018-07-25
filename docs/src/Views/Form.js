@@ -6,8 +6,6 @@ import { Row, Col, Panel, ButtonGroup, Button } from "react-bootstrap";
 import { cloneDeep } from "lodash";
 
 import SyntaxHighlighter from "react-syntax-highlighter/prism-light";
-import jsx from "react-syntax-highlighter/languages/prism/jsx";
-import json from "react-syntax-highlighter/languages/prism/json";
 import darcula from "react-syntax-highlighter/styles/prism/darcula";
 import { stripIndent } from "common-tags";
 

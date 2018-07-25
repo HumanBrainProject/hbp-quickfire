@@ -2,8 +2,6 @@ import React from "react";
 import View from "./_View";
 import { Row, Col, Panel, ButtonGroup, Button } from "react-bootstrap";
 import SyntaxHighlighter from "react-syntax-highlighter/prism-light";
-import jsx from "react-syntax-highlighter/languages/prism/jsx";
-import json from "react-syntax-highlighter/languages/prism/json";
 import darcula from "react-syntax-highlighter/styles/prism/darcula";
 import { stripIndent } from "common-tags";
 import { Field, FormStore, Form, Alert } from "hbp-quickfire";
