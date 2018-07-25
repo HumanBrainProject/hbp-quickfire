@@ -143,6 +143,7 @@ export default class Layout extends React.Component {
               <Route exact path="/ClipboardStore" component={Views.ClipboardStore}/>
               <Route exact path="/License" component={Views.License}/>
               <Route exact path="/Confirm" component={Views.Confirm}/>
+              <Route exact path="/Alert" component={Views.Alert}/>
             </div>
         </div>
       </Router>
