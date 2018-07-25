@@ -28,7 +28,7 @@ export default class ConfirmView extends View {
     this.state = {confirmShow: false, confirmed:0, canceled:0};
   }
 
-  handleConfirmAnswer = (answer) => {
+  handleConfirmAnswer(answer){
     this.setState({
       confirmShow: false, 
       confirmed:answer? this.state.confirmed + 1:this.state.confirmed, 
@@ -89,7 +89,7 @@ export default class ConfirmView extends View {
               style={darcula}
             >
             {stripIndent`
-              handleConfirmAnswer = (answer) => {
+              handleConfirmAnswer(answer){
                 this.setState({
                   confirmShow: false, 
                   confirmed:answer? this.state.confirmed + 1:this.state.confirmed, 
