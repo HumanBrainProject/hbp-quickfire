@@ -111,6 +111,7 @@ export default class Sidebar extends React.Component{
 
         <h2>Other components</h2>
         <ul>
+          <li><NavLink className={"navlink"} activeClassName="active" to="/Confirm">Confirm</NavLink></li>
           <li><NavLink className={"navlink"} activeClassName="active" to="/GenericList">GenericList</NavLink></li>
           {/* <li><NavLink className={"navlink"} activeClassName="active" to="/Tree">Tree</NavLink></li> */}
         </ul>
