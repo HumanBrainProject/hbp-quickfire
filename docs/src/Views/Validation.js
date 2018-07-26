@@ -1,11 +1,8 @@
 import React from "react";
 import View from "./_View";
-import { GenericList, ActionIcon, Form, Field, FormStore, SingleField } from "hbp-quickfire";
-import { Col, Row, Panel, Button, ButtonGroup } from "react-bootstrap";
-import injectStyles from "react-jss";
-import countryInfos from "../MockupData/CountryInfos.json";
+import { Form, Field, FormStore, SingleField } from "hbp-quickfire";
+import { Col, Row, Panel, Button } from "react-bootstrap";
 import SyntaxHighlighter from "react-syntax-highlighter/prism-light";
-import jsx from "react-syntax-highlighter/languages/prism/jsx";
 import darcula from "react-syntax-highlighter/styles/prism/darcula";
 import { stripIndent } from "common-tags";
 import { cloneDeep } from "lodash";

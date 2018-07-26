@@ -4,20 +4,21 @@ import View from "./_View";
 import injectStyles from "react-jss";
 
 import {stripIndent} from "common-tags";
-
-import SyntaxHighlighter, { registerLanguage } from "react-syntax-highlighter/prism-light";
-import jsx from 'react-syntax-highlighter/languages/prism/jsx';
-import json from 'react-syntax-highlighter/languages/prism/json';
+import SyntaxHighlighter from "react-syntax-highlighter/prism-light";
 import darcula from 'react-syntax-highlighter/styles/prism/darcula';
-
-registerLanguage('jsx', jsx);
-registerLanguage('json', json);
-
 
 let styles = {
   title:{
     fontSize:"1.5em",
     textAlign:"center",
+    "@media screen and (max-width:1024px)":{
+      "& p":{
+        fontSize:"0.75em"
+      },
+      "& a":{
+        wordBreak: "break-all"
+      }
+    }
   },
   logo:{
     maxWidth:"200px",

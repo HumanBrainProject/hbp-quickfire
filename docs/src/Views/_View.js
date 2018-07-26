@@ -77,18 +77,18 @@ class ShowField extends React.Component{
           <h5>
             &lt;/&gt;
           </h5>
-          <SyntaxHighlighter language="json" style={darcula}>
+          <SyntaxHighlighter language={"json"} style={darcula}>
             {"//Field properties\n"+JSON.stringify(displayDefinition, null, 2)}
           </SyntaxHighlighter>
           {this.props.additionalCode && this.props.additionalCode.map((code, index) => {
-            return <SyntaxHighlighter key={index} language="jsx" style={darcula}>{stripIndent(code)}</SyntaxHighlighter>
+            return <SyntaxHighlighter key={index} language={"jsx"} style={darcula}>{stripIndent(code)}</SyntaxHighlighter>
           })}
         </Col>
         <Col xs={12} md={3} lg={3}>
           <h5>
             Output value
           </h5>
-          <SyntaxHighlighter language="json" style={darcula}>{JSON.stringify(this.state.output, null, 2)}</SyntaxHighlighter>
+          <SyntaxHighlighter language={"json"} style={darcula}>{JSON.stringify(this.state.output, null, 2)}</SyntaxHighlighter>
         </Col>
       </Row>
     );
