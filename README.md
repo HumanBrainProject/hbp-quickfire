@@ -32,23 +32,23 @@ HBP-QuickFire form mechanism is based on a declarative configuration of the form
 
 ```JavaScript
 {
-	fields:{
-			username: {
-      		type: "InputText",
-      		label: "Your username"
-    	},
-    	age: {
-	      type: "InputText",
-    	  label: "Your age",
-	      inputType: "number"
-    	},
-	    preferedColor: {
-    	  type: "InputText",
-	      label: "Your prefered color",
-    	  inputType: "color",
-	      value: "#FF0000"
-    	}
-	}
+  fields:{
+    username: {
+      type: "InputText",
+      label: "Your username"
+    },
+    age: {
+      type: "InputText",
+      label: "Your age",
+      inputType: "number"
+    },
+    preferedColor: {
+      type: "InputText",
+      label: "Your prefered color",
+      inputType: "color",
+      value: "#FF0000"
+    }
+  }
 }
 ```
 

@@ -1,7 +1,5 @@
 import React from "react";
-
-import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
-
+import { NavLink } from "react-router-dom";
 import injectStyles from "react-jss";
 
 const styles = {
@@ -77,6 +75,7 @@ export default class Sidebar extends React.Component{
         <h2>Getting started</h2>
         <ul>
           <li><NavLink className={"navlink"} exact={true} activeClassName="active" to="/">Introduction</NavLink></li>
+          <li><NavLink className={"navlink"} exact={true} activeClassName="active" to="/License">License</NavLink></li>
         </ul>
         <hr/>
 
@@ -112,6 +111,8 @@ export default class Sidebar extends React.Component{
 
         <h2>Other components</h2>
         <ul>
+          <li><NavLink className={"navlink"} activeClassName="active" to="/Alert">Alert</NavLink></li>
+          <li><NavLink className={"navlink"} activeClassName="active" to="/Confirm">Confirm</NavLink></li>
           <li><NavLink className={"navlink"} activeClassName="active" to="/GenericList">GenericList</NavLink></li>
           {/* <li><NavLink className={"navlink"} activeClassName="active" to="/Tree">Tree</NavLink></li> */}
         </ul>

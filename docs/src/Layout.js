@@ -1,14 +1,19 @@
 import React from "react";
 import { observer } from "mobx-react";
-import * as mobx from "mobx";
-import { get } from "lodash";
 
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { Button, ButtonGroup, Grid, Row, Col, Panel, Glyphicon } from "react-bootstrap";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Button, Glyphicon } from "react-bootstrap";
 import injectStyles from "react-jss";
+
+import { registerLanguage } from "react-syntax-highlighter/prism-light";
+import jsx from 'react-syntax-highlighter/languages/prism/jsx';
+import json from 'react-syntax-highlighter/languages/prism/json';
 
 import Sidebar from "./Layout/Sidebar";
 import * as Views from "./Views";
+
+registerLanguage('jsx', jsx);
+registerLanguage('json', json);
 
 let styles = {
   container:{
@@ -28,6 +33,7 @@ let styles = {
     gridArea: "body",
     height:"100vh",
     overflow:"auto",
+    "-webkit-overflow-scrolling": "touch",
     padding: "0 20px 20px",
     background: "#ecf0f1",
     "& hr":{
@@ -44,6 +50,7 @@ let styles = {
     padding: "0 20px 20px",
     height:"100vh",
     overflow:"auto",
+    "-webkit-overflow-scrolling": "touch",
     background:"#34495e",
     color:"white",
     transition:"height 0.5s ease",
@@ -78,6 +85,7 @@ let styles = {
     "& $sidebar":{
       height:"100vh",
       overflow:"auto",
+      "-webkit-overflow-scrolling": "touch",
     }
   }
 };
@@ -133,6 +141,9 @@ export default class Layout extends React.Component {
               <Route exact path="/SingleField" component={Views.SingleField}/>
               <Route exact path="/FormStore" component={Views.FormStore}/>
               <Route exact path="/ClipboardStore" component={Views.ClipboardStore}/>
+              <Route exact path="/License" component={Views.License}/>
+              <Route exact path="/Confirm" component={Views.Confirm}/>
+              <Route exact path="/Alert" component={Views.Alert}/>
             </div>
         </div>
       </Router>
