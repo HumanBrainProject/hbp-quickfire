@@ -427,7 +427,7 @@ export default class DataSheetField extends React.Component {
 
     return (
       <FormGroup
-        className={`${classes.container} quickfire-field-data-sheet ${!values.length? "quickfire-empty-field": ""}  ${disabled? "quickfire-field-disabled": ""} ${readOnly? "quickfire-field-readonly": ""}`}
+        className={`quickfire-field-data-sheet ${!values.length? "quickfire-empty-field": ""}  ${disabled? "quickfire-field-disabled": ""} ${readOnly? "quickfire-field-readonly": ""}`}
         validationState={validationState}>
         {label && <ControlLabel className={"quickfire-label"}>{label}</ControlLabel>}
 
@@ -443,7 +443,7 @@ export default class DataSheetField extends React.Component {
               sheetRenderer={this.renderSheet}
               keyFn={this.keyGenerator}
             />
-            <Button disabled={values.length >= max || readOnly || disabled} bsClass={`${classes.btnAddRow} quickspark-data-sheet-add-button btn btn-primary btn-xs`} onClick={this.handleAddRow}>Add a row</Button>
+            <Button disabled={values.length >= max || readOnly || disabled} bsClass={`${classes.btnAddRow} quickfire-data-sheet-add-button btn btn-primary btn-xs`} onClick={this.handleAddRow}>Add a row</Button>
           </div>
           <input style={{display:"none"}} type="text" ref={ref=>this.hiddenInputRef = ref}/>
         </div>
