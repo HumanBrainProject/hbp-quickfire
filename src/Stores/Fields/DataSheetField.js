@@ -1,5 +1,5 @@
 import { observable, action, toJS } from "mobx";
-import { union, remove } from "lodash";
+import { union, remove, isArray } from "lodash";
 import DefaultField from "./DefaultField";
 
 /**
@@ -13,10 +13,21 @@ import DefaultField from "./DefaultField";
  * @param {string} path "" - Field path
  * @param {number} min 0 - Minimum rows that the field can have
  * @param {number} max Infinity - Maximum rows that the field can have
+ * @param {boolean} rowControlRemove true - Flag option for specifying if a row delete button should be displayed
+ * @param {boolean} rowControlMove true - Flag option for specifying if row move buttons should be displayed
+ * @param {boolean} rowControlDuplicate true - Flag option for specifying if a row duplicate button should be displayed
+ * @param {boolean} rowControlAdd true - Flag option for specifying if row add buttons should be displayed
  * @param {boolean} emptyToNull false - Flag that determines if empty values are transformed to null in the value function of the formStore
  * @param {boolean} disabled false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
  * @param {boolean} readOnly false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
  * @param {boolean} readMode false - If true, displays the field as label and value without the actual form input
+ * @name HeaderOptions
+ * @param {string} key "" - The column key that will be used in the values row for input and output
+ * @param {string} label "" - The column label
+ * @param {boolean} show undefined - If false, the column will not be displayed at all
+ * @param {boolean} readOnly undefined - If true, the column will be displayed as read only cells
+ * @param {string} defaultValue "" - The default value the column will take when creating a new row
+ * @param {string} duplicatedValue "" - The default value the column will take when duplicating an existing row
  */
 
 export default class DataSheetField extends DefaultField{
@@ -71,15 +82,17 @@ export default class DataSheetField extends DefaultField{
     changes.forEach(change => {
       change.cell.row[change.cell.key] = change.value;
     });
-    outOfScopeChanges.forEach(change => {
-      if(change.row > this.value.length - 1 && this.value.length < this.max){
-        this.addRow();
-      }
-      let colValue = this.headers.filter(header => header.show !== false)[change.col];
-      if(colValue !== undefined && colValue.key !== undefined && colValue.readOnly !== true && change.row < this.value.length){
-        this.value[change.row][colValue.key] = change.value;
-      }
-    });
+    if(isArray(outOfScopeChanges)){
+      outOfScopeChanges.forEach(change => {
+        if(change.row > this.value.length - 1 && this.value.length < this.max){
+          this.addRow();
+        }
+        let colValue = this.headers.filter(header => header.show !== false)[change.col];
+        if(colValue !== undefined && colValue.key !== undefined && colValue.readOnly !== true && change.row < this.value.length){
+          this.value[change.row][colValue.key] = change.value;
+        }
+      });
+    }
   }
 
   @action

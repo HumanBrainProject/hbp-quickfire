@@ -43,7 +43,7 @@ const styles = {
       box-shadow: inset 0 -100px 0 rgba(33, 133, 208, 0.15);
     `,
 
-    ".data-grid-container .data-grid .cell.read-only": ` 
+    ".quickfire-field-data-sheet:not(.quickfire-readmode) .data-grid-container .data-grid .cell.read-only, .data-grid-container .data-grid th.cell.read-only": ` 
       background: whitesmoke;
       color: #999;
       text-align: center;
@@ -113,7 +113,8 @@ const styles = {
 };
 
 /**
- * Todo: fill description
+ * Form component allowing to edit a spreadsheet-like data
+ * It uses the react-datasheet npm package to display to field
  * @class DataSheetField
  * @memberof FormFields
  * @namespace DataSheetField
@@ -135,7 +136,10 @@ export default class DataSheetField extends React.Component {
   }
 
   handleCellChange = (changes, outOfScopeChanges) => {
-    const { field } = this.props;
+    const { field, formStore } = this.props;
+    if(field.readOnly || field.disabled || field.readMode || formStore.readMode){
+      return;
+    }
     const proceed = () => {
       field.applyChanges(changes, outOfScopeChanges);
       this.triggerOnChange();
@@ -148,7 +152,10 @@ export default class DataSheetField extends React.Component {
   }
 
   handleAddRow = () => {
-    const { field } = this.props;
+    const { field, formStore } = this.props;
+    if(field.readOnly || field.disabled || field.readMode || formStore.readMode){
+      return;
+    }
     if(field.value.length < field.max){
       const proceed = () => {
         field.addRow();
@@ -163,7 +170,10 @@ export default class DataSheetField extends React.Component {
   }
 
   handleRemoveRow(row, e){
-    const { field } = this.props;
+    const { field, formStore } = this.props;
+    if(field.readOnly || field.disabled || field.readMode || formStore.readMode){
+      return;
+    }
     e.stopPropagation();
     if(field.value.length > field.min){
       const proceed = () => {
@@ -179,7 +189,10 @@ export default class DataSheetField extends React.Component {
   }
 
   handleMoveUpRow(rowIndex, e){
-    const { field } = this.props;
+    const { field, formStore } = this.props;
+    if(field.readOnly || field.disabled || field.readMode || formStore.readMode){
+      return;
+    }
     e.stopPropagation();
     if(rowIndex > 0){
       const proceed = () => {
@@ -195,7 +208,10 @@ export default class DataSheetField extends React.Component {
   }
 
   handleMoveDownRow(rowIndex, e){
-    const { field } = this.props;
+    const { field, formStore } = this.props;
+    if(field.readOnly || field.disabled || field.readMode || formStore.readMode){
+      return;
+    }
     e.stopPropagation();
     if(rowIndex < field.value.length - 1){
       const proceed = () => {
@@ -211,7 +227,10 @@ export default class DataSheetField extends React.Component {
   }
 
   handleDuplicateRow(rowIndex, e){
-    const { field } = this.props;
+    const { field, formStore } = this.props;
+    if(field.readOnly || field.disabled || field.readMode || formStore.readMode){
+      return;
+    }
     e.stopPropagation();
     if(field.value.length < field.max){
       const proceed = () => {
@@ -227,7 +246,10 @@ export default class DataSheetField extends React.Component {
   }
 
   handleAddRowAbove(rowIndex, e){
-    const { field } = this.props;
+    const { field, formStore } = this.props;
+    if(field.readOnly || field.disabled || field.readMode || formStore.readMode){
+      return;
+    }
     e.stopPropagation();
     if(field.value.length < field.max){
       const proceed = () => {
@@ -243,7 +265,10 @@ export default class DataSheetField extends React.Component {
   }
 
   handleAddRowBelow(rowIndex, e){
-    const { field } = this.props;
+    const { field, formStore } = this.props;
+    if(field.readOnly || field.disabled || field.readMode || formStore.readMode){
+      return;
+    }
     e.stopPropagation();
     if(field.value.length < field.max){
       const proceed = () => {
@@ -263,20 +288,47 @@ export default class DataSheetField extends React.Component {
   }
 
   handleKeyDown = (e) => {
-    const { field } = this.props;
-    if(e.target.matches("input.data-editor") && e.keyCode === 13){
-      if(this.dataSheetRef.state.end.i !== undefined && this.dataSheetRef.state.end.i === field.value.length-1){
-        if(field.value.length < field.max){
-          field.addRow();
-          //Set state of the child component to manually change the selected position
-          //Without havind to go in full control mode of the position.
-          this.dataSheetRef.setState({
-            start:{i:this.dataSheetRef.state.end.i+1, j:this.dataSheetRef.state.end.j},
-            end:{i:this.dataSheetRef.state.end.i+1, j:this.dataSheetRef.state.end.j}
-          });
-          this.triggerOnChange();
-        }
-      }
+    const { field, formStore } = this.props;
+    if(field.readOnly || field.disabled || field.readMode || formStore.readMode){
+      return;
+    }
+    if(e.target.matches("input.data-editor") //We are in the input of editing mode
+    && e.keyCode === 13 //We pressed "Enter"
+    && this.dataSheetRef.state.end.i !== undefined
+    && this.dataSheetRef.state.end.i === field.value.length-1
+    && field.value.length < field.max){
+      field.addRow();
+      //Set state of the child component to manually change the selected position
+      //Without havind to go in full control mode of the position.
+      this.dataSheetRef.setState({
+        start:{i:this.dataSheetRef.state.end.i+1, j:this.dataSheetRef.state.end.j},
+        end:{i:this.dataSheetRef.state.end.i+1, j:this.dataSheetRef.state.end.j}
+      });
+      this.triggerOnChange();
+    } else if(e.keyCode === 9//We pressed "Tab"
+    && !e.shiftKey//But not shift + Tab
+    && this.dataSheetRef.state.end.i !== undefined
+    && this.dataSheetRef.state.end.i === field.value.length-1
+    && this.dataSheetRef.state.end.j !== undefined
+    && this.dataSheetRef.state.end.j === field.headers.filter(header => header.show !== false).length-1
+    && field.value.length < field.max){
+      e.preventDefault();
+      field.addRow();
+      //Set state of the child component to manually change the selected position
+      //Without havind to go in full control mode of the position.
+      this.dataSheetRef.setState({
+        start:{i:this.dataSheetRef.state.end.i+1, j:0},
+        end:{i:this.dataSheetRef.state.end.i+1, j:0}
+      });
+      this.triggerOnChange();
+    } else if(e.keyCode === 113
+    && this.dataSheetRef.state.start.i !== undefined
+    && this.dataSheetRef.state.start.j !== undefined
+    && field.headers.filter(header => header.show !== false)[this.dataSheetRef.state.end.j].readOnly !== false){
+      this.dataSheetRef.setState({
+        editing:{i:this.dataSheetRef.state.start.i, j:this.dataSheetRef.state.start.j}
+      });
+      this.triggerOnChange();
     }
   }
 
@@ -285,28 +337,17 @@ export default class DataSheetField extends React.Component {
   }
 
   renderCell = (cell) => {
-    if(cell.actions){
-      if(cell.header){
-        return "";
-      } else {
-        return (
-          <div>
-            <Button bsStyle={"primary"} bsSize={"xsmall"} onClick={this.handleRemoveRow.bind(this, cell.row)}><Glyphicon glyph="remove"/></Button>
-          </div>
-        );
-      }
-    } else {
-      return cell.value;
-    }
+    return cell.value;
   }
 
   renderRow = (props) => {
-    const { field } = this.props;
-    const { rowControlRemove, rowControlMove, rowControlDuplicate, rowControlAdd } = field;
+    const { field, formStore } = this.props;
+    const { rowControlRemove, rowControlMove, rowControlDuplicate, rowControlAdd, readOnly, disabled } = field;
     return (
       <tr>
         {props.children}
-        {(rowControlRemove || rowControlMove || rowControlDuplicate || rowControlAdd) && props.cells[0].row?
+        {(rowControlRemove || rowControlMove || rowControlDuplicate || rowControlAdd)
+        && !readOnly && !disabled && !field.readMode && !formStore.readMode && props.cells[0].row?
           <td className={"action-cell"}>
             <DropdownButton
               bsSize="xsmall"
@@ -331,8 +372,8 @@ export default class DataSheetField extends React.Component {
   }
 
   renderSheet = props => {
-    const { field } = this.props;
-    const { rowControlRemove, rowControlMove, rowControlDuplicate, rowControlAdd } = field;
+    const { field, formStore } = this.props;
+    const { rowControlRemove, rowControlMove, rowControlDuplicate, rowControlAdd, readOnly, disabled } = field;
     return (
       <table className={props.className}>
         <thead>
@@ -342,7 +383,8 @@ export default class DataSheetField extends React.Component {
                 return <th key={header.key} className={"cell read-only"}>{header.label}</th>;
               }
             }).filter(cell => cell !== undefined)}
-            {rowControlRemove || rowControlMove || rowControlDuplicate || rowControlAdd? <th className={"action-header"} />: null}
+            {(rowControlRemove || rowControlMove || rowControlDuplicate || rowControlAdd)
+              && !readOnly && !disabled && !field.readMode && !formStore.readMode? <th className={"action-header"} />: null}
           </tr>
         </thead>
         <tbody>
@@ -352,23 +394,36 @@ export default class DataSheetField extends React.Component {
     );
   };
 
-  render() {
-    /*if(this.props.formStore.readMode || this.props.field.readMode){
-      return this.renderReadMode();
-    }*/
-
-    const { field, classes } = this.props;
-    const { label, value: values, headers, disabled, readOnly, validationState, validationErrors, max } = field;
-
+  prepareData(){
     const grid = [];
+    const { field, formStore } = this.props;
+    const { value: values, headers, disabled, readOnly } = field;
 
     values.forEach((value) => {
       grid.push(headers.map(header => {
         if(header.show !== false){
-          return {value: value[header.key], row: value, key: header.key, readOnly: !!header.readOnly};
+          return {
+            value: value[header.key],
+            row: value,
+            key: header.key,
+            readOnly: disabled || readOnly || field.readMode || formStore.readMode || !!header.readOnly
+          };
         }
       }).filter(cell => cell !== undefined));
     });
+
+    return grid;
+  }
+
+  render() {
+    if(this.props.formStore.readMode || this.props.field.readMode){
+      return this.renderReadMode();
+    }
+
+    const { field, classes } = this.props;
+    const { label, value: values, disabled, readOnly, validationState, validationErrors, max } = field;
+
+    const grid = this.prepareData();
 
     return (
       <FormGroup
@@ -388,7 +443,7 @@ export default class DataSheetField extends React.Component {
               sheetRenderer={this.renderSheet}
               keyFn={this.keyGenerator}
             />
-            <Button disabled={values.length >= max} bsClass={`${classes.btnAddRow} quickspark-data-sheet-add-button btn btn-primary btn-xs`} onClick={this.handleAddRow}>Add a row</Button>
+            <Button disabled={values.length >= max || readOnly || disabled} bsClass={`${classes.btnAddRow} quickspark-data-sheet-add-button btn btn-primary btn-xs`} onClick={this.handleAddRow}>Add a row</Button>
           </div>
           <input style={{display:"none"}} type="text" ref={ref=>this.hiddenInputRef = ref}/>
         </div>
@@ -401,20 +456,30 @@ export default class DataSheetField extends React.Component {
     );
   }
 
-  /*renderReadMode(){
-    let {
-      label,
-      value,
-      disabled,
-      readOnly
-    } = this.props.field;
-
-    const {classes} = this.props;
+  renderReadMode(){
+    const {field} = this.props;
+    const {label, value, disabled, readOnly} = field;
+    const grid = this.prepareData();
 
     return (
-      <div className={`quickfire-field-data-sheet ${!value.length? "quickfire-empty-field":""} quickfire-readmode ${classes.readMode}  ${disabled? "quickfire-field-disabled": ""} ${readOnly? "quickfire-field-readonly": ""}`}>
-
+      <div className={`quickfire-field-data-sheet ${!value.length? "quickfire-empty-field":""} quickfire-readmode ${disabled? "quickfire-field-disabled": ""} ${readOnly? "quickfire-field-readonly": ""}`}>
+        {label && <ControlLabel className={"quickfire-label"}>{label}</ControlLabel>}
+        {isFunction(this.props.readModeRendering)?
+          this.props.readModeRendering(this.props.field)
+          :
+          <div className={"quickfire-data-sheet-container"}>
+            <ReactDataSheet
+              ref={ref => this.dataSheetRef = ref}
+              overflow={"clip"}
+              data={grid}
+              valueRenderer={this.renderCell}
+              rowRenderer={this.renderRow}
+              sheetRenderer={this.renderSheet}
+              keyFn={this.keyGenerator}
+            />
+          </div>
+        }
       </div>
     );
-  }*/
+  }
 }
