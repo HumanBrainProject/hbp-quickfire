@@ -1,6 +1,7 @@
 export {default as DefaultField} from "./DefaultField";
 export {default as CheckBoxField} from "./CheckBoxField";
 export {default as DropdownSelectField} from "./DropdownSelectField";
+export {default as DataSheetField} from "./DataSheetField";
 export {default as GroupSelectField} from "./GroupSelectField";
 export {default as InputTextField} from "./InputTextField";
 export {default as InputTextMultipleField} from "./InputTextMultipleField";
