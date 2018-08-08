@@ -1,6 +1,5 @@
 import React from "react";
 import View from "./_View";
-import { SingleField } from "hbp-quickfire";
 
 let properties = [
   [`label`, `string`, `""`, `The field label`],
@@ -70,6 +69,7 @@ export default class DataSheetView extends View {
           definition={{
             type:"DataSheet",
             label:"Datasheet with a hidden column",
+            min:5,
             headers:[{
               key:"id",
               show:false,
@@ -93,11 +93,6 @@ export default class DataSheetView extends View {
             ]
           }}
         />
-
-              <SingleField 
-        type="DataSheet"
-        label="label"
-        headers={[{label:"Column",key:"column"}]}/>
 
       </div>
     );

@@ -75,6 +75,9 @@ export default class DataSheetField extends DefaultField{
       });
       this.value.push(newRow);
     });
+    while(this.value.length < this.min){
+      this.addRow();
+    }
   }
 
   @action
