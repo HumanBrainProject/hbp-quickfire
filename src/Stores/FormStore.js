@@ -18,7 +18,8 @@ const typesMapping = {
   "Select": Fields.SelectField,
   "TextArea": Fields.TextAreaField,
   "TreeSelect": Fields.TreeSelectField,
-  "Slider": Fields.Slider
+  "Slider": Fields.Slider,
+  "DataSheet": Fields.DataSheetField
 };
 
 /**

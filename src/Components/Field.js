@@ -12,6 +12,7 @@ import TreeSelectField from "./TreeSelectField";
 import CheckBoxField from "./CheckBoxField.js";
 import GroupSelectField from "./GroupSelectField.js";
 import Slider from "./Slider.js";
+import DataSheetField from "./DataSheetField.js";
 
 import NestedActionButton from "./NestedActionButton";
 
@@ -25,7 +26,8 @@ export let components = {
   TreeSelect: TreeSelectField,
   CheckBox: CheckBoxField,
   GroupSelect: GroupSelectField,
-  Slider: Slider
+  Slider: Slider,
+  DataSheet: DataSheetField
 };
 
 export const catchedEvents = [
@@ -81,6 +83,11 @@ export const passedDownPropsName = [
   "onBeforeMoveUpInstance",
   "onBeforeMoveDownInstance",
   "onBeforeDuplicateInstance",
+  "onBeforeAddRow",
+  "onBeforeRemoveRow",
+  "onBeforeMoveUpRow",
+  "onBeforeMoveDownRow",
+  "onBeforeDuplicateRow",
   "onValueClick",
   "onValueFocus",
   "onValueBlur",
