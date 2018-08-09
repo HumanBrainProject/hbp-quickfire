@@ -380,7 +380,7 @@ export default class DataSheetField extends React.Component {
           <tr>
             {field.headers.map(header => {
               if(header.show !== false){
-                return <th key={header.key} className={"cell read-only"}>{header.label}</th>;
+                return <th key={header.key} className={"cell read-only"} style={{width:header.width}}>{header.label}</th>;
               }
             }).filter(cell => cell !== undefined)}
             {(rowControlRemove || rowControlMove || rowControlDuplicate || rowControlAdd)
@@ -421,7 +421,7 @@ export default class DataSheetField extends React.Component {
     }
 
     const { field, classes } = this.props;
-    const { label, value: values, disabled, readOnly, validationState, validationErrors, max } = field;
+    const { label, value: values, disabled, readOnly, validationState, validationErrors, max, clipContent } = field;
 
     const grid = this.prepareData();
 
@@ -435,7 +435,7 @@ export default class DataSheetField extends React.Component {
           <div className={"quickfire-data-sheet-container"} onChange={this.handleChange} onKeyDown={this.handleKeyDown}>
             <ReactDataSheet
               ref={ref => this.dataSheetRef = ref}
-              overflow={"clip"}
+              overflow={clipContent?"clip":"wrap"}
               data={grid}
               valueRenderer={this.renderCell}
               onCellsChanged={this.handleCellChange}
@@ -458,7 +458,7 @@ export default class DataSheetField extends React.Component {
 
   renderReadMode(){
     const {field} = this.props;
-    const {label, value, disabled, readOnly} = field;
+    const {label, value, disabled, readOnly, clipContent} = field;
     const grid = this.prepareData();
 
     return (
@@ -470,7 +470,7 @@ export default class DataSheetField extends React.Component {
           <div className={"quickfire-data-sheet-container"}>
             <ReactDataSheet
               ref={ref => this.dataSheetRef = ref}
-              overflow={"clip"}
+              overflow={clipContent?"clip":"wrap"}
               data={grid}
               valueRenderer={this.renderCell}
               rowRenderer={this.renderRow}

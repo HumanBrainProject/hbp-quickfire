@@ -15,7 +15,8 @@ let properties = [
   [`emptyToNull`, `boolean`, `false`, `Flag that determines if empty values are transformed to null in the value function of the FormStore`],
   [`disabled`,`boolean`,`false`,`Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()`],
   [`readOnly`,`boolean`,`false`,`Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()`],
-  [`readMode`,`boolean`,`false`,`If true, displays the field as label and value without the actual form input`]
+  [`readMode`,`boolean`,`false`,`If true, displays the field as label and value without the actual form input`],
+  [`clipContent`,`boolean`,`true`,`Whether cells content should wrap or clip the text content`]
 ];
 
 let headerProperties = [
@@ -25,6 +26,7 @@ let headerProperties = [
   [`readOnly`, `boolean`, `undefined`, `If true, the column will be displayed as read only cells`],
   [`defaultValue`, `string`, `""`, `The default value the column will take when creating a new row`],
   [`duplicatedValue`, `string`, `""`, `The default value the column will take when duplicating an existing row`],
+  [`width`, `string`, `undefined`, `The column width (e.g. "50px" or "25%")`]
 ];
 
 export default class DataSheetView extends View {
@@ -70,6 +72,7 @@ export default class DataSheetView extends View {
             type:"DataSheet",
             label:"Datasheet with a hidden column",
             min:5,
+            clipContent:false,
             headers:[{
               key:"id",
               show:false,
@@ -77,7 +80,8 @@ export default class DataSheetView extends View {
               duplicatedValue:0
             },{
               key:"firstname",
-              label:"Firstname"
+              label:"Firstname",
+              width:"50%"
             },{
               key:"lastname",
               label:"Lastname"
@@ -85,7 +89,8 @@ export default class DataSheetView extends View {
               key:"eyecolor",
               label:"Eye Color",
               readOnly:true,
-              defaultValue:"unknown"
+              defaultValue:"unknown",
+              width:"80px"
             }],
             value:[
               {id:1,firstname:"John", lastname:"Doe", eyecolor:"green"},
