@@ -105,6 +105,14 @@ export default class FormStore {
     return result;
   }
 
+  /**
+   * Syntaxic shortcut accessor that calls getValues
+   * @memberof Stores.FormStore
+   */
+  get values(){
+    return this.getValues();
+  }
+
   @action
   /**
    * Inject values into form fields, must be input the same format as `values`method output
@@ -129,6 +137,15 @@ export default class FormStore {
       }
       field.injectValue(values[fieldKey]);
     });
+  }
+
+  /**
+   * Syntaxic shortcut accessor that calls injectValues
+   * @memberof Stores.FormStore
+   * @param {object} values structured object of the form field values
+   */
+  set values(values){
+    this.injectValues(values);
   }
 
   @action
