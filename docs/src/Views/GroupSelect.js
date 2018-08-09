@@ -82,6 +82,7 @@ export default class GroupSelect extends View{
           type:"GroupSelect",
           label:"Select a country",
           optionsUrl:"/assets/XHRMockupData/Countries.json",
+          cacheOptionsUrl:true,
           value:["fr", {value:"us"}, "uk"]
         }}/>
         
@@ -90,6 +91,7 @@ export default class GroupSelect extends View{
           type:"GroupSelect",
           label:"Select a country",
           optionsUrl:"/assets/XHRMockupData/Countries.json",
+          cacheOptionsUrl:true,
           mappingValue:["value", "label"],
           value:[{value:"fr", label:"France"}, {value:"it", label:"France"}, {value:"es", label:"Spain"}]
         }}/>
@@ -110,6 +112,7 @@ export default class GroupSelect extends View{
           type:"GroupSelect",
           label:"Some uneditable value",
           optionsUrl:"/assets/XHRMockupData/Countries.json",
+          cacheOptionsUrl:true,
           value:["fr", {value:"us"}, "uk"],
           disabled: true
         }}/>
@@ -119,6 +122,7 @@ export default class GroupSelect extends View{
           type:"GroupSelect",
           label:"Some uneditable value",
           optionsUrl:"/assets/XHRMockupData/Countries.json",
+          cacheOptionsUrl:true,
           value:["fr"],
           max:1,
           readOnly: true
@@ -130,6 +134,7 @@ export default class GroupSelect extends View{
           type:"GroupSelect",
           label:"Field in read mode",
           optionsUrl:"/assets/XHRMockupData/Countries.json",
+          cacheOptionsUrl:true,
           value:["fr", {value:"us"}, "uk"],
           readMode: true
         }}/>

@@ -16,4 +16,5 @@ export { default as Alert } from "./Components/Alert";
  * @namespace Stores
  */
 export { default as FormStore } from "./Stores/FormStore";
+export { default as optionsStore } from "./Stores/OptionsStore";
 export { default as ClipboardStore } from "./Stores/ClipboardStore";

@@ -266,6 +266,23 @@ export default class FormStore {
       //console.error("error during resolveURL", e);
     }
   }
+
+  /**
+   * @memberof Stores.FormStore
+   * @param {array} optionsUrls an array of URLs to fetch and put in cache
+   */
+  static async prefetchOptions(optionsUrls, axiosInstance){
+    //Fetch all the options in parralel
+    const responses = await Promise.all(optionsUrls.map(
+      optionsUrl => (axiosInstance || axios).get(optionsUrl)
+    ));
+    //When all promises are resolved, store responses in the optionsStore singleton and return responses
+    return responses.map((response, index) => {
+      optionsStore.setOptions(optionsUrls[index], response.data);
+      return response.data;
+    });
+  }
+
   @action
   /**
    * validates all form fields at once

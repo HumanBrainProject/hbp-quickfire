@@ -1,6 +1,7 @@
 import { observable, action } from "mobx";
 import { isString, isNumber, find, union } from "lodash";
 import DefaultField from "./DefaultField";
+import optionsStore from "../OptionsStore";
 
 /**
  * @memberof FormFields.GroupSelectField
@@ -47,6 +48,14 @@ export default class GroupSelectField extends DefaultField{
 
   constructor(fieldData, store, path){
     super(fieldData, store, path);
+    //Try to checked if cached options already exist
+    if(this.cacheOptionsUrl && this.optionsUrl){
+      let options = optionsStore.getOptions(this.optionsUrl);
+      if(options !== undefined){
+        this.optionsUrl = null;
+        this.options = options;
+      }
+    }
     this.injectValue(this.value);
   }
 
