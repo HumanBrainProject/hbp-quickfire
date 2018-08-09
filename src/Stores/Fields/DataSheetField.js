@@ -21,6 +21,7 @@ import DefaultField from "./DefaultField";
  * @param {boolean} disabled false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
  * @param {boolean} readOnly false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
  * @param {boolean} readMode false - If true, displays the field as label and value without the actual form input
+ * @param {boolean} clipContent true - Whether cells content should wrap or clip the text content
  * @name HeaderOptions
  * @param {string} key "" - The column key that will be used in the values row for input and output
  * @param {string} label "" - The column label
@@ -28,6 +29,7 @@ import DefaultField from "./DefaultField";
  * @param {boolean} readOnly undefined - If true, the column will be displayed as read only cells
  * @param {string} defaultValue "" - The default value the column will take when creating a new row
  * @param {string} duplicatedValue "" - The default value the column will take when duplicating an existing row
+ * @param {string} width undefined - The column width (e.g. "50px" or "25%")
  */
 
 export default class DataSheetField extends DefaultField{
@@ -40,12 +42,13 @@ export default class DataSheetField extends DefaultField{
   @observable rowControlMove = true;
   @observable rowControlDuplicate = true;
   @observable rowControlAdd = true;
+  @observable clipContent = true;
 
   __emptyValue = () => [];
 
   static get properties(){
     return union(super.properties, ["value", "defaultValue", "headers", "min", "max", "rowControlRemove",
-      "rowControlMove", "rowControlDuplicate", "rowControlAdd"]);
+      "rowControlMove", "rowControlDuplicate", "rowControlAdd", "clipContent"]);
   }
 
   constructor(fieldData, store, path){
