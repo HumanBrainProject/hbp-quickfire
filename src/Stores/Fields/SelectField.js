@@ -1,6 +1,7 @@
 import { observable, action } from "mobx";
 import { union, find, isString, isNumber, uniqueId } from "lodash";
 import DefaultField from "./DefaultField";
+import optionsStore from "../OptionsStore";
 
 /**
  * @memberof FormFields.SelectField
@@ -47,6 +48,14 @@ export default class SelectField extends DefaultField{
     super(fieldData, store, path);
     if(fieldData.mappingReturn === undefined){
       this.mappingReturn = this.mappingValue;
+    }
+    //Try to checked if cached options already exist
+    if(this.cacheOptionsUrl && this.optionsUrl){
+      let options = optionsStore.getOptions(this.optionsUrl);
+      if(options !== undefined){
+        this.optionsUrl = null;
+        this.options = options;
+      }
     }
     this.mapOptions();
     this.injectValue(this.value);

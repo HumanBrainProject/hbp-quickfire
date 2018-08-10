@@ -91,6 +91,7 @@ export default class Sidebar extends React.Component{
         <h3>Field types :</h3>
         <ul>
           <li><NavLink className={"navlink"} activeClassName="active" to="/CheckBox">CheckBox</NavLink></li>
+          <li><NavLink className={"navlink"} activeClassName="active" to="/DataSheet">DataSheet</NavLink></li>
           <li><NavLink className={"navlink"} activeClassName="active" to="/DropdownSelect">DropdownSelect</NavLink></li>
           <li><NavLink className={"navlink"} activeClassName="active" to="/GroupSelect">GroupSelect</NavLink></li>
           <li><NavLink className={"navlink"} activeClassName="active" to="/InputText">InputText</NavLink></li>

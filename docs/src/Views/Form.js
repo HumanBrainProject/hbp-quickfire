@@ -299,7 +299,7 @@ export default class FormView extends View{
   }
   
   handleSave = () => {
-    this.save = this.formStore.getValues();
+    this.save = this.formStore.values;
   }
 
   handleReset = () => {
@@ -307,7 +307,7 @@ export default class FormView extends View{
   }
 
   handleRestore = () => {
-    this.formStore.injectValues(this.save);
+    this.formStore.values = this.save;
   }
 
   toggleReadMode = () => {

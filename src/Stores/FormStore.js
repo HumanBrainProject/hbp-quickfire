@@ -18,7 +18,8 @@ const typesMapping = {
   "Select": Fields.SelectField,
   "TextArea": Fields.TextAreaField,
   "TreeSelect": Fields.TreeSelectField,
-  "Slider": Fields.Slider
+  "Slider": Fields.Slider,
+  "DataSheet": Fields.DataSheetField
 };
 
 /**
@@ -104,6 +105,14 @@ export default class FormStore {
     return result;
   }
 
+  /**
+   * Syntaxic shortcut accessor that calls getValues
+   * @memberof Stores.FormStore
+   */
+  get values(){
+    return this.getValues();
+  }
+
   @action
   /**
    * Inject values into form fields, must be input the same format as `values`method output
@@ -128,6 +137,15 @@ export default class FormStore {
       }
       field.injectValue(values[fieldKey]);
     });
+  }
+
+  /**
+   * Syntaxic shortcut accessor that calls injectValues
+   * @memberof Stores.FormStore
+   * @param {object} values structured object of the form field values
+   */
+  set values(values){
+    this.injectValues(values);
   }
 
   @action
@@ -248,6 +266,23 @@ export default class FormStore {
       //console.error("error during resolveURL", e);
     }
   }
+
+  /**
+   * @memberof Stores.FormStore
+   * @param {array} optionsUrls an array of URLs to fetch and put in cache
+   */
+  static async prefetchOptions(optionsUrls, axiosInstance){
+    //Fetch all the options in parralel
+    const responses = await Promise.all(optionsUrls.map(
+      optionsUrl => (axiosInstance || axios).get(optionsUrl)
+    ));
+    //When all promises are resolved, store responses in the optionsStore singleton and return responses
+    return responses.map((response, index) => {
+      optionsStore.setOptions(optionsUrls[index], response.data);
+      return response.data;
+    });
+  }
+
   @action
   /**
    * validates all form fields at once
