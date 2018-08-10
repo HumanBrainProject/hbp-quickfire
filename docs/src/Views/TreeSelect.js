@@ -138,6 +138,7 @@ export default class TreeSelect extends View{
           label: "Data from URL and initial values",
           type: "TreeSelect",
           dataUrl: "/assets/XHRMockupData/HBP_MEM_0000000.json",
+          cacheDataUrl:true,
           mappingLabel: "name",
           value: ["HBP_MEM:0000069", "HBP_MEM:0000081", {"value": "HBP_MEM:0000084", "name": "Fluorescence recovery after photobleaching"}],
           expandToSelectedNodes: true     
@@ -149,6 +150,7 @@ export default class TreeSelect extends View{
           label: "Data from URL and initial values",
           type: "TreeSelect",
           dataUrl: "/assets/XHRMockupData/HBP_MEM_0000000.json",
+          cacheDataUrl:true,
           mappingLabel: "name",
           mappingValue: ["value","name"],
           value: [{"value": "HBP_MEM:0000084", "name": "Fluorescence recovery after photobleaching"}],
@@ -162,6 +164,7 @@ export default class TreeSelect extends View{
           label: "Data from URL and initial values",
           type: "TreeSelect",
           dataUrl: "/assets/XHRMockupData/HBP_MEM_0000000.json",
+          cacheDataUrl:true,
           mappingLabel: "name",
           value: ["HBP_MEM:0000069", "HBP_MEM:0000081", {"value": "HBP_MEM:0000084", "name": "Fluorescence recovery after photobleaching"}],
           expandToSelectedNodes: true ,
@@ -173,6 +176,7 @@ export default class TreeSelect extends View{
           label: "Data from URL and initial values",
           type: "TreeSelect",
           dataUrl: "/assets/XHRMockupData/HBP_MEM_0000000.json",
+          cacheDataUrl:true,
           mappingLabel: "name",
           value: ["HBP_MEM:0000069", "HBP_MEM:0000081", {"value": "HBP_MEM:0000084", "name": "Fluorescence recovery after photobleaching"}],
           expandToSelectedNodes: true ,
@@ -185,6 +189,7 @@ export default class TreeSelect extends View{
           type:"TreeSelect",
           label:"Field in read mode",
           dataUrl: "/assets/XHRMockupData/HBP_MEM_0000000.json",
+          cacheDataUrl:true,
           mappingLabel: "name",
           value: ["HBP_MEM:0000069", "HBP_MEM:0000081", {"value": "HBP_MEM:0000084", "name": "Fluorescence recovery after photobleaching"}],
           readMode: true
@@ -195,6 +200,7 @@ export default class TreeSelect extends View{
           type:"TreeSelect",
           label:"Field with confirmations",
           dataUrl: "/assets/XHRMockupData/HBP_MEM_0000000.json",
+          cacheDataUrl:true,
           mappingLabel: "name",
           value: ["HBP_MEM:0000069", "HBP_MEM:0000081", {"value": "HBP_MEM:0000084", "name": "Fluorescence recovery after photobleaching"}]
         }}
@@ -209,6 +215,7 @@ export default class TreeSelect extends View{
           type:"TreeSelect",
           label:"TreeSelect Field",
           dataUrl: "/assets/XHRMockupData/HBP_MEM_0000000.json",
+          cacheDataUrl:true,
           mappingLabel: "name",
           valueLabelTransform: {
             search:"(^.*?)( > )(.*( > ))*(.*$)",

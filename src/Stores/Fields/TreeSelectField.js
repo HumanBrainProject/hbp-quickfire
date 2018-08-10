@@ -1,6 +1,7 @@
 import { observable, toJS, action } from "mobx";
 import { isString, isNumber, find, union } from "lodash";
 import DefaultField from "./DefaultField";
+import optionsStore from "../OptionsStore";
 
 /**
  * @memberof FormFields.TreeSelectField
@@ -64,6 +65,15 @@ export default class TreeSelectField extends DefaultField{
 
   constructor(fieldData, store, path){
     super(fieldData, store, path);
+    //Try to checked if cached options already exist
+    if(this.cacheDataUrl && this.dataUrl){
+      let data = optionsStore.getOptions(this.dataUrl);
+      if(data !== undefined){
+        this.dataUrl = null;
+        this.data = data;
+      }
+    }
+
     //If no data are provided, we make it an empty object
     //Cannot set this as default value for property since it's an observable
     //We need mobx to consider making the whole provided object to an observable

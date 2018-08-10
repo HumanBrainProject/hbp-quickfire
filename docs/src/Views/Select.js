@@ -68,6 +68,7 @@ export default class Select extends View{
           type:"Select",
           label:"Select a country",
           optionsUrl:"/assets/XHRMockupData/Countries.json",
+          cacheOptionsUrl:true,
           value:"pt"
         }}/>
 
@@ -77,6 +78,7 @@ export default class Select extends View{
           type:"Select",
           label:"Some uneditable value",
           optionsUrl:"/assets/XHRMockupData/Countries.json",
+          cacheOptionsUrl:true,
           value:"fr",
           disabled: true
         }}/>
@@ -86,6 +88,7 @@ export default class Select extends View{
           type:"Select",
           label:"Some uneditable value",
           optionsUrl:"/assets/XHRMockupData/Countries.json",
+          cacheOptionsUrl:true,
           value:"uk",
           readOnly: true
         }}/>          
@@ -96,6 +99,7 @@ export default class Select extends View{
           type:"Select",
           label:"Field in read mode",
           optionsUrl:"/assets/XHRMockupData/Countries.json",
+          cacheOptionsUrl:true,
           value:"fr",
           readMode: true
         }}/>
