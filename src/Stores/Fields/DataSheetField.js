@@ -17,11 +17,11 @@ import DefaultField from "./DefaultField";
  * @param {boolean} rowControlMove true - Flag option for specifying if row move buttons should be displayed
  * @param {boolean} rowControlDuplicate true - Flag option for specifying if a row duplicate button should be displayed
  * @param {boolean} rowControlAdd true - Flag option for specifying if row add buttons should be displayed
+ * @param {boolean} clipContent false - Whether cells content should wrap or clip the text content
  * @param {boolean} emptyToNull false - Flag that determines if empty values are transformed to null in the value function of the formStore
  * @param {boolean} disabled false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
  * @param {boolean} readOnly false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
  * @param {boolean} readMode false - If true, displays the field as label and value without the actual form input
- * @param {boolean} clipContent true - Whether cells content should wrap or clip the text content
  * @name HeaderOptions
  * @param {string} key "" - The column key that will be used in the values row for input and output
  * @param {string} label "" - The column label
@@ -42,7 +42,7 @@ export default class DataSheetField extends DefaultField{
   @observable rowControlMove = true;
   @observable rowControlDuplicate = true;
   @observable rowControlAdd = true;
-  @observable clipContent = true;
+  @observable clipContent = false;
 
   __emptyValue = () => [];
 
