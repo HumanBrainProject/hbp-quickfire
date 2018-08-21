@@ -1,6 +1,7 @@
-import { observable } from "mobx";
+import { observable, action, isObservableArray } from "mobx";
 import { union } from "lodash";
 import DefaultField from "./DefaultField";
+import { isArray } from "lodash";
 
 /**
 * @memberof FormFields.InputTextMultipleField
@@ -28,5 +29,21 @@ export default class InputTextMultipleField extends DefaultField{
 
   static get properties(){
     return union(super.properties, ["value", "defaultValue", "useVirtualClipboard", "max"]);
+  }
+
+  constructor(fieldData, store, path){
+    super(fieldData, store, path);
+    this.injectValue(this.value);
+  }
+
+  @action
+  injectValue(value){
+    if((this.emptyToNull && value === null) || !value){
+      this.value = this.__emptyValue();
+    } else if(!isObservableArray(value) && !isArray(value)){
+      this.value = [value];
+    } else {
+      this.value = value;
+    }
   }
 }
