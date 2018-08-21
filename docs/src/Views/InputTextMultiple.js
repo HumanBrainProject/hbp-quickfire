@@ -54,7 +54,7 @@ export default class GroupSelect extends View{
         }}/>
         <hr/>
 
-        <h4>Can also use the virtual</h4>
+        <h4>Can also use the virtual clipboard</h4>
         <p>It will insert multiple values if they are separated by a new line character. Works also with on native paste event.</p>
         <p>Some sample text below</p>
         <ul>

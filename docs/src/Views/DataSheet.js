@@ -13,6 +13,7 @@ let properties = [
   [`rowControlDuplicate`, `boolean`, `true`, `Flag option for specifying if a row duplicate button should be displayed`],
   [`rowControlAdd`, `boolean`, `true`, `Flag option for specifying if row add buttons should be displayed`],
   [`clipContent`,`boolean`,`false`,`Whether cells content should wrap or clip the text content`],
+  [`returnEmptyRows`,`boolean`,`false`,`Whether getValue() method will return empty rows or not`],
   [`emptyToNull`, `boolean`, `false`, `Flag that determines if empty values are transformed to null in the value function of the FormStore`],
   [`disabled`,`boolean`,`false`,`Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()`],
   [`readOnly`,`boolean`,`false`,`Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()`],
@@ -26,7 +27,8 @@ let headerProperties = [
   [`readOnly`, `boolean`, `undefined`, `If true, the column will be displayed as read only cells`],
   [`defaultValue`, `string`, `""`, `The default value the column will take when creating a new row`],
   [`duplicatedValue`, `string`, `""`, `The default value the column will take when duplicating an existing row`],
-  [`width`, `string`, `undefined`, `The column width (e.g. "50px" or "25%")`]
+  [`width`, `string`, `undefined`, `The column width (e.g. "50px" or "25%")`],
+  [`field`, `object`, `undefined`, `An object describing a field type to use as data editor`]
 ];
 
 export default class DataSheetView extends View {
@@ -72,7 +74,7 @@ export default class DataSheetView extends View {
             type:"DataSheet",
             label:"Datasheet with a hidden column",
             min:5,
-            clipContent:false,
+            returnEmptyRows:false,
             headers:[{
               key:"id",
               show:false,
@@ -80,11 +82,29 @@ export default class DataSheetView extends View {
               duplicatedValue:0
             },{
               key:"firstname",
-              label:"Firstname",
-              width:"50%"
+              label:"Firstname"
             },{
               key:"lastname",
-              label:"Lastname"
+              label:"Lastname",
+              field:{
+                type:"Select",
+                options:["Doe","Smith","Martin"]
+              }
+            },{
+              key:"country",
+              label:"Country",
+              width:"20%",
+              field:{
+                type:"DropdownSelect",
+                optionsUrl:"/assets/XHRMockupData/Countries.json"
+              }
+            },{
+              key:"story",
+              label:"Story",
+              width:"33%",
+              field:{
+                type:"TextArea"
+              }
             },{
               key:"eyecolor",
               label:"Eye Color",

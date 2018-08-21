@@ -1,9 +1,13 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
+import { toJS } from "mobx";
 import { FormGroup, ControlLabel, Glyphicon, Alert, Button, DropdownButton, MenuItem } from "react-bootstrap";
 import ReactDataSheet from "react-datasheet";
 import injectStyles from "react-jss";
 import { isFunction } from "lodash";
+
+import SingleField from "./SingleField";
+import { isArray, isObject } from "lodash";
 
 const styles = {
   "@global":{
@@ -31,8 +35,8 @@ const styles = {
       cursor: cell;
       background-color: white;
       transition : background-color 500ms ease;
-      vertical-align: middle;
-      text-align: right;
+      vertical-align: top;
+      text-align: left;
       border: 1px solid #DDD;
       padding: 0;
     `,
@@ -40,7 +44,7 @@ const styles = {
     ".data-grid-container .data-grid .cell.selected": ` 
       border: 1px double rgb(33, 133, 208);
       transition: none;
-      box-shadow: inset 0 -100px 0 rgba(33, 133, 208, 0.15);
+      box-shadow: inset 0 -1000px 0 rgba(33, 133, 208, 0.15);
     `,
 
     ".quickfire-field-data-sheet:not(.quickfire-readmode) .data-grid-container .data-grid .cell.read-only, .data-grid-container .data-grid th.cell.read-only": ` 
@@ -66,12 +70,14 @@ const styles = {
       display: block;
     `,
 
-    ".data-grid-container .data-grid .cell ": ` 
-      vertical-align: bottom;
-    `,
-
     ".data-grid-container .data-grid .cell, .data-grid-container .data-grid.wrap .cell, .data-grid-container .data-grid.wrap .cell.wrap, .data-grid-container .data-grid .cell.wrap, .data-grid-container .data-grid.nowrap .cell.wrap, .data-grid-container .data-grid.clip .cell.wrap": ` 
       white-space: normal;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+
+      -webkit-hyphens: auto;
+      -moz-hyphens: auto;
+      hyphens: auto;
     `,
 
     ".data-grid-container .data-grid.nowrap .cell, .data-grid-container .data-grid.nowrap .cell.nowrap, .data-grid-container .data-grid .cell.nowrap, .data-grid-container .data-grid.wrap .cell.nowrap, .data-grid-container .data-grid.clip .cell.nowrap": ` 
@@ -109,6 +115,11 @@ const styles = {
   },
   btnAddRow:{
     marginTop:"12px"
+  },
+  textareaLine:{
+    "&:empty::before":{
+      content:"'\\00a0'"
+    }
   }
 };
 
@@ -292,7 +303,7 @@ export default class DataSheetField extends React.Component {
     if(field.readOnly || field.disabled || field.readMode || formStore.readMode){
       return;
     }
-    if(e.target.matches("input.data-editor") //We are in the input of editing mode
+    if(e.target.matches("input, textarea, select") //We are in the input of editing mode
     && e.keyCode === 13 //We pressed "Enter"
     && this.dataSheetRef.state.end.i !== undefined
     && this.dataSheetRef.state.end.i === field.value.length-1
@@ -324,7 +335,7 @@ export default class DataSheetField extends React.Component {
     } else if(e.keyCode === 113
     && this.dataSheetRef.state.start.i !== undefined
     && this.dataSheetRef.state.start.j !== undefined
-    && field.headers.filter(header => header.show !== false)[this.dataSheetRef.state.end.j].readOnly !== false){
+    && field.headers.filter(header => header.show !== false)[this.dataSheetRef.state.end.j].readOnly !== true){
       this.dataSheetRef.setState({
         editing:{i:this.dataSheetRef.state.start.i, j:this.dataSheetRef.state.start.j}
       });
@@ -336,8 +347,23 @@ export default class DataSheetField extends React.Component {
     return this.props.formStore.getGeneratedKey(this.props.field.value[row], "DataSheetFieldRow");
   }
 
-  renderCell = (cell) => {
-    return cell.value;
+  renderCell = ({cell}) => {
+    let result = null;
+    const { classes } = this.props;
+    if(cell.header.field && cell.header.field.type === "TextArea"){
+      result = cell.value.split("\n").map((line, index) => <div className={classes.textareaLine} key={index}>{line}</div>);
+    } else {
+      result = toJS(cell.value);
+      if(!isArray(result)){
+        result = [result];
+      }
+      result = result.map(value => isObject(value)? value[(cell.header.field && cell.header.field.mappingLabel) || "label"]: value).join(", ");
+    }
+    return (
+      <div className="value-viewer">
+        { result }
+      </div>
+    );
   }
 
   renderRow = (props) => {
@@ -370,6 +396,8 @@ export default class DataSheetField extends React.Component {
       </tr>
     );
   }
+
+  renderDataEditor = props => (<FieldEditor {...props}/>);
 
   renderSheet = props => {
     const { field, formStore } = this.props;
@@ -406,6 +434,7 @@ export default class DataSheetField extends React.Component {
             value: value[header.key],
             row: value,
             key: header.key,
+            header: header,
             readOnly: disabled || readOnly || field.readMode || formStore.readMode || !!header.readOnly
           };
         }
@@ -437,11 +466,13 @@ export default class DataSheetField extends React.Component {
               ref={ref => this.dataSheetRef = ref}
               overflow={clipContent?"clip":"wrap"}
               data={grid}
-              valueRenderer={this.renderCell}
+              valueRenderer={cell => cell.value}
+              valueViewer={this.renderCell}
               onCellsChanged={this.handleCellChange}
               rowRenderer={this.renderRow}
               sheetRenderer={this.renderSheet}
               keyFn={this.keyGenerator}
+              dataEditor={this.renderDataEditor}
             />
             <Button disabled={values.length >= max || readOnly || disabled} bsClass={`${classes.btnAddRow} quickfire-data-sheet-add-button btn btn-primary btn-xs`} onClick={this.handleAddRow}>Add a row</Button>
           </div>
@@ -479,6 +510,65 @@ export default class DataSheetField extends React.Component {
             />
           </div>
         }
+      </div>
+    );
+  }
+}
+
+const editorStyle = {
+  container:{
+    "& .form-group":{
+      marginBottom: 0
+    },
+    "& .form-control":{
+      borderRadius: 0,
+      padding: "1px 4px",
+      height:"auto"
+    },
+    "& select.form-control":{
+      appearance:"none"
+    }
+  }
+};
+
+@injectStyles(editorStyle)
+class FieldEditor extends React.Component{
+  handleChange = () => {
+    this.props.onChange(this.fieldRef.field.getValue());
+  }
+
+  componentDidMount(){
+    this.containerRef.querySelectorAll("input, select, textarea")[0].focus();
+    this.handleChange();
+  }
+
+  handleKeyDown = e => {
+    let isTextArea = this.props.cell.header.field && this.props.cell.header.field.type === "TextArea";
+    let isInputTextMultiple = this.props.cell.header.field && this.props.cell.header.field.type === "InputTextMultiple";
+    let isDropdownSelect = this.props.cell.header.field && this.props.cell.header.field.type === "DropdownSelect";
+    if(e.keyCode !== 13 || (!isTextArea && !isInputTextMultiple && !isDropdownSelect)){
+      this.props.onKeyDown(e);
+    } else {
+      e.stopPropagation();
+    }
+  }
+
+  render(){
+    const {value, classes, cell} = this.props;
+    let field = cell.header.field !== undefined? toJS(cell.header.field): {type:"InputText"};
+
+    field.cacheOptionsUrl = field.cacheOptionsUrl !== undefined? field.cacheOptionsUrl: true;
+    field.cacheDataUrl = field.cacheDataUrl !== undefined? field.cacheOptionsUrl: true;
+    field.value = toJS(value);
+
+    return (
+      <div ref={ref => this.containerRef = ref} className={`quickfire-data-sheet-editor-field ${classes.container}`}>
+        <SingleField
+          {...field}
+          ref={ref => this.fieldRef = ref}
+          onChange={this.handleChange}
+          onLoad={this.handleChange}
+          onKeyDown={this.handleKeyDown}/>
       </div>
     );
   }

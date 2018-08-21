@@ -7,6 +7,7 @@ let properties = [
   [`defaultValue`, `array`, `[]`, `The defaultValue of the field`],
   [`options`, `array`, `[]`, `The options of the dropdown, must be an array of objects`],
   [`optionsUrl`, `string`, `null`, `URL to fetch the select options from`],
+  [`cacheOptionsUrl`, `boolean`, `false`, `whether to cache optionsUrl fetched response`],
   [`allowCustomValues`, `boolean`, ` false`, `if the field should try to accept user inputed values`],
   [`mappingValue`, `string | array`, `"value"`, `The name(s) of the option object field(s) related to the option value, used to match passed in values to actual options`],
   [`mappingLabel`, `string`, `"label"`, `the name of the option object field related to the option label`],

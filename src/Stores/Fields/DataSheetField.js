@@ -1,5 +1,5 @@
 import { observable, action, toJS } from "mobx";
-import { union, remove, isArray } from "lodash";
+import { union, remove, isArray, isEqual } from "lodash";
 import DefaultField from "./DefaultField";
 
 /**
@@ -43,17 +43,30 @@ export default class DataSheetField extends DefaultField{
   @observable rowControlDuplicate = true;
   @observable rowControlAdd = true;
   @observable clipContent = false;
+  @observable returnEmptyRows = false;
 
   __emptyValue = () => [];
 
   static get properties(){
     return union(super.properties, ["value", "defaultValue", "headers", "min", "max", "rowControlRemove",
-      "rowControlMove", "rowControlDuplicate", "rowControlAdd", "clipContent"]);
+      "rowControlMove", "rowControlDuplicate", "rowControlAdd", "clipContent", "returnEmptyRows"]);
   }
 
   constructor(fieldData, store, path){
     super(fieldData, store, path);
     this.injectValue(this.value);
+  }
+
+  getValue(applyMapping = true){
+    let result = toJS(this.value);
+    let newRow = {};
+    this.headers.forEach(header => {
+      newRow[header.key] = header.defaultValue !== undefined? header.defaultValue: "";
+    });
+    if(!this.returnEmptyRows){
+      result = result.filter(row => !isEqual(row, newRow));
+    }
+    return applyMapping? this.mapReturnValue(result): result;
   }
 
   @action
