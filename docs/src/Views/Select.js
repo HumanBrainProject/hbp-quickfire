@@ -7,6 +7,7 @@ let properties = [
   [`defaultValue`, `string`, `""`, `The defaultValue of the field`],
   [`options`, `array`, `[]`, `An array of strings or objects with value and label defined by the mapping`],
   [`optionsUrl`, `string`, `null`, `URL to fetch the select options from`],
+  [`cacheOptionsUrl`, `boolean`, `false`, `whether to cache optionsUrl fetched response`],
   [`mappingValue`, `string | array`, `"value"`, `The name(s) of the option object field(s) related to the option value, used to match passed in values to actual options`],
   [`mappingLabel`, `string`, `"label"`, `The name of the option object field related to the option label`],
   [`defaultLabel`, `string`, `"null"`, `The label to be displayed as a default value when set`],

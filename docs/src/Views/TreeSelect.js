@@ -10,6 +10,7 @@ let properties = [
   [`defaultValue`, `array`, `[]`, `The defaultValue of the field`],
   [`data`, `array`, `{}`, `The tree structure to select from, must be an object with eventually an array of children`],
   [`dataUrl`, `array`, `null`, `URL to fetch the tree structure from`],
+  [`cacheDataUrl`, `boolean`, `false`, `whether to cache dataUrl fetched response`],
   [`mappingValue`, `string | array`, `"value"`, `The name(s) of the node object field(s) related to the node value, used to match passed in values to actual tree nodes`],
   [`mappingLabel`, `string`, `"label"`, `The name of the node object field related to the node label`],
   [`mappingChildren`, `string`, `"children"`, `The name of the node object field related to the node children`],
