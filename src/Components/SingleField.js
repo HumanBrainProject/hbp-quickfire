@@ -2,7 +2,9 @@ import React from "react";
 import { Provider } from "mobx-react";
 import { pick } from "lodash";
 
-import Field, {components, catchedEvents, validatedEvents, passedDownPropsName} from "./Field";
+import {components, catchedEvents, validatedEvents, passedDownPropsName} from "./Field";
+
+import NestedActionButton from "./NestedActionButton";
 
 import FormStore from "../Stores/FormStore";
 
@@ -87,7 +89,7 @@ export default class SingleField extends React.Component {
   }
 }
 
-SingleField.Remove = Field.Remove;
-SingleField.MoveUp = Field.MoveUp;
-SingleField.MoveDown = Field.MoveDown;
-SingleField.Duplicate = Field.Duplicate;
+SingleField.Remove = NestedActionButton.Remove;
+SingleField.MoveUp = NestedActionButton.MoveUp;
+SingleField.MoveDown = NestedActionButton.MoveDown;
+SingleField.Duplicate = NestedActionButton.Duplicate;
