@@ -10,6 +10,7 @@ import DefaultField from "./DefaultField";
  * @param {string} value "" - The current value of the field
  * @param {string} defaultValue  "" - The defaultValue of the field
  * @param {string} inputType "text" - The input type of the field (e.g. text, password, email)
+ * @param {boolean} autoComplete false - Sets the autocomplete attribute of the input element
  * @param {string} placeholder "" - A placeholder that is displayed when the field is empty
  * @param {string} path "" - Field path
  * @param {boolean} useVirtualClipboard false - Flag if virtual clipboard feature is enabled for this field
@@ -26,13 +27,14 @@ export default class InputTextField extends DefaultField{
   @observable value = "";
   @observable defaultValue = "";
   @observable inputType = "text";
+  @observable autoComplete = false;
   @observable useVirtualClipboard = false;
   @observable emptyToNull = true;
 
   __emptyValue = () => "";
 
   static get properties(){
-    return union(super.properties,["value", "defaultValue", "inputType", "useVirtualClipboard", "emptyToNull"]);
+    return union(super.properties,["value", "defaultValue", "inputType", "useVirtualClipboard", "emptyToNull", "autoComplete"]);
   }
 
   getValue(applyMapping){
