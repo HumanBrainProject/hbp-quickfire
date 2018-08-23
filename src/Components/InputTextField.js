@@ -110,6 +110,7 @@ export default class InputTextField extends React.Component {
       label,
       value,
       inputType,
+      autoComplete,
       useVirtualClipboard,
       disabled,
       readOnly,
@@ -134,6 +135,7 @@ export default class InputTextField extends React.Component {
         placeholder={placeholder}
         style={style}
         rows={rows}
+        autoComplete={autoComplete?"on":"off"}
       />
     );
 
