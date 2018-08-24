@@ -10,7 +10,8 @@ let properties = [
   [`emptyToNull`,`boolean`,`true`,`Flag that determines if empty values are transformed to null in the value function of the formStore`],
   [`disabled`,`boolean`,`false`,`Is the field disabled or not, a disabled field won't be editable or returned/processed by FormStore.getValues()`],
   [`readOnly`,`boolean`,`false`,`Is the field readOnly or not, a readOnly field won't be editable but will be returned/processed by FormStore.getValues()`],
-  [`readMode`,`boolean`,`false`,`If true, displays the field as label and value without the actual form input`]
+  [`readMode`,`boolean`,`false`,`If true, displays the field as label and value without the actual form input`],
+  [`autoComplete`,`boolean`,`false`,`Sets the autocomplete attribute of the input element`]
 ];
 
 export default class InputText extends View{
@@ -68,7 +69,8 @@ export default class InputText extends View{
         <View.ShowField definition={{
           type:"InputText",
           label:"Input with initial value",
-          value:"Initial value"
+          value:"Initial value",
+          autoComplete:true
         }}/>
         <hr/>
 
