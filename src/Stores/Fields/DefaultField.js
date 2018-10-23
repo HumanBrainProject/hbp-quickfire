@@ -12,6 +12,7 @@ export default class DefaultField{
   @observable emptyToNull = false;
   @observable disabled = false;
   @observable readOnly = false;
+  @observable readAndDeleteOnly = false;
   @observable readMode = false;
   @observable validationState = null;
   @observable validationErrors = null;
@@ -31,7 +32,7 @@ export default class DefaultField{
 
   //Properties are used to know what's part of a field definition
   static get properties(){
-    return ["type", "label", "value", "defaultValue", "emptyToNull", "disabled", "readOnly", "readMode", "validationRules", "customErrorMessages", "validationOptions", "customValidationFunctions", "placeholder"];
+    return ["type", "label", "value", "defaultValue", "emptyToNull", "disabled", "readOnly", "readAndDeleteOnly", "readMode", "validationRules", "customErrorMessages", "validationOptions", "customValidationFunctions", "placeholder"];
   }
 
   constructor(fieldData, store, path){
