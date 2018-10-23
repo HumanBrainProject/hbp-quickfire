@@ -16,6 +16,7 @@ import { isArray } from "lodash";
 * @param {boolean} emptyToNull false - Flag that determines if empty values are transformed to null in the value function of the formStore
 * @param {boolean} disabled false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
 * @param {boolean} readOnly false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
+* @param {boolean} readAndDeleteOnly false - Is the field readAndDeleteOnly or not, a readAndDeleteOnly field will allow deletes but won't be writable for new values, but will be processed by FormStore.getValues()
 * @param {boolean} readMode false - If true, displays the field as label and value without the actual form input
 */
 

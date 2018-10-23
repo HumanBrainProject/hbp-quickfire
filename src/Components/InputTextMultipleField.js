@@ -187,7 +187,7 @@ export default class InputTextMultipleField extends React.Component {
 
   handleDrop(droppedVal, e){
     let field = this.props.field;
-    if(field.disabled || field.readOnly){
+    if(field.disabled || field.readOnly || field.readAndDeleteOnly){
       return;
     }
     e.preventDefault();
@@ -219,7 +219,7 @@ export default class InputTextMultipleField extends React.Component {
     }
 
     let { classes } = this.props;
-    let { label, value, disabled, readOnly, useVirtualClipboard, max, validationErrors, validationState } = this.props.field;
+    let { label, value, disabled, readOnly, readAndDeleteOnly, useVirtualClipboard, max, validationErrors, validationState } = this.props.field;
     let withVirtualClipboardClass = useVirtualClipboard? "withVirtualClipboard": "";
 
     return (
@@ -232,6 +232,7 @@ export default class InputTextMultipleField extends React.Component {
                 tabIndex={"0"}
                 disabled={disabled}
                 readOnly={readOnly}
+                readAndDeleteOnly={readAndDeleteOnly}
                 title={val}
                 className={`value-tag quickfire-value-tag btn btn-xs btn-default ${disabled||readOnly? "disabled": ""}`}
                 draggable={true}
@@ -259,7 +260,7 @@ export default class InputTextMultipleField extends React.Component {
             );
           })}
           <input ref={ref=>this.inputRef=ref} type="text" className={`quickfire-user-input ${classes.userInput}`}
-            disabled={readOnly || disabled || value.length >= max}
+            disabled={readOnly || readAndDeleteOnly || disabled || value.length >= max}
             onDrop={this.handleDrop.bind(this, null)}
             onDragOver={e=>e.preventDefault()}
             onKeyDown={this.handleKeyStrokes}
