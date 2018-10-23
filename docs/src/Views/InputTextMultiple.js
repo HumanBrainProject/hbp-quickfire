@@ -10,6 +10,7 @@ let properties = [
   [`emptyToNull`, `boolean`, `false`, `Flag that determines if empty values are transformed to null in the value function of the formStore`],
   [`disabled`, `boolean`, `false`, `Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()`],
   [`readOnly`, `boolean`, `false`, `Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()`],
+  [`readAndDeleteOnly`, `boolean`, `false`, `Is the field readAndDeleteOnly or not, a readAndDeleteOnly field will allow deletes but won't be writable for new values, but will be processed by FormStore.getValues()`],
   [`readMode`,`boolean`,`false`,`If true, displays the field as label and value without the actual form input`]
 ];
 
@@ -85,6 +86,14 @@ export default class GroupSelect extends View{
           label:"Some uneditable value",
           value: ["Some", "values", "that can't be", "removed"],
           readOnly: true
+        }}/>
+
+        <p>The readAndDeleteOnly state makes it only possible to add values programmatically but deleting values still works, and the value WILL BE processed and returned by the <code>FormStore.getValues()</code> method</p>
+        <View.ShowField definition={{
+          type:"InputTextMultiple",
+          label:"Some uneditable value",
+          value: ["Some", "values", "that can be", "removed", "but not added"],
+          readAndDeleteOnly: true
         }}/>
 
         <h4>ReadMode</h4>
