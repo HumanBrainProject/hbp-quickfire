@@ -55,7 +55,8 @@ export default class DropdownSelect extends View{
         <View.ShowField definition={{
           type:"DropdownSelect",
           label:"Select a country",
-          options:countryList
+          options:countryList,
+          closeDropdownAfterInteraction:true
         }}/>
         <hr/>
 

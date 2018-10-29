@@ -101,8 +101,10 @@ export default class TreeSelectField extends React.Component {
   }
 
   triggerOnLoad = () => {
-    var event = new Event("load", { bubbles: true });
-    this.hiddenInputRef.dispatchEvent(event);
+    if(this.hiddenInputRef && this.hiddenInputRef.parentNode){
+      var event = new Event("load", { bubbles: true });
+      this.hiddenInputRef.dispatchEvent(event);
+    }
   }
 
   //The only way to trigger an onChange event in React is to do the following
