@@ -148,7 +148,7 @@ export default class Introduction extends View{
                       <h2>Result</h2>
                       <Row>
                         <Col xs={12}>
-                          <pre>{JSON.stringify(this.FormStore.getValues(), null, 4)}</pre>
+                          <pre>{JSON.stringify(this.formStore.getValues(), null, 4)}</pre>
                         </Col>
                       </Row>
                     </Grid>
