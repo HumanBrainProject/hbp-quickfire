@@ -524,7 +524,8 @@ through the call of the "onAddCustomValue" callback passed in paramter
 -   `returnSingle` **[boolean][56]** boolean - wether or not to return the first value or an array of values
 -   `max` **[number][60]** Infinity - Maximum values that the field can have
 -   `emptyToNull` **[boolean][56]** false - Flag that determines if empty values are transformed to null in the value function of the formStore
--   `listPosition` **[boolean][56]** "bottom" - Can be "top" or "bottom", whether to display the dropdown list above or below the field
+-   `listPosition` **[string][57]** "bottom" - Can be "top" or "bottom", whether to display the dropdown list above or below the field
+-   `closeDropdownAfterInteraction` **[boolean][56]** false - Whether the dropdown should close after adding, removing a value or stay open
 -   `disabled` **[boolean][56]** false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
 -   `readOnly` **[boolean][56]** false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
 -   `readMode` **[boolean][56]** false - If true, displays the field as label and value without the actual form input

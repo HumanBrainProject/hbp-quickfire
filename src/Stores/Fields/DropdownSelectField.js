@@ -22,7 +22,7 @@ import optionsStore from "../OptionsStore";
  * @param {number} max Infinity - Maximum values that the field can have
  * @param {boolean} emptyToNull false - Flag that determines if empty values are transformed to null in the value function of the formStore
  * @param {string} listPosition "bottom" - Can be "top" or "bottom", whether to display the dropdown list above or below the field
- * @param {boolean} closeDropdownAfterInteraction false - Whether the dropdown should close after adding, removing a value
+ * @param {boolean} closeDropdownAfterInteraction false - Whether the dropdown should close after adding, removing a value or stay open
  * @param {boolean} disabled false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
  * @param {boolean} readOnly false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
  * @param {boolean} readMode false - If true, displays the field as label and value without the actual form input
