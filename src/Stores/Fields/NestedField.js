@@ -1,6 +1,7 @@
 import { observable, action, toJS } from "mobx";
 import { union } from "lodash";
 import DefaultField from "./DefaultField";
+import FormStore from "../FormStore";
 
 /**
  * @name Options
@@ -66,7 +67,7 @@ export default class NestedField extends DefaultField{
   setPath(path){
     this.path = path;
     this.value.map((fields, index) => {
-      this.store.remapPaths(fields, this.path + "/" + index);
+      this.store.remapPaths(fields, this.path + FormStore.getPathNodeSeparator() + index);
     });
   }
 
@@ -85,7 +86,7 @@ export default class NestedField extends DefaultField{
    */
   addInstance() {
     let instance = toJS(this.fields);
-    this.store.mapFields(instance, this.path + "/" + this.value.length);
+    this.store.mapFields(instance, this.path + FormStore.getPathNodeSeparator() + this.value.length);
     this.value.push(instance);
   }
 
@@ -97,9 +98,9 @@ export default class NestedField extends DefaultField{
    */
   duplicateInstance(index) {
     let instance = toJS(this.fields);
-    this.store.mapFields(instance, this.path + "/" + (index + 1));
+    this.store.mapFields(instance, this.path + FormStore.getPathNodeSeparator() + (index + 1));
     this.value.splice(index + 1, 0, instance);
-    this.store.injectValues(this.store.getValues(this.value[index], false), true, this.path + "/" + (index + 1));
+    this.store.injectValues(this.store.getValues(this.value[index], false), true, this.path + FormStore.getPathNodeSeparator() + (index + 1));
     this.setPath(this.path);
   }
 

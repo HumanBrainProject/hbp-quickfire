@@ -101,8 +101,8 @@ describe('FormStore', () => {
     let formStore = new FormStore(structure);
     expect(formStore.getField("/tree")).toBe(formStore.structure.fields.tree);
     expect(formStore.getField("tree")).toBe(formStore.structure.fields.tree);
-    expect(formStore.getField("/")).toBe(formStore.structure.fields);
-    expect(formStore.getField("/")).toBe(formStore.structure.fields);
+    expect(formStore.getField()).toBe(formStore.structure.fields);
+    expect(formStore.getField()).toBe(formStore.structure.fields);
   });
 
 });
