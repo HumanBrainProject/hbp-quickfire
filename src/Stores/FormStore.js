@@ -175,7 +175,7 @@ export default class FormStore {
   }
 
   getField(path = "") {
-    let pathParts = path.match(/[^/]+/g) || [];
+    let pathParts = path.match(new RegExp(`[^${pathNodeSeparator}]+`,"gi")) || [];
     let field = this.structure.fields;
 
     pathParts.forEach((part, index) => {
