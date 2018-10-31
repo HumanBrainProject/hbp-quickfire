@@ -105,8 +105,10 @@ export default class DropdownSelectField extends React.Component {
   }
 
   triggerOnLoad = () => {
-    var event = new Event("load", { bubbles: true });
-    this.hiddenInputRef.dispatchEvent(event);
+    if(this.hiddenInputRef && this.hiddenInputRef.parentNode){
+      var event = new Event("load", { bubbles: true });
+      this.hiddenInputRef.dispatchEvent(event);
+    }
   }
 
   //The only way to trigger an onChange event in React is to do the following
@@ -148,6 +150,9 @@ export default class DropdownSelectField extends React.Component {
       if(allOptions.length > 0){
         allOptions[allOptions.length-1].focus();
       }
+    } else if(e.keyCode === 27) {
+      //escape key -> we want to close the dropdown menu
+      this.closeDropdown();
     }
   };
 
@@ -167,6 +172,11 @@ export default class DropdownSelectField extends React.Component {
     this.listenClickOutHandler();
     this.forceUpdate();
   };
+
+  closeDropdown(){
+    this.wrapperRef = null;
+    this.forceUpdate();
+  }
 
   handleRemove(value, e){
     if(this.props.field.disabled || this.props.field.readOnly){
@@ -237,6 +247,9 @@ export default class DropdownSelectField extends React.Component {
     e.preventDefault();
     field.removeValue(this.draggedValue);
     field.addValue(this.draggedValue, field.value.indexOf(droppedVal));
+    if(this.props.field.closeDropdownAfterInteraction){
+      this.wrapperRef = null;
+    }
     this.triggerOnChange();
     this.handleFocus();
   }
@@ -270,6 +283,9 @@ export default class DropdownSelectField extends React.Component {
     } else {
       this.props.field.addValue(value);
     }
+    if(this.props.field.closeDropdownAfterInteraction){
+      this.wrapperRef = null;
+    }
   }
 
   beforeRemoveValue(value){
@@ -278,13 +294,17 @@ export default class DropdownSelectField extends React.Component {
     } else {
       this.props.field.removeValue(value);
     }
+    if(this.props.field.closeDropdownAfterInteraction){
+      this.wrapperRef = null;
+    }
   }
 
   handleTagInteraction(interaction, value, event){
     if(isFunction(this.props[`onValue${interaction}`])){
       this.props[`onValue${interaction}`](this.props.field, value, event);
     } else if(interaction === "Focus"){
-      this.forceUpdate();
+      event.stopPropagation();
+      this.closeDropdown();
     }
   }
 
