@@ -3,6 +3,7 @@ import { Provider, inject, observer } from "mobx-react";
 import injectStyles from "react-jss";
 import { Button, ControlLabel } from "react-bootstrap";
 import { isFunction } from "lodash";
+import FormStore from "../Stores/FormStore";
 
 /**
  * Allows the implementation of a nested field structure
@@ -139,7 +140,7 @@ export default class NestedField extends React.Component {
             return (
               <Provider
                 key={this.props.formStore.getGeneratedKey(value[index], "quickfire-nested-child")}
-                parentPath={path + "/" + index}
+                parentPath={path + FormStore.getPathNodeSeparator() + index}
                 nestedField={this.props.field}
                 nestedFieldIndex={index}
                 onRemove={this.handleRemove}

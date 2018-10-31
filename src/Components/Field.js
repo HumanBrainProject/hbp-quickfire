@@ -2,6 +2,7 @@ import React from "react";
 import { inject } from "mobx-react";
 import { pick } from "lodash";
 
+import FormStore from "../Stores/FormStore";
 import InputTextField from "./InputTextField";
 import InputTextMultipleField from "./InputTextMultipleField";
 import TextAreaField from "./TextAreaField";
@@ -115,7 +116,7 @@ export default class Field extends React.Component {
       this.props.fieldRef(this);
     }
     this.field = this.props.formStore.getField(
-      this.props.parentPath + "/" + this.props.name
+      this.props.parentPath + FormStore.getPathNodeSeparator() + this.props.name
     );
     if (!this.field) {
       throw "Field `" + this.props.name + "` has not been defined";

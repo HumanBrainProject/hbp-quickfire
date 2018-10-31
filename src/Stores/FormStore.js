@@ -22,6 +22,8 @@ const typesMapping = {
   "DataSheet": Fields.DataSheetField
 };
 
+let pathNodeSeparator = "/";
+
 /**
  * Mobx store to manage the Form React Component
  * @class FormStore
@@ -46,13 +48,13 @@ export default class FormStore {
   mapFields(fieldsData, basePath = ""){
     Object.keys(fieldsData).forEach(key => {
       let FieldClass = typesMapping[fieldsData[key].type] || Fields.DefaultField;
-      fieldsData[key] = new FieldClass(fieldsData[key], this, basePath+"/"+key);
+      fieldsData[key] = new FieldClass(fieldsData[key], this, basePath+pathNodeSeparator+key);
     });
   }
 
   remapPaths(fieldsData, basePath = ""){
     Object.keys(fieldsData).forEach(key => {
-      fieldsData[key].setPath(basePath+"/"+key);
+      fieldsData[key].setPath(basePath+pathNodeSeparator+key);
     });
   }
 
@@ -173,7 +175,7 @@ export default class FormStore {
   }
 
   getField(path = "") {
-    let pathParts = path.match(/[^/]+/g) || [];
+    let pathParts = path.match(new RegExp(`[^${pathNodeSeparator}]+`,"gi")) || [];
     let field = this.structure.fields;
 
     pathParts.forEach((part, index) => {
@@ -212,7 +214,7 @@ export default class FormStore {
     } else {
       path = field;
     }
-    return path.substr(0, path.lastIndexOf("/"));
+    return path.substr(0, path.lastIndexOf(FormStore.getPathNodeSeparator()));
   }
 
   /**
@@ -221,7 +223,7 @@ export default class FormStore {
    * @param {string} name name of the sibling
    */
   genSiblingPath(field, name) {
-    return this.parentPath(field) + "/" + name;
+    return this.parentPath(field) + FormStore.getPathNodeSeparator() + name;
   }
 
   isURL(str) {
@@ -354,6 +356,17 @@ export default class FormStore {
     }
   }
 
+  static setPathNodeSeparator(separator){
+    if(separator && isString(separator)){
+      pathNodeSeparator = separator;
+    } else {
+      throw "argument must be a non-empty string";
+    }
+  }
+
+  static getPathNodeSeparator(){
+    return pathNodeSeparator;
+  }
 }
 
 FormStore.typesMapping = typesMapping;

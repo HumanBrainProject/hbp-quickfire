@@ -38,8 +38,10 @@ export default class SelectField extends React.Component {
   }
 
   triggerOnLoad = () => {
-    var event = new Event("load", { bubbles: true });
-    this.inputRef.dispatchEvent(event);
+    if(this.inputRef && this.inputRef.parentNode){
+      var event = new Event("load", { bubbles: true });
+      this.inputRef.dispatchEvent(event);
+    }
   }
 
   handleChange = e => {
