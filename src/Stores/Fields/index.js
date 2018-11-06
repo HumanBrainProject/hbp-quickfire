@@ -1,3 +1,9 @@
+/**
+ * Copyright (c) Human Brain Project
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
 export {default as DefaultField} from "./DefaultField";
 export {default as CheckBoxField} from "./CheckBoxField";
 export {default as DropdownSelectField} from "./DropdownSelectField";

@@ -1,3 +1,9 @@
+/**
+ * Copyright (c) Human Brain Project
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
 export { default as Introduction } from "./Introduction";
 export { default as InputText } from "./InputText";
 export { default as CheckBox } from "./CheckBox";
