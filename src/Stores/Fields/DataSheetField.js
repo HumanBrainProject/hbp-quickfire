@@ -1,3 +1,9 @@
+/**
+ * Copyright (c) Human Brain Project
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
 import { observable, action, toJS } from "mobx";
 import { union, remove, isArray, isEqual } from "lodash";
 import DefaultField from "./DefaultField";
