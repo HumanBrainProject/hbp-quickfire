@@ -183,7 +183,7 @@ export default class InputTextMultipleField extends React.Component {
   handleValueTagInteraction(interaction, value, event){
     if(isFunction(this.props[`onValue${interaction}`])){
       this.props[`onValue${interaction}`](this.props.field, value, event);
-    } else if(interaction === "Click"){
+    } else if(!this.props.field.disabled && !this.props.field.readOnly && !this.props.field.readAndDeleteOnly && interaction === "Click"){
       this.handleRemove(value, event);
       this.inputRef.value = value;
       this.handleFocus();
