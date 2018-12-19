@@ -31,7 +31,10 @@ let properties = [
   [`disabled`,`boolean`,`false`,`Is the field disabled or not, a disabled field won't be editable or returned/processed by FormStore.getValues()`],
   [`readOnly`,`boolean`,`false`,`Is the field readOnly or not, a readOnly field won't be editable but will be returned/processed by FormStore.getValues()`],
   [`readMode`,`boolean`,`false`,`If true, displays the field as label and value without the actual form input`],
-  [`valueLabelTransform`,`object`,`{search:"", replace:""}`,`If provided, will perform a regexp replace on the whole path of the displayed value tag labels.`]
+  [`valueLabelTransform`,`object`,`{search:"", replace:""}`,`If provided, will perform a regexp replace on the whole path of the displayed value tag labels.`],
+  [`groupByNodes`,`array`,`[]`,`If provided, will display selected values grouped`],
+  [`groupByLevel`,`integer`,`0`,`If provided, will display selected values grouped by depth level`],
+  [`otherGroupLabel`,`string`,`"Other values"`,`Label used for the group that contains values that doesn't fit into a group`]
 ];
 
 export default class TreeSelect extends View{
@@ -231,6 +234,39 @@ export default class TreeSelect extends View{
         }}
         />
         
+        <hr/>
+
+        <h4>Display grouped values by nodes</h4>
+        <View.ShowField definition={{
+          label: "Tree Selection",
+          type: "TreeSelect",
+          data: mockupTreeData,
+          mappingLabel: "name",
+          groupByNodes:["HBP_MEM:0000119", "HBP_MEM:0000088"]
+        }}
+        />
+
+        <h4>Display grouped values by level of depth</h4>
+        <View.ShowField definition={{
+          label: "Tree Selection",
+          type: "TreeSelect",
+          data: mockupTreeData,
+          mappingLabel: "name",
+          groupByLevel:1
+        }}
+        />
+
+        <h4>Both grouping methods can be mixed (and group labels overriden)</h4>
+        <View.ShowField definition={{
+          label: "Tree Selection",
+          type: "TreeSelect",
+          data: mockupTreeData,
+          mappingLabel: "name",
+          groupByNodes:["HBP_MEM:0000119", {value:"HBP_MEM:0000088", groupLabel:"My custom label"}],
+          groupByLevel:1,
+          otherGroupLabel:"My other tree nodes"
+        }}
+        />
       </div>
     );
   }

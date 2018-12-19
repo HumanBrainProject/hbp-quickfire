@@ -48,6 +48,17 @@ const styles = {
     whiteSpace:"nowrap",
     verticalAlign:"bottom"
   },
+  valueGroup:{
+    marginBottom:"12px",
+    "&:last-of-type":{
+      marginBottom:"4px"
+    },
+    "& legend":{
+      fontSize:"1.05em",
+      fontWeight:"bold",
+      marginBottom:"8px"
+    }
+  },
   remove:{
     fontSize:"0.8em",
     opacity:0.5,
@@ -228,11 +239,12 @@ export default class TreeSelectField extends React.Component {
       return this.renderReadMode();
     }
 
-    let { classes } = this.props;
+    let { classes, field } = this.props;
     let { label, value, mappingLabel, path, max, mappingChildren, data, selectOnlyLeaf,
-      expandToSelectedNodes, disabled, readOnly, defaultExpanded, showOnlySearchedNodes, validationErrors, validationState } = this.props.field;
+      expandToSelectedNodes, disabled, readOnly, defaultExpanded, showOnlySearchedNodes, validationErrors, validationState } = field;
 
-    const valueTags = value.map(val => {
+    let valueTags;
+    const makeValueTag = (val) => {
       return(
         <div key={this.props.formStore.getGeneratedKey(val, "quickfire-treeselect-values")}
           tabIndex={"0"}
@@ -257,13 +269,27 @@ export default class TreeSelectField extends React.Component {
         >
           <span className={classes.valueDisplay}>
             {isFunction(this.props.valueLabelRendering)?
-              this.props.valueLabelRendering(this.props.field, val):
-              this.props.field.transformedValueLabel(val)}
+              this.props.valueLabelRendering(field, val):
+              field.transformedValueLabel(val)}
           </span>
           <Glyphicon className={`${classes.remove} quickfire-remove`} glyph="remove" onClick={this.handleRemove.bind(this, val)}/>
         </div>
       );
-    });
+    };
+
+    if(field.displayValueAsGrouped){
+      valueTags = [];
+      field.groupedValues.forEach((values, groupNode) => {
+        valueTags.push(
+          <fieldset className={classes.valueGroup} key={this.props.formStore.getGeneratedKey(groupNode, "quickfire-treeselect-values")}>
+            <legend>{field.groupLabels.get(groupNode) || groupNode[mappingLabel]}</legend>
+            {values.map(makeValueTag)}
+          </fieldset>
+        );
+      });
+    } else {
+      valueTags = value.map(makeValueTag);
+    }
 
     return (
       <FormGroup className={`quickfire-field-tree-select ${!value.length? "quickfire-empty-field": ""} ${disabled? "quickfire-field-disabled": ""} ${readOnly? "quickfire-field-readonly": ""}`} validationState={validationState}>
