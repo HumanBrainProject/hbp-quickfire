@@ -12,6 +12,7 @@ import DefaultField from "./DefaultField";
  * @memberof FormFields.CheckBoxField
  * @name Options
  * @param {string} label "" - The field label
+ * @param {string} labelTooltip "" - The field label tooltip message
  * @param {string} type "CheckBox"
  * @param {string} value false - The current value of the field
  * @param {string} defaultValue false - The defaultValue of the field

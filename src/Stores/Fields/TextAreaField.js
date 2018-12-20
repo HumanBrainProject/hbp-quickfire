@@ -12,6 +12,7 @@ import DefaultField from "./DefaultField";
  * @memberof FormFields.TextAreaField
  * @name Options
  * @param {string} label "" - The field label
+ * @param {string} labelTooltip "" - The field label tooltip message
  * @param {string} type "InputText"
  * @param {string} value "" - The current value of the field
  * @param {string} defaultValue  "" - The defaultValue of the field

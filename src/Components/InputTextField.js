@@ -7,11 +7,12 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
 import injectStyles from "react-jss";
-import { FormGroup, ControlLabel, FormControl, InputGroup, Button, Glyphicon, Alert } from "react-bootstrap";
+import { FormGroup, FormControl, InputGroup, Button, Glyphicon, Alert } from "react-bootstrap";
 import autosize from "autosize";
 import getLineHeight from "line-height";
 import { isFunction } from "lodash";
 
+import FieldLabel from "./FieldLabel";
 import clipboard from "../Stores/ClipboardStore";
 
 const styles = {
@@ -113,7 +114,6 @@ export default class InputTextField extends React.Component {
     }
 
     let {
-      label,
       value,
       inputType,
       autoComplete,
@@ -147,7 +147,7 @@ export default class InputTextField extends React.Component {
 
     return (
       <FormGroup className={`quickfire-field-input-text ${!value? "quickfire-empty-field": ""} ${disabled? "quickfire-field-disabled": ""} ${readOnly? "quickfire-field-readonly": ""}`} validationState={validationState}>
-        {label && <ControlLabel className={"quickfire-label"}>{label}</ControlLabel>}
+        <FieldLabel field={this.props.field}/>
         {useVirtualClipboard?
           <InputGroup>
             {formControl()}
@@ -169,7 +169,6 @@ export default class InputTextField extends React.Component {
 
   renderReadMode(){
     let {
-      label,
       value,
       disabled,
       readOnly
@@ -179,7 +178,7 @@ export default class InputTextField extends React.Component {
 
     return (
       <div className={`quickfire-field-input-text ${!value? "quickfire-empty-field": ""} quickfire-readmode ${classes.readMode} ${disabled? "quickfire-field-disabled": ""} ${readOnly? "quickfire-field-readonly": ""}`}>
-        {label && <ControlLabel className={"quickfire-label"}>{label}</ControlLabel>}
+        <FieldLabel field={this.props.field}/>
         {isFunction(this.props.readModeRendering)?
           this.props.readModeRendering(this.props.field)
           : this.props.componentClass === "textarea"?

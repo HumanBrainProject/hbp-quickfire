@@ -13,6 +13,7 @@ import optionsStore from "../OptionsStore";
  * @memberof FormFields.DropdownSelectField
  * @name Options
  * @param {string} label "" - The field label
+ * @param {string} labelTooltip "" - The field label tooltip message
  * @param {string} type "DropdownSelect"
  * @param {array} value [] - The current value of the field
  * @param {array} defaultValue [] - The defaultValue of the field

@@ -7,8 +7,10 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
 import injectStyles from "react-jss";
-import { FormGroup, ControlLabel, Checkbox, Radio, Alert } from "react-bootstrap";
+import { FormGroup, Checkbox, Radio, Alert } from "react-bootstrap";
 import { find, isFunction } from "lodash";
+
+import FieldLabel from "./FieldLabel";
 
 const styles = {
   readMode: {
@@ -109,13 +111,13 @@ export default class GroupSelectField extends React.Component {
       return this.renderReadMode();
     }
 
-    let { label, options, value: values, max, mappingLabel, disabled, readOnly, validationErrors, validationState } = this.props.field;
+    let { options, value: values, max, mappingLabel, disabled, readOnly, validationErrors, validationState } = this.props.field;
 
     const FieldComponent = max === 1? Radio: Checkbox;
 
     return (
       <FormGroup className={`quickfire-field-group-select ${!values.length? "quickfire-empty-field": ""} ${disabled? "quickfire-field-disabled": ""} ${readOnly? "quickfire-field-readonly": ""}`} validationState={validationState}>
-        {label && <ControlLabel className={"quickfire-label"}>{label}</ControlLabel>}
+        <FieldLabel field={this.props.field}/>
         <input style={{display:"none"}} type="text" ref={ref=>this.hiddenInputRef = ref}/>
         <div>
           { options.map(option => {
@@ -143,7 +145,6 @@ export default class GroupSelectField extends React.Component {
 
   renderReadMode(){
     let {
-      label,
       value,
       mappingLabel,
       disabled,
@@ -154,7 +155,7 @@ export default class GroupSelectField extends React.Component {
 
     return (
       <div className={`quickfire-field-group-select ${!value.length? "quickfire-empty-field": ""} quickfire-readmode ${classes.readMode} ${disabled? "quickfire-field-disabled": ""} ${readOnly? "quickfire-field-readonly": ""}`}>
-        {label && <ControlLabel className={"quickfire-label"}>{label}</ControlLabel>}
+        <FieldLabel field={this.props.field}/>
         {isFunction(this.props.readModeRendering)?
           this.props.readModeRendering(this.props.field)
           :
