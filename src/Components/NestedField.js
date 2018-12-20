@@ -7,9 +7,10 @@
 import React from "react";
 import { Provider, inject, observer } from "mobx-react";
 import injectStyles from "react-jss";
-import { Button, ControlLabel } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { isFunction } from "lodash";
 import FormStore from "../Stores/FormStore";
+import FieldLabel from "./FieldLabel";
 
 /**
  * Allows the implementation of a nested field structure
@@ -112,7 +113,7 @@ export default class NestedField extends React.Component {
 
   render() {
     let { classes, children } = this.props;
-    let { label, path, disabled, readOnly, readMode, min, max, value, buttonLabel, topAddButton, bottomAddButton } = this.props.field;
+    let { path, disabled, readOnly, readMode, min, max, value, buttonLabel, topAddButton, bottomAddButton } = this.props.field;
     let childrenStructure = [];
     let numberOfChildInstances = value
       ? value.length
@@ -138,7 +139,7 @@ export default class NestedField extends React.Component {
 
     return (
       <div className={`quickfire-field-nested ${this.props.formStore.readMode || readMode?" quickfire-readmode":""} ${!numberOfChildInstances? "quickfire-empty-field": ""} ${disabled? "quickfire-field-disabled": ""} ${readOnly? "quickfire-field-readonly": ""}`}>
-        {label && <ControlLabel className={"quickfire-label"}>{label}</ControlLabel>}
+        <FieldLabel field={this.props.field}/>
         {showButton && topAddButton && addButton}
         <input style={{display:"none"}} type="text" ref={ref=>this.hiddenInputRef = ref}/>
         <div>

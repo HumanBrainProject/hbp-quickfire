@@ -6,10 +6,11 @@
  */
 import React from "react";
 import { inject, observer } from "mobx-react";
-import { FormGroup, ControlLabel, Button, Glyphicon, Modal, Alert } from "react-bootstrap";
+import { FormGroup, Button, Glyphicon, Modal, Alert } from "react-bootstrap";
 import { isFunction } from "lodash";
 import injectStyles from "react-jss";
 
+import FieldLabel from "./FieldLabel";
 import Tree from "./Tree";
 
 const styles = {
@@ -267,7 +268,7 @@ export default class TreeSelectField extends React.Component {
 
     return (
       <FormGroup className={`quickfire-field-tree-select ${!value.length? "quickfire-empty-field": ""} ${disabled? "quickfire-field-disabled": ""} ${readOnly? "quickfire-field-readonly": ""}`} validationState={validationState}>
-        {label && <ControlLabel className={"quickfire-label"} onClick={this.handleFocus}>{label}</ControlLabel>}
+        {label && <div onClick={this.handleFocus}><FieldLabel field={this.props.field}/></div>}
         <div disabled={disabled} readOnly={readOnly} className={`form-control input-group ${classes.values}`} onClick={this.handleFocus}>
           {valueTags}
 
@@ -283,7 +284,7 @@ export default class TreeSelectField extends React.Component {
 
         <Modal show={this.state.showTree} onHide={this.handleHideModal}>
           <Modal.Header closeButton>
-            <ControlLabel>{label}</ControlLabel>
+            <FieldLabel field={this.props.field}/>
             <div className={`form-control input-group ${classes.values}`}>
               {valueTags}
             </div>
@@ -311,7 +312,6 @@ export default class TreeSelectField extends React.Component {
 
   renderReadMode(){
     let {
-      label,
       value,
       disabled,
       readOnly
@@ -321,7 +321,7 @@ export default class TreeSelectField extends React.Component {
 
     return (
       <div className={`quickfire-field-tree-select ${!value.length? "quickfire-empty-field": ""} quickfire-readmode ${classes.readMode} ${disabled? "quickfire-field-disabled": ""} ${readOnly? "quickfire-field-readonly": ""}`}>
-        {label && <ControlLabel className={"quickfire-label"}>{label}</ControlLabel>}
+        <FieldLabel field={this.props.field}/>
         {isFunction(this.props.readModeRendering)?
           this.props.readModeRendering(this.props.field)
           :

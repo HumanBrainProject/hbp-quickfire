@@ -7,8 +7,10 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
 import injectStyles from "react-jss";
-import { FormGroup, ControlLabel, FormControl, Alert } from "react-bootstrap";
+import { FormGroup, FormControl, Alert } from "react-bootstrap";
 import { isString, isNumber, isFunction } from "lodash";
+
+import FieldLabel from "./FieldLabel";
 
 let style = {
   readMode:{
@@ -102,14 +104,14 @@ export default class SelectField extends React.Component {
       return this.renderReadMode();
     }
 
-    let { label, disabled, readOnly, value, optionsMap, validationErrors, validationState } = this.props.field;
+    let { disabled, readOnly, value, optionsMap, validationErrors, validationState } = this.props.field;
     //We need to read that value to update the component on value changes
     //TODO: Maybe find a proper solution for that to be more explicit
     value;
 
     return (
       <FormGroup className={`quickfire-field-select ${!value? "quickfire-empty-field": ""} ${disabled? "quickfire-field-disabled": ""} ${readOnly? "quickfire-field-readonly": ""}`} validationState={validationState}>
-        {label && <ControlLabel>{label}</ControlLabel>}
+        <FieldLabel field={this.props.field}/>
         <FormControl
           disabled={disabled} readOnly={readOnly}
           onChange={this.handleChange}
@@ -128,7 +130,6 @@ export default class SelectField extends React.Component {
 
   renderReadMode(){
     let {
-      label,
       value:valueLabel,
       mappingLabel,
       disabled,
@@ -143,7 +144,7 @@ export default class SelectField extends React.Component {
 
     return (
       <div className={`quickfire-field-select ${!valueLabel? "quickfire-empty-field": ""} quickfire-readmode ${classes.readMode} ${disabled? "quickfire-field-disabled": ""} ${readOnly? "quickfire-field-readonly": ""}`}>
-        {label && <ControlLabel className={"quickfire-label"}>{label}</ControlLabel>}
+        <FieldLabel field={this.props.field}/>
         {isFunction(this.props.readModeRendering)?
           this.props.readModeRendering(this.props.field)
           :

@@ -6,8 +6,10 @@
  */
 import React from "react";
 import { inject, observer } from "mobx-react";
-import { FormGroup, ControlLabel, Glyphicon, MenuItem, Alert } from "react-bootstrap";
+import { FormGroup, Glyphicon, MenuItem, Alert } from "react-bootstrap";
 import { filter, difference, isFunction, isString } from "lodash";
+
+import FieldLabel from "./FieldLabel";
 
 import injectStyles from "react-jss";
 
@@ -320,7 +322,7 @@ export default class DropdownSelectField extends React.Component {
     }
 
     let { classes, formStore } = this.props;
-    let { label, options, value: values, mappingLabel, listPosition, disabled, readOnly, max, allowCustomValues, validationErrors, validationState } = this.props.field;
+    let { options, value: values, mappingLabel, listPosition, disabled, readOnly, max, allowCustomValues, validationErrors, validationState } = this.props.field;
 
     let dropdownOpen = (!disabled && !readOnly && values.length < max && this.wrapperRef && this.wrapperRef.contains(document.activeElement));
     let dropdownClass = dropdownOpen? "open": "";
@@ -341,7 +343,7 @@ export default class DropdownSelectField extends React.Component {
           onClick={this.handleFocus}
           className={`quickfire-field-dropdown-select ${!values.length? "quickfire-empty-field": ""}  ${disabled? "quickfire-field-disabled": ""} ${readOnly? "quickfire-field-readonly": ""}`}
           validationState={validationState}>
-          {label && <ControlLabel className={"quickfire-label"}>{label}</ControlLabel>}
+          <FieldLabel field={this.props.field}/>
           <div disabled={disabled} readOnly={readOnly} className={`form-control ${classes.values}`}>
             {values.map(value => {
               return(
@@ -425,7 +427,6 @@ export default class DropdownSelectField extends React.Component {
 
   renderReadMode(){
     let {
-      label,
       value,
       mappingLabel,
       disabled,
@@ -436,7 +437,7 @@ export default class DropdownSelectField extends React.Component {
 
     return (
       <div className={`quickfire-field-dropdown-select ${!value.length? "quickfire-empty-field":""} quickfire-readmode ${classes.readMode}  ${disabled? "quickfire-field-disabled": ""} ${readOnly? "quickfire-field-readonly": ""}`}>
-        {label && <ControlLabel className={"quickfire-label"}>{label}</ControlLabel>}
+        <FieldLabel field={this.props.field}/>
         {isFunction(this.props.readModeRendering)?
           this.props.readModeRendering(this.props.field)
           :

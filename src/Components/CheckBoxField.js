@@ -7,8 +7,10 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
 import injectStyles from "react-jss";
-import { FormGroup, ControlLabel, Checkbox, Alert } from "react-bootstrap";
+import { FormGroup, Checkbox, Alert } from "react-bootstrap";
 import { isFunction } from "lodash";
+
+import FieldLabel from "./FieldLabel";
 
 const styles = {
   readMode:{
@@ -49,12 +51,12 @@ export default class CheckBoxField extends React.Component {
       return this.renderReadMode();
     }
 
-    let { label, value, disabled, readOnly, validationErrors, validationState } = this.props.field;
+    let { value, disabled, readOnly, validationErrors, validationState } = this.props.field;
     return (
       <FormGroup
         className={`quickfire-field-checkbox  ${disabled? "quickfire-field-disabled": ""} ${readOnly? "quickfire-field-readonly": ""}`}
         validationState={validationState}>
-        {label && <ControlLabel className={"quickfire-label"}>{label}</ControlLabel>}
+        <FieldLabel field={this.props.field}/>
         <Checkbox disabled={disabled} readOnly={readOnly} onChange={this.handleChange} checked={value}/>
         {validationErrors && <Alert bsStyle="danger">
           {validationErrors.map(error => <p key={error}>{error}</p>)}
@@ -65,7 +67,6 @@ export default class CheckBoxField extends React.Component {
 
   renderReadMode(){
     let {
-      label,
       value,
       readOnly,
       disabled
@@ -75,7 +76,7 @@ export default class CheckBoxField extends React.Component {
 
     return (
       <div className={`quickfire-field-checkbox quickfire-readmode ${classes.readMode} ${disabled? "quickfire-field-disabled": ""} ${readOnly? "quickfire-field-readonly": ""}`}>
-        {label && <ControlLabel className={"quickfire-label"}>{label}</ControlLabel>}
+        <FieldLabel field={this.props.field}/>
         {isFunction(this.props.readModeRendering)?
           this.props.readModeRendering(this.props.field)
           :

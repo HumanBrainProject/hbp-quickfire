@@ -13,6 +13,7 @@ import FormStore from "../FormStore";
  * @name Options
  * @memberof FormFields.NestedField
  * @param {string} label "" - The field label
+ * @param {string} labelTooltip "" - The field label tooltip message
  * @param {string} buttonLabel "Add an item" - The label used for adding an item to the repeatable fields
  * @param {string} type "Nested"
  * @param {number} min 1 - min of nested children the field can have

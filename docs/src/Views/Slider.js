@@ -12,6 +12,7 @@ import darcula from "react-syntax-highlighter/styles/prism/darcula";
 
 let properties = [
   [`label`, `string`, `""`, `The field label`],
+  [`labelTooltip`, `string`, `null`, `The field label tooltip message`],
   [`value`, `number|Range`, `null`, `The current value. If only a number is provided, a single slider will get rendered. If a range object {min:x, max:y} is provided, two sliders will get rendered.`],
   [`defaultValue`, `number|Range`, `null`, `The defaultValue of the field`],
   [`min`, `number`, `null`, `Minimum value. You cannot drag your slider under this value`],
