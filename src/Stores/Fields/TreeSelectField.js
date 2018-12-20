@@ -4,8 +4,8 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import { observable, toJS, action } from "mobx";
-import { isString, isNumber, find, union } from "lodash";
+import { observable, toJS, action, computed } from "mobx";
+import { isString, isNumber, find, union, difference, uniq } from "lodash";
 import DefaultField from "./DefaultField";
 import optionsStore from "../OptionsStore";
 
@@ -34,6 +34,9 @@ import optionsStore from "../OptionsStore";
  * @param {boolean} disabled false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
  * @param {boolean} readOnly false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
  * @param {boolean} readMode false - If true, displays the field as label and value without the actual form input
+ * @param {array} groupByNodes [] - If provided, will display selected values grouped by the provided node matches
+ * @param {integer} groupByLevel null - If provided, will display selected values grouped by level
+ * @param {string} otherGroupLabel "Other values" - Label used for the group that contains values that doesn't fit into a group
  */
 
 export default class TreeSelectField extends DefaultField{
@@ -56,6 +59,9 @@ export default class TreeSelectField extends DefaultField{
     search: "",
     replace: ""
   }
+  @observable groupByNodes = [];
+  @observable groupByLevel = null;
+  @observable otherGroupLabel = "Other values"
 
   nodeParents = new Map();
 
@@ -65,7 +71,7 @@ export default class TreeSelectField extends DefaultField{
     return union(super.properties,[
       "value", "defaultValue", "data", "dataUrl", "cacheDataUrl", "mappingValue", "mappingLabel", "mappingChildren",
       "mappingReturn", "returnSingle", "max", "selectOnlyLeaf", "expandToSelectedNodes","defaultExpanded",
-      "showOnlySearchedNodes", "valueLabelTransform"
+      "showOnlySearchedNodes", "valueLabelTransform", "groupByNodes", "groupByLevel", "otherGroupLabel"
     ]);
   }
 
@@ -103,6 +109,83 @@ export default class TreeSelectField extends DefaultField{
     return applyMapping? this.mapReturnValue(result): result;
   }
 
+  @computed
+  get groupedValues(){
+    let result = new Map();
+    let valuesInAGroup = [];
+    let valuesPath = new Map();
+
+    this.value.forEach(node => {
+      valuesPath.set(node, this.getNodePathOf(node));
+    });
+
+    if(this.groupByLevel !== null){
+      this.findAllNodesAtLevel(this.groupByLevel).forEach(groupNode => {
+        valuesPath.forEach((path, node) => {
+          if(path.indexOf(groupNode) !== -1){
+            if(!result.has(groupNode)){
+              result.set(groupNode, []);
+            }
+            if(result.get(groupNode).indexOf(node) === -1){
+              result.get(groupNode).push(node);
+            }
+            valuesInAGroup.push(node);
+          }
+        });
+      });
+    }
+
+    if(this.groupByNodes){
+      this.groupByNodes.forEach(nodeValue => {
+        let groupNode = this.rfindMatch([this.data], nodeValue);
+        if(groupNode){
+          valuesPath.forEach((path, node) => {
+            if(path.indexOf(groupNode) !== -1){
+              if(!result.has(groupNode)){
+                result.set(groupNode, []);
+              }
+              if(result.get(groupNode).indexOf(node) === -1){
+                result.get(groupNode).push(node);
+              }
+              valuesInAGroup.push(node);
+            }
+          });
+        }
+      });
+    }
+
+    if(this.value.length > uniq(valuesInAGroup).length){
+      let otherGroup = {
+        [this.mappingLabel]:this.otherGroupLabel
+      };
+      result.set(otherGroup, []);
+      difference(this.value, valuesInAGroup).forEach(value => {
+        result.get(otherGroup).push(value);
+      });
+    }
+
+    return result;
+  }
+
+  @computed
+  get groupLabels(){
+    let result = new Map();
+
+    this.groupByNodes.forEach(nodeValue => {
+      let match = this.rfindMatch([this.data], nodeValue);
+      if(match){
+        result.set(match, nodeValue.groupLabel || match[this.mappingLabel]);
+      }
+    });
+
+    return result;
+  }
+
+  @computed
+  get displayValueAsGrouped(){
+    return !!this.groupByNodes.length || this.groupByLevel !== null;
+  }
+
   //Looks for a match recursively, stops at the first match
   rfind(nodes, testCb) {
     let foundNode = find(nodes, testCb);
@@ -116,6 +199,50 @@ export default class TreeSelectField extends DefaultField{
       });
     }
     return foundNode;
+  }
+
+  rfindMatch(nodes, valueToMatch){
+    let match;
+
+    //Below are the tests to find matches in the tree structure for each provided value
+    //If the provided value is scalar then we check against the mappingValue property(ies) of each
+    //node (and stop at the first match). Each mappingValue property has to match the scalar value (edge case)
+    //If the provided value is an object then we check against the mappingValue property(ies) of each
+    //node (and stop at the first match). Each mappingValue property has to match its respective counterpart in the node object
+    if(isString(valueToMatch) || isNumber(valueToMatch)){
+      match = this.rfind(nodes, node =>
+        isString(this.mappingValue) || isNumber(this.mappingValue)
+          ? node[this.mappingValue] === valueToMatch
+          : this.mappingValue.every(prop => node[prop] === valueToMatch)
+
+        , this.mappingChildren);
+    } else if(valueToMatch != null){
+      match = this.rfind(nodes, node =>
+        isString(this.mappingValue) || isNumber(this.mappingValue)
+          ? node[this.mappingValue] === valueToMatch[this.mappingValue]
+          : this.mappingValue.every(prop => node[prop] && valueToMatch[prop] && node[prop] === valueToMatch[prop])
+
+        , this.mappingChildren);
+    }
+
+    return match;
+  }
+
+  findAllNodesAtLevel(level){
+    let result = [];
+    let rseek = (nodes, currentLevel) => {
+      if(level === currentLevel){
+        result.push(...nodes);
+      } else if(level > currentLevel){
+        nodes.forEach(node => {
+          if(node.children && node.children.length){
+            rseek(node.children, currentLevel+1);
+          }
+        });
+      }
+    };
+    rseek([this.data], 0);
+    return result;
   }
 
   transformedValueLabel(node){
@@ -139,28 +266,7 @@ export default class TreeSelectField extends DefaultField{
       if(!value || this.value.length >= this.max){
         return;
       }
-      let match;
-
-      //Below are the tests to find matches in the tree structure for each provided value
-      //If the provided value is scalar then we check against the mappingValue property(ies) of each
-      //node (and stop at the first match). Each mappingValue property has to match the scalar value (edge case)
-      //If the provided value is an object then we check against the mappingValue property(ies) of each
-      //node (and stop at the first match). Each mappingValue property has to match its respective counterpart in the node object
-      if(isString(value) || isNumber(value)){
-        match = this.rfind([this.data], node =>
-          isString(this.mappingValue) || isNumber(this.mappingValue)
-            ? node[this.mappingValue] === value
-            : this.mappingValue.every(prop => node[prop] === value)
-
-          , this.mappingChildren);
-      } else if(value != null){
-        match = this.rfind([this.data], node =>
-          isString(this.mappingValue) || isNumber(this.mappingValue)
-            ? node[this.mappingValue] === value[this.mappingValue]
-            : this.mappingValue.every(prop => node[prop] && value[prop] && node[prop] === value[prop])
-
-          , this.mappingChildren);
-      }
+      let match = this.rfindMatch([this.data], value);
       if(match){
         this.addValue(match);
       }
@@ -186,7 +292,7 @@ export default class TreeSelectField extends DefaultField{
     mapNodesToParent(this.data);
   }
 
-  @action getNodeParentOf(node){
+  getNodeParentOf(node){
     if(this.nodeParents.has(node)){
       return this.nodeParents.get(node);
     } else {
@@ -194,7 +300,7 @@ export default class TreeSelectField extends DefaultField{
     }
   }
 
-  @action getNodePathOf(node){
+  getNodePathOf(node){
     let path = [node];
     let parentNode = node;
     while((parentNode = this.getNodeParentOf(parentNode)) !== null){
