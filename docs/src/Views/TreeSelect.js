@@ -12,6 +12,7 @@ import mockupTreeData from "../MockupData/HBP_MEM_0000000.json";
 
 let properties = [
   [`label`, `string`, `""`, `The field label`],
+  [`labelTooltip`, `string`, `null`, `The field label tooltip message`],
   [`value`, `array`, `[]`, `The current value of the field`],
   [`defaultValue`, `array`, `[]`, `The defaultValue of the field`],
   [`data`, `array`, `{}`, `The tree structure to select from, must be an object with eventually an array of children`],
@@ -178,7 +179,8 @@ export default class TreeSelect extends View{
           mappingLabel: "name",
           value: ["HBP_MEM:0000069", "HBP_MEM:0000081", {"value": "HBP_MEM:0000084", "name": "Fluorescence recovery after photobleaching"}],
           expandToSelectedNodes: true ,
-          disabled:true 
+          disabled:true,
+          labelTooltip:"this field is disabled"
         }}/>
 
         <p>The readOnly state makes the input impossible to edit, and the value WILL BE processed and returned by the <code>FormStore.getValues()</code> method</p>

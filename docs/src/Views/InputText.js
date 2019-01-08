@@ -9,6 +9,7 @@ import View from "./_View";
 
 let properties = [
   [`label`,`string`,`""`,`The field label`],
+  [`labelTooltip`, `string`, `null`, `The field label tooltip message`],
   [`inputType`,`string`,`"text"`,`The input type of the field (e.g. text, password, email)`],
   [`value`,`string`,`""`,`The current value of the field`],
   [`defaultValue`,`string`,`""`,`The defaultValue of the field`],
@@ -57,7 +58,8 @@ export default class InputText extends View{
         <View.ShowField definition={{
           type:"InputText",
           label:"Number input",
-          inputType:"number"
+          inputType:"number",
+          labelTooltip:"You can only input numbers in this field"
         }}/>
         <View.ShowField definition={{
           type:"InputText",

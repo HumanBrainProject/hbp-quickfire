@@ -9,6 +9,7 @@ import View from "./_View";
 
 let properties = [
   [`label`,`string`, `""`,`The field label`],
+  [`labelTooltip`, `string`, `null`, `The field label tooltip message`],
   [`value`,`string`, `false`,`The current value of the field`],
   [`defaultValue`,`string`, `false`,`The defaultValue of the field`],
   [`disabled`, `boolean`, `false`, `Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()`],

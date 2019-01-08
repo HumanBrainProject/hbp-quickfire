@@ -6,11 +6,12 @@
  */
 import React from "react";
 import { inject, observer } from "mobx-react";
-import { FormGroup, ControlLabel, Button, Glyphicon, Alert } from "react-bootstrap";
+import { FormGroup, Button, Glyphicon, Alert } from "react-bootstrap";
 import injectStyles from "react-jss";
 import {isFunction} from "lodash";
 
 import clipboard from "../Stores/ClipboardStore";
+import FieldLabel from "./FieldLabel";
 
 const styles = {
   values:{
@@ -225,12 +226,12 @@ export default class InputTextMultipleField extends React.Component {
     }
 
     let { classes } = this.props;
-    let { label, value, disabled, readOnly, readAndDeleteOnly, useVirtualClipboard, max, validationErrors, validationState } = this.props.field;
+    let { value, disabled, readOnly, readAndDeleteOnly, useVirtualClipboard, max, validationErrors, validationState } = this.props.field;
     let withVirtualClipboardClass = useVirtualClipboard? "withVirtualClipboard": "";
 
     return (
       <FormGroup onClick={this.handleFocus} className={`quickfire-field-input-text-multiple ${!value.length? "quickfire-empty-field": ""} ${disabled? "quickfire-field-disabled": ""} ${readOnly? "quickfire-field-readonly": ""}`} validationState={validationState}>
-        {label && <ControlLabel className={"quickfire-label"}>{label}</ControlLabel>}
+        <FieldLabel field={this.props.field}/>
         <div disabled={disabled} readOnly={readOnly} className={`form-control input-group ${classes.values} ${withVirtualClipboardClass}`}>
           {value.map(val => {
             return(
@@ -289,7 +290,6 @@ export default class InputTextMultipleField extends React.Component {
 
   renderReadMode(){
     let {
-      label,
       value,
       disabled,
       readOnly
@@ -299,7 +299,7 @@ export default class InputTextMultipleField extends React.Component {
 
     return (
       <div className={`quickfire-field-input-text-multiple ${!value.length? "quickfire-empty-field": ""} quickfire-readmode ${classes.readMode} ${disabled? "quickfire-field-disabled": ""} ${readOnly? "quickfire-field-readonly": ""}`}>
-        {label && <ControlLabel className={"quickfire-label"}>{label}</ControlLabel>}
+        <FieldLabel field={this.props.field}/>
         {isFunction(this.props.readModeRendering)?
           this.props.readModeRendering(this.props.field)
           :

@@ -9,6 +9,7 @@ import View from "./_View";
 
 let properties = [
   [`label`, `string`, `""`, `The field label`],
+  [`labelTooltip`, `string`, `null`, `The field label tooltip message`],
   [`value`, `array`, `[]`, `The current value of the field`],
   [`defaultValue`, `array`, `[]`, `The defaultValue of the field`],
   [`options`, `array`, `[]`, `The options of the dropdown, must be an array of objects`],

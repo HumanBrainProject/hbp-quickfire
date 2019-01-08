@@ -9,6 +9,7 @@ import View from "./_View";
 
 let properties = [
   [`label`, `string`, `""`, `The field label`],
+  [`labelTooltip`, `string`, `null`, `The field label tooltip message`],
   [`value`, `array`, `[]`, `The current value of the field`],
   [`defaultValue`, `array`, `[]`, `The defaultValue of the field`],
   [`headers`, `array`, `[]`, `The headers of the datasheet, must be an array of objects dscribing at least a "label" and a "key" property. See below for more details on headers options`],

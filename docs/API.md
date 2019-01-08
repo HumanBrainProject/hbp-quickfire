@@ -19,42 +19,89 @@
         -   [toggleReadMode][15]
     -   [ClipboardStore][16]
         -   [reset][17]
--   [Form][18]
-    -   [values][19]
--   [FormFields][20]
-    -   [InputTextField][21]
-        -   [Options][22]
-    -   [InputTextMultipleField][23]
-        -   [Options][24]
-    -   [TextAreaField][25]
-        -   [Options][26]
-    -   [NestedField][27]
-        -   [NestedRemoveButton][28]
-        -   [NestedMoveUpButton][29]
-        -   [NestedMoveDownButton][30]
-        -   [NestedDuplicateButton][31]
-        -   [Options][32]
-        -   [addInstance][33]
-        -   [duplicateInstance][34]
-        -   [moveInstance][35]
-        -   [removeInstance][36]
-    -   [SelectField][37]
-        -   [Options][38]
-    -   [DropdownSelectField][39]
-        -   [Options][40]
-    -   [TreeSelectField][41]
-        -   [Options][42]
-    -   [CheckBoxField][43]
+-   [React][18]
+-   [React][19]
+-   [React][20]
+-   [React][21]
+-   [React][22]
+-   [React][23]
+-   [React][24]
+-   [React][25]
+-   [React][26]
+-   [React][27]
+-   [React][28]
+-   [React][29]
+-   [React][30]
+-   [React][31]
+-   [React][32]
+-   [React][33]
+-   [React][34]
+-   [React][35]
+-   [React][36]
+-   [React][37]
+-   [React][38]
+-   [React][39]
+-   [Form][40]
+    -   [values][41]
+-   [FormFields][42]
+    -   [InputTextField][43]
         -   [Options][44]
-    -   [GroupSelectField][45]
+    -   [InputTextMultipleField][45]
         -   [Options][46]
-    -   [DataSheetField][47]
-        -   [HeaderOptions][48]
-    -   [Slider][49]
-        -   [Options][50]
--   [SingleField][51]
--   [ActionIcon][52]
--   [GenericList][53]
+    -   [TextAreaField][47]
+        -   [Options][48]
+    -   [NestedField][49]
+        -   [NestedRemoveButton][50]
+        -   [NestedMoveUpButton][51]
+        -   [NestedMoveDownButton][52]
+        -   [NestedDuplicateButton][53]
+        -   [Options][54]
+        -   [addInstance][55]
+        -   [duplicateInstance][56]
+        -   [moveInstance][57]
+        -   [removeInstance][58]
+    -   [SelectField][59]
+        -   [Options][60]
+    -   [DropdownSelectField][61]
+        -   [Options][62]
+    -   [TreeSelectField][63]
+        -   [Options][64]
+    -   [CheckBoxField][65]
+        -   [Options][66]
+    -   [GroupSelectField][67]
+        -   [Options][68]
+    -   [DataSheetField][69]
+        -   [HeaderOptions][70]
+    -   [Slider][71]
+        -   [Options][72]
+    -   [FieldLabel][73]
+-   [SingleField][74]
+-   [ActionIcon][75]
+-   [GenericList][76]
+-   [isNumber][77]
+-   [mobx][78]
+-   [default][79]
+-   [isObservableArray][80]
+-   [isObservableArray][81]
+-   [observable][82]
+-   [observable][83]
+-   [observable][84]
+-   [observable][85]
+-   [action][86]
+-   [action][87]
+-   [action][88]
+-   [action][89]
+-   [action][90]
+-   [toJS][91]
+-   [toJS][92]
+-   [OptionsStore][93]
+
+## 
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
 
 ## Stores
 
@@ -66,7 +113,7 @@ Mobx store to manage the Form React Component
 
 **Parameters**
 
--   `structure` **[json][54]** the underlying form definition
+-   `structure` **[json][94]** the underlying form definition
 
 #### getValues
 
@@ -77,7 +124,7 @@ Get the form field values
 -   `fields`  
 -   `applyMapping`   (optional, default `true`)
 
-Returns **[object][55]** a structured object of the form field values
+Returns **[object][95]** a structured object of the form field values
 
 #### values
 
@@ -89,7 +136,7 @@ Syntaxic shortcut accessor that calls injectValues
 
 **Parameters**
 
--   `values` **[object][55]** structured object of the form field values
+-   `values` **[object][95]** structured object of the form field values
 
 #### injectValues
 
@@ -97,17 +144,17 @@ Inject values into form fields, must be input the same format as `values`method 
 
 **Parameters**
 
--   `values` **[object][55]** structured object of the form field values
--   `merge` **[boolean][56]** whether or not to reset the whole form or merge with the passed in values (optional, default `false`)
+-   `values` **[object][95]** structured object of the form field values
+-   `merge` **[boolean][96]** whether or not to reset the whole form or merge with the passed in values (optional, default `false`)
 -   `fields`  
--   `path` **[string][57]** base path for change
+-   `path` **[string][97]** base path for change
 
 #### reset
 
 **Parameters**
 
 -   `fields`  
--   `basePath` **[string][57]** optional, base path to reset from
+-   `basePath` **[string][97]** optional, base path to reset from
     Resets the form to their default values from the base path or completely if no path is provided
 
 #### update
@@ -116,8 +163,8 @@ updates the underlying field definition
 
 **Parameters**
 
--   `path` **[string][57]** the field path
--   `updated` **[object][55]** the updated field definition
+-   `path` **[string][97]** the field path
+-   `updated` **[object][95]** the updated field definition
 
 #### parentPath
 
@@ -125,20 +172,20 @@ returns the parent path for a field
 
 **Parameters**
 
--   `field` **([string][57] | field)** can be either be a field path or a field object
+-   `field` **([string][97] | field)** can be either be a field path or a field object
 
 #### genSiblingPath
 
 **Parameters**
 
--   `field` **([string][57] | field)** can be either a field path or a field object
--   `name` **[string][57]** name of the sibling
+-   `field` **([string][97] | field)** can be either a field path or a field object
+-   `name` **[string][97]** name of the sibling
 
 #### prefetchOptions
 
 **Parameters**
 
--   `optionsUrls` **[array][58]** an array of URLs to fetch and put in cache
+-   `optionsUrls` **[array][98]** an array of URLs to fetch and put in cache
 -   `axiosInstance`  
 
 #### validate
@@ -151,9 +198,9 @@ registers a custom validation functions that can be used in all fields
 
 **Parameters**
 
--   `name` **[string][57]** a name to uniquely identify the rule
--   `func` **[function][59]** The definition of the validation function. The function parameters are the field value and attribute name. Can be a sync or async function. Expected return value either boolean or promise, indication if validation was successful.
--   `errorMessage` **[string][57]** The error message in case the validation fails
+-   `name` **[string][97]** a name to uniquely identify the rule
+-   `func` **[function][99]** The definition of the validation function. The function parameters are the field value and attribute name. Can be a sync or async function. Expected return value either boolean or promise, indication if validation was successful.
+-   `errorMessage` **[string][97]** The error message in case the validation fails
 -   `formStore`  
 
 #### registerAxiosInstance
@@ -162,7 +209,7 @@ registers a custom axios instance - useful for APIs requiring tokens
 
 **Parameters**
 
--   `axiosInstance` **[object][55]** a valid axios instance
+-   `axiosInstance` **[object][95]** a valid axios instance
 
 #### toggleReadMode
 
@@ -170,7 +217,7 @@ toggles or force readMode to display form values as pure text instead of input f
 
 **Parameters**
 
--   `status` **[boolean][56]** optional, a boolean indicating what the readMode state should be. If none is passed then the state is toggled
+-   `status` **[boolean][96]** optional, a boolean indicating what the readMode state should be. If none is passed then the state is toggled
 
 ### ClipboardStore
 
@@ -181,19 +228,173 @@ Importing this module will always return the same instance of that store
 
 Clear the value stored in the virtual clipboard
 
+## React
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## React
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## React
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## React
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## React
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## React
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## React
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## React
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## React
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## React
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## React
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## React
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## React
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## React
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## React
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## React
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## React
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## React
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## React
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## React
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## React
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## React
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
 ## Form
 
 Form component that wraps the underlying Fields
 
 **Properties**
 
--   `store` **[object][55]** required - An instance of the FormStore class
+-   `store` **[object][95]** required - An instance of the FormStore class
 
 ### values
 
 Get the form field values
 
-Returns **[object][55]** a structured object of the form field values
+Returns **[object][95]** a structured object of the form field values
 
 ## FormFields
 
@@ -201,8 +402,8 @@ Field is a generic react component that supports all kinds of different input ty
 
 **Properties**
 
--   `name` **[string][57]** required - Name of the field as defined in the definition object passed to the FormStore
--   `onChange` **[function][59]** Event handler triggered when changes occur to the underlying field value
+-   `name` **[string][97]** required - Name of the field as defined in the definition object passed to the FormStore
+-   `onChange` **[function][99]** Event handler triggered when changes occur to the underlying field value
 
 ### InputTextField
 
@@ -212,22 +413,23 @@ A simple text input
 
 **Parameters**
 
--   `label` **[string][57]** "" - The field label
--   `type` **[string][57]** "InputText"
--   `value` **[string][57]** "" - The current value of the field
--   `defaultValue` **[string][57]** "" - The defaultValue of the field
--   `inputType` **[string][57]** "text" - The input type of the field (e.g. text, password, email)
--   `autoComplete` **[boolean][56]** false - Sets the autocomplete attribute of the input element
--   `placeholder` **[string][57]** "" - A placeholder that is displayed when the field is empty
--   `path` **[string][57]** "" - Field path
--   `useVirtualClipboard` **[boolean][56]** false - Flag if virtual clipboard feature is enabled for this field
--   `emptyToNull` **[boolean][56]** true - Flag that determines if empty values are transformed to null in the value function of the formStore
--   `disabled` **[boolean][56]** false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
--   `readOnly` **[boolean][56]** false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
--   `readMode` **[boolean][56]** false - If true, displays the field as label and value without the actual form input
--   `validationRules` **[array][58]** \[] - A list of validation rules
--   `customErrorMessages` **[object][55]** {} - Definition for custom error messages in the form: {rule: errorMessage}
--   `validationOptions` **[object][55]** {onBlur: true, onChange: false} - Validation options to define when validation is executed
+-   `label` **[string][97]** "" - The field label
+-   `labelTooltip` **[string][97]** "" - The field label tooltip message
+-   `type` **[string][97]** "InputText"
+-   `value` **[string][97]** "" - The current value of the field
+-   `defaultValue` **[string][97]** "" - The defaultValue of the field
+-   `inputType` **[string][97]** "text" - The input type of the field (e.g. text, password, email)
+-   `autoComplete` **[boolean][96]** false - Sets the autocomplete attribute of the input element
+-   `placeholder` **[string][97]** "" - A placeholder that is displayed when the field is empty
+-   `path` **[string][97]** "" - Field path
+-   `useVirtualClipboard` **[boolean][96]** false - Flag if virtual clipboard feature is enabled for this field
+-   `emptyToNull` **[boolean][96]** true - Flag that determines if empty values are transformed to null in the value function of the formStore
+-   `disabled` **[boolean][96]** false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
+-   `readOnly` **[boolean][96]** false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
+-   `readMode` **[boolean][96]** false - If true, displays the field as label and value without the actual form input
+-   `validationRules` **[array][98]** \[] - A list of validation rules
+-   `customErrorMessages` **[object][95]** {} - Definition for custom error messages in the form: {rule: errorMessage}
+-   `validationOptions` **[object][95]** {onBlur: true, onChange: false} - Validation options to define when validation is executed
 
 ### InputTextMultipleField
 
@@ -237,18 +439,18 @@ Allows the input of multiple values
 
 **Parameters**
 
--   `label` **[string][57]** "" - The field label
--   `type` **[string][57]** "InputTextMultiple"
--   `value` **[array][58]** \[] - The current value of the field
--   `defaultValue` **[array][58]** \[] - The defaultValue of the field
--   `path` **[string][57]** "" - Field path
--   `max` **[number][60]** Infinity - Maximum values that the field can have
--   `useVirtualClipboard` **[boolean][56]** false - Flag if virtual clipboard feature is enabled for this field
--   `emptyToNull` **[boolean][56]** false - Flag that determines if empty values are transformed to null in the value function of the formStore
--   `disabled` **[boolean][56]** false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
--   `readOnly` **[boolean][56]** false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
--   `readAndDeleteOnly` **[boolean][56]** false - Is the field readAndDeleteOnly or not, a readAndDeleteOnly field will allow deletes but won't be writable for new values, but will be processed by FormStore.getValues()
--   `readMode` **[boolean][56]** false - If true, displays the field as label and value without the actual form input
+-   `label` **[string][97]** "" - The field label
+-   `type` **[string][97]** "InputTextMultiple"
+-   `value` **[array][98]** \[] - The current value of the field
+-   `defaultValue` **[array][98]** \[] - The defaultValue of the field
+-   `path` **[string][97]** "" - Field path
+-   `max` **[number][100]** Infinity - Maximum values that the field can have
+-   `useVirtualClipboard` **[boolean][96]** false - Flag if virtual clipboard feature is enabled for this field
+-   `emptyToNull` **[boolean][96]** false - Flag that determines if empty values are transformed to null in the value function of the formStore
+-   `disabled` **[boolean][96]** false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
+-   `readOnly` **[boolean][96]** false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
+-   `readAndDeleteOnly` **[boolean][96]** false - Is the field readAndDeleteOnly or not, a readAndDeleteOnly field will allow deletes but won't be writable for new values, but will be processed by FormStore.getValues()
+-   `readMode` **[boolean][96]** false - If true, displays the field as label and value without the actual form input
 
 ### TextAreaField
 
@@ -259,19 +461,20 @@ Field options are the same as for the InputTextField
 
 **Parameters**
 
--   `label` **[string][57]** "" - The field label
--   `type` **[string][57]** "InputText"
--   `value` **[string][57]** "" - The current value of the field
--   `defaultValue` **[string][57]** "" - The defaultValue of the field
--   `path` **[string][57]** "" - Field path
--   `emptyToNull` **[boolean][56]** true - Flag that determines if empty values are transformed to null in the value function of the formStore
--   `disabled` **[boolean][56]** false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
--   `readOnly` **[boolean][56]** false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
--   `readMode` **[boolean][56]** false - If true, displays the field as label and value without the actual form input
--   `autosize` **[boolean][56]** true - If true, the textarea resizes automatically
--   `rows` **[number][60]** 1 - How many rows are displayed by default. Represents the min value
--   `maxRows` **[number][60]** null - How many rows are displayed at most before the field does not grow anymore (only possible if autosize is enabled)
--   `resizable` **[boolean][56]** false - If true, the textarea is horizontally resizable by the user
+-   `label` **[string][97]** "" - The field label
+-   `labelTooltip` **[string][97]** "" - The field label tooltip message
+-   `type` **[string][97]** "InputText"
+-   `value` **[string][97]** "" - The current value of the field
+-   `defaultValue` **[string][97]** "" - The defaultValue of the field
+-   `path` **[string][97]** "" - Field path
+-   `emptyToNull` **[boolean][96]** true - Flag that determines if empty values are transformed to null in the value function of the formStore
+-   `disabled` **[boolean][96]** false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
+-   `readOnly` **[boolean][96]** false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
+-   `readMode` **[boolean][96]** false - If true, displays the field as label and value without the actual form input
+-   `autosize` **[boolean][96]** true - If true, the textarea resizes automatically
+-   `rows` **[number][100]** 1 - How many rows are displayed by default. Represents the min value
+-   `maxRows` **[number][100]** null - How many rows are displayed at most before the field does not grow anymore (only possible if autosize is enabled)
+-   `resizable` **[boolean][96]** false - If true, the textarea is horizontally resizable by the user
 
 ### NestedField
 
@@ -301,21 +504,22 @@ has to be called by the app with &lt;Field.Duplicate/> component
 
 **Parameters**
 
--   `label` **[string][57]** "" - The field label
--   `buttonLabel` **[string][57]** "Add an item" - The label used for adding an item to the repeatable fields
--   `type` **[string][57]** "Nested"
--   `min` **[number][60]** 1 - min of nested children the field can have
--   `max` **[number][60]** 1 - max of nested children the field can have
--   `fields` **[object][55]** {} - The nested fields definitions
--   `value` **[string][57]** \[] - The value of the field
--   `defaultValue` **[array][58]** \[] - The defaultValue of the field
--   `path` **[string][57]** "" - Field path
--   `topAddButton` **[string][57]** true - Whether or not to display the Add button before the fields
--   `bottomAddButton` **[string][57]** true - Whether or not to display the Add button after the fields
--   `emptyToNull` **[boolean][56]** false - Flag that determines if empty values are transformed to null in the value function of the formStore
--   `disabled` **[boolean][56]** false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
--   `readOnly` **[boolean][56]** false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
--   `readMode` **[boolean][56]** false - If true, displays the field as label and value without the actual form input
+-   `label` **[string][97]** "" - The field label
+-   `labelTooltip` **[string][97]** "" - The field label tooltip message
+-   `buttonLabel` **[string][97]** "Add an item" - The label used for adding an item to the repeatable fields
+-   `type` **[string][97]** "Nested"
+-   `min` **[number][100]** 1 - min of nested children the field can have
+-   `max` **[number][100]** 1 - max of nested children the field can have
+-   `fields` **[object][95]** {} - The nested fields definitions
+-   `value` **[string][97]** \[] - The value of the field
+-   `defaultValue` **[array][98]** \[] - The defaultValue of the field
+-   `path` **[string][97]** "" - Field path
+-   `topAddButton` **[string][97]** true - Whether or not to display the Add button before the fields
+-   `bottomAddButton` **[string][97]** true - Whether or not to display the Add button after the fields
+-   `emptyToNull` **[boolean][96]** false - Flag that determines if empty values are transformed to null in the value function of the formStore
+-   `disabled` **[boolean][96]** false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
+-   `readOnly` **[boolean][96]** false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
+-   `readMode` **[boolean][96]** false - If true, displays the field as label and value without the actual form input
 
 #### addInstance
 
@@ -354,21 +558,22 @@ A simple select input field
 
 **Parameters**
 
--   `label` **[string][57]** "" - The field label
--   `type` **[string][57]** "Select"
--   `value` **[string][57]** "" - The current value of the field
--   `defaultValue` **[string][57]** "" - The defaultValue of the field
--   `options` **[array][58]** \[] - an array of strings or objects with value and label defined by the mapping
--   `optionsUrl` **[string][57]** null - url to fetch the select options from
--   `cacheOptionsUrl` **[string][57]** false - whether to cache optionsUrl fetching response
--   `path` **[string][57]** "" - Field path
--   `mappingValue` **([string][57] \| [array][58])** "value" - The name(s) of the option object field(s) related to the option value, used to match passed in values to actual options
--   `mappingLabel` **[string][57]** "label" - the name of the option object field related to the option label
--   `defaultLabel` **[string][57]** "null" - The label to be displayed as a default value when set
--   `emptyToNull` **[boolean][56]** true - Flag that determines if empty values are transformed to null in the value function of the formStore
--   `disabled` **[boolean][56]** false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
--   `readOnly` **[boolean][56]** false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
--   `readMode` **[boolean][56]** false - If true, displays the field as label and value without the actual form input
+-   `label` **[string][97]** "" - The field label
+-   `labelTooltip` **[string][97]** "" - The field label tooltip message
+-   `type` **[string][97]** "Select"
+-   `value` **[string][97]** "" - The current value of the field
+-   `defaultValue` **[string][97]** "" - The defaultValue of the field
+-   `options` **[array][98]** \[] - an array of strings or objects with value and label defined by the mapping
+-   `optionsUrl` **[string][97]** null - url to fetch the select options from
+-   `cacheOptionsUrl` **[string][97]** false - whether to cache optionsUrl fetching response
+-   `path` **[string][97]** "" - Field path
+-   `mappingValue` **([string][97] \| [array][98])** "value" - The name(s) of the option object field(s) related to the option value, used to match passed in values to actual options
+-   `mappingLabel` **[string][97]** "label" - the name of the option object field related to the option label
+-   `defaultLabel` **[string][97]** "null" - The label to be displayed as a default value when set
+-   `emptyToNull` **[boolean][96]** true - Flag that determines if empty values are transformed to null in the value function of the formStore
+-   `disabled` **[boolean][96]** false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
+-   `readOnly` **[boolean][96]** false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
+-   `readMode` **[boolean][96]** false - If true, displays the field as label and value without the actual form input
 
 ### DropdownSelectField
 
@@ -381,26 +586,27 @@ through the call of the "onAddCustomValue" callback passed in paramter
 
 **Parameters**
 
--   `label` **[string][57]** "" - The field label
--   `type` **[string][57]** "DropdownSelect"
--   `value` **[array][58]** \[] - The current value of the field
--   `defaultValue` **[array][58]** \[] - The defaultValue of the field
--   `options` **[array][58]** \[] - The options of the dropdown, must be an array of objects
--   `optionsUrl` **[string][57]** null - url to fetch the select options from
--   `cacheOptionsUrl` **[string][57]** false - whether to cache optionsUrl fetching response
--   `path` **[string][57]** "" - Field path
--   `allowCustomValues` **[boolean][56]** false - if the field should try to accept user inputed values
--   `mappingValue` **([string][57] \| [array][58])** "value" - The name(s) of the option object field(s) related to the option value, used to match passed in values to actual options
--   `mappingLabel` **[string][57]** "label" - the name of the option object field related to the option label
--   `mappingReturn` **[string][57]** null - the property of the option object used to return the value(s) - null will return the whole object
--   `returnSingle` **[boolean][56]** boolean - wether or not to return the first value or an array of values
--   `max` **[number][60]** Infinity - Maximum values that the field can have
--   `emptyToNull` **[boolean][56]** false - Flag that determines if empty values are transformed to null in the value function of the formStore
--   `listPosition` **[string][57]** "bottom" - Can be "top" or "bottom", whether to display the dropdown list above or below the field
--   `closeDropdownAfterInteraction` **[boolean][56]** false - Whether the dropdown should close after adding, removing a value or stay open
--   `disabled` **[boolean][56]** false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
--   `readOnly` **[boolean][56]** false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
--   `readMode` **[boolean][56]** false - If true, displays the field as label and value without the actual form input
+-   `label` **[string][97]** "" - The field label
+-   `labelTooltip` **[string][97]** "" - The field label tooltip message
+-   `type` **[string][97]** "DropdownSelect"
+-   `value` **[array][98]** \[] - The current value of the field
+-   `defaultValue` **[array][98]** \[] - The defaultValue of the field
+-   `options` **[array][98]** \[] - The options of the dropdown, must be an array of objects
+-   `optionsUrl` **[string][97]** null - url to fetch the select options from
+-   `cacheOptionsUrl` **[string][97]** false - whether to cache optionsUrl fetching response
+-   `path` **[string][97]** "" - Field path
+-   `allowCustomValues` **[boolean][96]** false - if the field should try to accept user inputed values
+-   `mappingValue` **([string][97] \| [array][98])** "value" - The name(s) of the option object field(s) related to the option value, used to match passed in values to actual options
+-   `mappingLabel` **[string][97]** "label" - the name of the option object field related to the option label
+-   `mappingReturn` **[string][97]** null - the property of the option object used to return the value(s) - null will return the whole object
+-   `returnSingle` **[boolean][96]** boolean - wether or not to return the first value or an array of values
+-   `max` **[number][100]** Infinity - Maximum values that the field can have
+-   `emptyToNull` **[boolean][96]** false - Flag that determines if empty values are transformed to null in the value function of the formStore
+-   `listPosition` **[string][97]** "bottom" - Can be "top" or "bottom", whether to display the dropdown list above or below the field
+-   `closeDropdownAfterInteraction` **[boolean][96]** false - Whether the dropdown should close after adding, removing a value or stay open
+-   `disabled` **[boolean][96]** false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
+-   `readOnly` **[boolean][96]** false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
+-   `readMode` **[boolean][96]** false - If true, displays the field as label and value without the actual form input
 
 ### TreeSelectField
 
@@ -410,28 +616,29 @@ Form component allowing to select multiple values from a tree structure
 
 **Parameters**
 
--   `label` **[string][57]** "" - The field label
--   `type` **[string][57]** "TreeSelect"
--   `value` **[array][58]** \[] - The current value of the field
--   `defaultValue` **[array][58]** \[] - The defaultValue of the field
--   `data` **[array][58]** {} - The tree structure to select from, must be an object with eventually an array of children
--   `dataUrl` **[array][58]** null - url to fetch the tree structure from
--   `cacheDataUrl` **[string][57]** false - whether to cache dataUrl fetching response
--   `path` **[string][57]** "" - Field path
--   `mappingValue` **([string][57] \| [array][58])** "value" - The name(s) of the node object field(s) related to the node value, used to match passed in values to actual tree nodes
--   `mappingLabel` **[string][57]** "label" - the name of the node object field related to the node label
--   `mappingChildren` **[string][57]** "children" - the name of the node object field related to the node children
--   `mappingReturn` **[string][57]** null - the property of the option object used to return the value(s) - null will return the whole object
--   `returnSingle` **[boolean][56]** boolean - wether or not to return the first value or an array of values
--   `max` **[number][60]** Infinity - Maximum values that the field can have
--   `selectOnlyLeaf` **[boolean][56]** false - If enabled, only leaves can be selected and not the intermediary nodes
--   `expandToSelectedNodes` **[boolean][56]** false - If enabled, tree selection modal will recursively expand to all the already selected values
--   `defaultExpanded` **[array][58]** \[] - an array of arrays describing a path of nodes expanded by default (tested on node labels, path parts are considered as RegExp)
--   `showOnlySearchedNodes` **[boolean][56]** false - Flag that determines if nodes that doesn't match the text search should be hidden
--   `emptyToNull` **[boolean][56]** false - Flag that determines if empty values are transformed to null in the value function of the formStore
--   `disabled` **[boolean][56]** false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
--   `readOnly` **[boolean][56]** false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
--   `readMode` **[boolean][56]** false - If true, displays the field as label and value without the actual form input
+-   `label` **[string][97]** "" - The field label
+-   `labelTooltip` **[string][97]** "" - The field label tooltip message
+-   `type` **[string][97]** "TreeSelect"
+-   `value` **[array][98]** \[] - The current value of the field
+-   `defaultValue` **[array][98]** \[] - The defaultValue of the field
+-   `data` **[array][98]** {} - The tree structure to select from, must be an object with eventually an array of children
+-   `dataUrl` **[array][98]** null - url to fetch the tree structure from
+-   `cacheDataUrl` **[string][97]** false - whether to cache dataUrl fetching response
+-   `path` **[string][97]** "" - Field path
+-   `mappingValue` **([string][97] \| [array][98])** "value" - The name(s) of the node object field(s) related to the node value, used to match passed in values to actual tree nodes
+-   `mappingLabel` **[string][97]** "label" - the name of the node object field related to the node label
+-   `mappingChildren` **[string][97]** "children" - the name of the node object field related to the node children
+-   `mappingReturn` **[string][97]** null - the property of the option object used to return the value(s) - null will return the whole object
+-   `returnSingle` **[boolean][96]** boolean - wether or not to return the first value or an array of values
+-   `max` **[number][100]** Infinity - Maximum values that the field can have
+-   `selectOnlyLeaf` **[boolean][96]** false - If enabled, only leaves can be selected and not the intermediary nodes
+-   `expandToSelectedNodes` **[boolean][96]** false - If enabled, tree selection modal will recursively expand to all the already selected values
+-   `defaultExpanded` **[array][98]** \[] - an array of arrays describing a path of nodes expanded by default (tested on node labels, path parts are considered as RegExp)
+-   `showOnlySearchedNodes` **[boolean][96]** false - Flag that determines if nodes that doesn't match the text search should be hidden
+-   `emptyToNull` **[boolean][96]** false - Flag that determines if empty values are transformed to null in the value function of the formStore
+-   `disabled` **[boolean][96]** false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
+-   `readOnly` **[boolean][96]** false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
+-   `readMode` **[boolean][96]** false - If true, displays the field as label and value without the actual form input
 
 ### CheckBoxField
 
@@ -441,14 +648,15 @@ A simple checkbox
 
 **Parameters**
 
--   `label` **[string][57]** "" - The field label
--   `type` **[string][57]** "CheckBox"
--   `value` **[string][57]** false - The current value of the field
--   `defaultValue` **[string][57]** false - The defaultValue of the field
--   `path` **[string][57]** "" - Field path
--   `disabled` **[boolean][56]** false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
--   `readOnly` **[boolean][56]** false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
--   `readMode` **[boolean][56]** false - If true, displays the field as label and value without the actual form input
+-   `label` **[string][97]** "" - The field label
+-   `labelTooltip` **[string][97]** "" - The field label tooltip message
+-   `type` **[string][97]** "CheckBox"
+-   `value` **[string][97]** false - The current value of the field
+-   `defaultValue` **[string][97]** false - The defaultValue of the field
+-   `path` **[string][97]** "" - Field path
+-   `disabled` **[boolean][96]** false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
+-   `readOnly` **[boolean][96]** false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
+-   `readMode` **[boolean][96]** false - If true, displays the field as label and value without the actual form input
 
 ### GroupSelectField
 
@@ -458,24 +666,25 @@ Form component allowing to select on/multiple values from a group of checkboxes/
 
 **Parameters**
 
--   `label` **[string][57]** "" - The field label
--   `type` **[string][57]** "GroupSelect"
--   `value` **[array][58]** \[] - The current value of the field
--   `defaultValue` **[array][58]** \[] - The defaultValue of the field
--   `options` **[array][58]** \[] - The options of the dropdown, must be an array of objects
--   `optionsUrl` **[string][57]** null - url to fetch the select options from
--   `cacheOptionsUrl` **[string][57]** false - whether to cache optionsUrl fetching response
--   `path` **[string][57]** "" - Field path
--   `mappingValue` **([string][57] \| [array][58])** "value" - The name(s) of the option object field(s) related to the option value, used to match passed in values to actual options
--   `mappingLabel` **[string][57]** "label" - the name of the option object field related to the option label
--   `mappingReturn` **[string][57]** null - the property of the option object used to return the value(s) - null will return the whole object
--   `returnSingle` **[boolean][56]** boolean - wether or not to return the first value or an array of values
--   `max` **[number][60]** Infinity - Maximum values that the field can have
--   `emptyToNull` **[boolean][56]** false - Flag that determines if empty values are transformed to null in the value function of the formStore
--   `displayInline` **[boolean][56]** false - Display choices in line, default is display as a list
--   `disabled` **[boolean][56]** false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
--   `readOnly` **[boolean][56]** false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
--   `readMode` **[boolean][56]** false - If true, displays the field as label and value without the actual form input
+-   `label` **[string][97]** "" - The field label
+-   `labelTooltip` **[string][97]** "" - The field label tooltip message
+-   `type` **[string][97]** "GroupSelect"
+-   `value` **[array][98]** \[] - The current value of the field
+-   `defaultValue` **[array][98]** \[] - The defaultValue of the field
+-   `options` **[array][98]** \[] - The options of the dropdown, must be an array of objects
+-   `optionsUrl` **[string][97]** null - url to fetch the select options from
+-   `cacheOptionsUrl` **[string][97]** false - whether to cache optionsUrl fetching response
+-   `path` **[string][97]** "" - Field path
+-   `mappingValue` **([string][97] \| [array][98])** "value" - The name(s) of the option object field(s) related to the option value, used to match passed in values to actual options
+-   `mappingLabel` **[string][97]** "label" - the name of the option object field related to the option label
+-   `mappingReturn` **[string][97]** null - the property of the option object used to return the value(s) - null will return the whole object
+-   `returnSingle` **[boolean][96]** boolean - wether or not to return the first value or an array of values
+-   `max` **[number][100]** Infinity - Maximum values that the field can have
+-   `emptyToNull` **[boolean][96]** false - Flag that determines if empty values are transformed to null in the value function of the formStore
+-   `displayInline` **[boolean][96]** false - Display choices in line, default is display as a list
+-   `disabled` **[boolean][96]** false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
+-   `readOnly` **[boolean][96]** false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
+-   `readMode` **[boolean][96]** false - If true, displays the field as label and value without the actual form input
 
 ### DataSheetField
 
@@ -486,30 +695,31 @@ It uses the react-datasheet npm package to display to field
 
 **Parameters**
 
--   `label` **[string][57]** "" - The field label
--   `type` **[string][57]** "DataSheet"
--   `value` **[array][58]** \[] - The current value of the field
--   `defaultValue` **[array][58]** \[] - The defaultValue of the field
--   `headers` **[array][58]** \[] - The headers of the datasheet, must be an array of objects dscribing at least a "label" and a "key" property
--   `path` **[string][57]** "" - Field path
--   `min` **[number][60]** 0 - Minimum rows that the field can have
--   `max` **[number][60]** Infinity - Maximum rows that the field can have
--   `rowControlRemove` **[boolean][56]** true - Flag option for specifying if a row delete button should be displayed
--   `rowControlMove` **[boolean][56]** true - Flag option for specifying if row move buttons should be displayed
--   `rowControlDuplicate` **[boolean][56]** true - Flag option for specifying if a row duplicate button should be displayed
--   `rowControlAdd` **[boolean][56]** true - Flag option for specifying if row add buttons should be displayed
--   `clipContent` **[boolean][56]** false - Whether cells content should wrap or clip the text content
--   `emptyToNull` **[boolean][56]** false - Flag that determines if empty values are transformed to null in the value function of the formStore
--   `disabled` **[boolean][56]** false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
--   `readOnly` **[boolean][56]** false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
--   `readMode` **[boolean][56]** false - If true, displays the field as label and value without the actual form input
--   `key` **[string][57]** "" - The column key that will be used in the values row for input and output
--   `label` **[string][57]** "" - The column label
--   `show` **[boolean][56]** undefined - If false, the column will not be displayed at all
--   `readOnly` **[boolean][56]** undefined - If true, the column will be displayed as read only cells
--   `defaultValue` **[string][57]** "" - The default value the column will take when creating a new row
--   `duplicatedValue` **[string][57]** "" - The default value the column will take when duplicating an existing row
--   `width` **[string][57]** undefined - The column width (e.g. "50px" or "25%")
+-   `label` **[string][97]** "" - The field label
+-   `labelTooltip` **[string][97]** "" - The field label tooltip message
+-   `type` **[string][97]** "DataSheet"
+-   `value` **[array][98]** \[] - The current value of the field
+-   `defaultValue` **[array][98]** \[] - The defaultValue of the field
+-   `headers` **[array][98]** \[] - The headers of the datasheet, must be an array of objects dscribing at least a "label" and a "key" property
+-   `path` **[string][97]** "" - Field path
+-   `min` **[number][100]** 0 - Minimum rows that the field can have
+-   `max` **[number][100]** Infinity - Maximum rows that the field can have
+-   `rowControlRemove` **[boolean][96]** true - Flag option for specifying if a row delete button should be displayed
+-   `rowControlMove` **[boolean][96]** true - Flag option for specifying if row move buttons should be displayed
+-   `rowControlDuplicate` **[boolean][96]** true - Flag option for specifying if a row duplicate button should be displayed
+-   `rowControlAdd` **[boolean][96]** true - Flag option for specifying if row add buttons should be displayed
+-   `clipContent` **[boolean][96]** false - Whether cells content should wrap or clip the text content
+-   `emptyToNull` **[boolean][96]** false - Flag that determines if empty values are transformed to null in the value function of the formStore
+-   `disabled` **[boolean][96]** false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
+-   `readOnly` **[boolean][96]** false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
+-   `readMode` **[boolean][96]** false - If true, displays the field as label and value without the actual form input
+-   `key` **[string][97]** "" - The column key that will be used in the values row for input and output
+-   `label` **[string][97]** "" - The column label
+-   `show` **[boolean][96]** undefined - If false, the column will not be displayed at all
+-   `readOnly` **[boolean][96]** undefined - If true, the column will be displayed as read only cells
+-   `defaultValue` **[string][97]** "" - The default value the column will take when creating a new row
+-   `duplicatedValue` **[string][97]** "" - The default value the column will take when duplicating an existing row
+-   `width` **[string][97]** undefined - The column width (e.g. "50px" or "25%")
 
 ### Slider
 
@@ -519,17 +729,22 @@ Slider input field
 
 **Parameters**
 
--   `label` **[string][57]** "" - The field label
--   `type` **[string][57]** "Slider"
--   `value` **([number][60] \| [Range][61])** null - The current value. If only a number is provided, a single slider will get rendered. If a range object {min:x, max:y} is provided, two sliders will get rendered.
--   `defaultValue` **([number][60] \| [Range][61])** null - The defaultValue of the field
--   `path` **[string][57]** "" - Field path
--   `disabled` **[boolean][56]** false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
--   `readOnly` **[boolean][56]** false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
--   `readMode` **[boolean][56]** false - If true, displays the field as label and value without the actual form input
--   `min` **[number][60]** null (required) - minimum value. You cannot drag your slider under this value.
--   `max` **[number][60]** null (required) - maximum value. You cannot drag your slider beyond this value.
--   `step` **[number][60]** 1 - The default increment/decrement is 1. You can change that by setting a different number to this property.
+-   `label` **[string][97]** "" - The field label
+-   `labelTooltip` **[string][97]** "" - The field label tooltip message
+-   `type` **[string][97]** "Slider"
+-   `value` **([number][100] \| [Range][101])** null - The current value. If only a number is provided, a single slider will get rendered. If a range object {min:x, max:y} is provided, two sliders will get rendered.
+-   `defaultValue` **([number][100] \| [Range][101])** null - The defaultValue of the field
+-   `path` **[string][97]** "" - Field path
+-   `disabled` **[boolean][96]** false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
+-   `readOnly` **[boolean][96]** false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
+-   `readMode` **[boolean][96]** false - If true, displays the field as label and value without the actual form input
+-   `min` **[number][100]** null (required) - minimum value. You cannot drag your slider under this value.
+-   `max` **[number][100]** null (required) - maximum value. You cannot drag your slider beyond this value.
+-   `step` **[number][100]** 1 - The default increment/decrement is 1. You can change that by setting a different number to this property.
+
+### FieldLabel
+
+Label for all fields
 
 ## SingleField
 
@@ -541,8 +756,8 @@ ActionIcon component
 
 **Properties**
 
--   `icon` **[string][57]** required - glyphicon to display [https://getbootstrap.com/docs/3.3/components/#glyphicons][62]
--   `onClick` **[function][59]** optional - callback for when action is clicked
+-   `icon` **[string][97]** required - glyphicon to display [https://getbootstrap.com/docs/3.3/components/#glyphicons][102]
+-   `onClick` **[function][99]** optional - callback for when action is clicked
 
 ## GenericList
 
@@ -550,11 +765,137 @@ Generic List component that renders a list of items using Bootstrap Panels
 
 **Properties**
 
--   `items` **[array][58]** required - an array of items to be displayed in the list. Can be an array of primitives or objects
--   `expanded` **[boolean][56]** optional - if the panel is expanded by default
--   `itemTitle` **[object][55]** optional - react component to render the title for individual items. Gets passed the item to be rendered as a prop. Default value: ({ item }) => item
--   `itemBody` **[boolean][56]** optional - react component to render the body for individual items. Gets passed the item to be rendered as a prop. Only necessary if you want a body to be displayed
--   `actions` **[array][58]** required - an array of actions. An actions can be any react components that get rendered in the top right corner of the panel. For callback, implement the onClick which gets called with the selected item.
+-   `items` **[array][98]** required - an array of items to be displayed in the list. Can be an array of primitives or objects
+-   `expanded` **[boolean][96]** optional - if the panel is expanded by default
+-   `itemTitle` **[object][95]** optional - react component to render the title for individual items. Gets passed the item to be rendered as a prop. Default value: ({ item }) => item
+-   `itemBody` **[boolean][96]** optional - react component to render the body for individual items. Gets passed the item to be rendered as a prop. Only necessary if you want a body to be displayed
+-   `actions` **[array][98]** required - an array of actions. An actions can be any react components that get rendered in the top right corner of the panel. For callback, implement the onClick which gets called with the selected item.
+
+## 
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## isNumber
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## mobx
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## default
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## isObservableArray
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## isObservableArray
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## observable
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## observable
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## observable
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## observable
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## action
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## action
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## action
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## action
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## action
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## toJS
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## toJS
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## OptionsStore
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
 
 [1]: #stores
 
@@ -590,92 +931,172 @@ Generic List component that renders a list of items using Bootstrap Panels
 
 [17]: #reset-1
 
-[18]: #form
+[18]: #react
 
-[19]: #values-2
+[19]: #react-1
 
-[20]: #formfields
+[20]: #react-2
 
-[21]: #inputtextfield
+[21]: #react-3
 
-[22]: #options
+[22]: #react-4
 
-[23]: #inputtextmultiplefield
+[23]: #react-5
 
-[24]: #options-1
+[24]: #react-6
 
-[25]: #textareafield
+[25]: #react-7
 
-[26]: #options-2
+[26]: #react-8
 
-[27]: #nestedfield
+[27]: #react-9
 
-[28]: #nestedremovebutton
+[28]: #react-10
 
-[29]: #nestedmoveupbutton
+[29]: #react-11
 
-[30]: #nestedmovedownbutton
+[30]: #react-12
 
-[31]: #nestedduplicatebutton
+[31]: #react-13
 
-[32]: #options-3
+[32]: #react-14
 
-[33]: #addinstance
+[33]: #react-15
 
-[34]: #duplicateinstance
+[34]: #react-16
 
-[35]: #moveinstance
+[35]: #react-17
 
-[36]: #removeinstance
+[36]: #react-18
 
-[37]: #selectfield
+[37]: #react-19
 
-[38]: #options-4
+[38]: #react-20
 
-[39]: #dropdownselectfield
+[39]: #react-21
 
-[40]: #options-5
+[40]: #form
 
-[41]: #treeselectfield
+[41]: #values-2
 
-[42]: #options-6
+[42]: #formfields
 
-[43]: #checkboxfield
+[43]: #inputtextfield
 
-[44]: #options-7
+[44]: #options
 
-[45]: #groupselectfield
+[45]: #inputtextmultiplefield
 
-[46]: #options-8
+[46]: #options-1
 
-[47]: #datasheetfield
+[47]: #textareafield
 
-[48]: #headeroptions
+[48]: #options-2
 
-[49]: #slider
+[49]: #nestedfield
 
-[50]: #options-9
+[50]: #nestedremovebutton
 
-[51]: #singlefield
+[51]: #nestedmoveupbutton
 
-[52]: #actionicon
+[52]: #nestedmovedownbutton
 
-[53]: #genericlist
+[53]: #nestedduplicatebutton
 
-[54]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON
+[54]: #options-3
 
-[55]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[55]: #addinstance
 
-[56]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[56]: #duplicateinstance
 
-[57]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[57]: #moveinstance
 
-[58]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[58]: #removeinstance
 
-[59]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[59]: #selectfield
 
-[60]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[60]: #options-4
 
-[61]: https://developer.mozilla.org/docs/Web/HTML/Element/Input
+[61]: #dropdownselectfield
 
-[62]: https://getbootstrap.com/docs/3.3/components/#glyphicons
+[62]: #options-5
+
+[63]: #treeselectfield
+
+[64]: #options-6
+
+[65]: #checkboxfield
+
+[66]: #options-7
+
+[67]: #groupselectfield
+
+[68]: #options-8
+
+[69]: #datasheetfield
+
+[70]: #headeroptions
+
+[71]: #slider
+
+[72]: #options-9
+
+[73]: #fieldlabel
+
+[74]: #singlefield
+
+[75]: #actionicon
+
+[76]: #genericlist
+
+[77]: #isnumber
+
+[78]: #mobx
+
+[79]: #default
+
+[80]: #isobservablearray
+
+[81]: #isobservablearray-1
+
+[82]: #observable
+
+[83]: #observable-1
+
+[84]: #observable-2
+
+[85]: #observable-3
+
+[86]: #action
+
+[87]: #action-1
+
+[88]: #action-2
+
+[89]: #action-3
+
+[90]: #action-4
+
+[91]: #tojs
+
+[92]: #tojs-1
+
+[93]: #optionsstore
+
+[94]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON
+
+[95]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+[96]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
+[97]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+
+[98]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+[99]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+
+[100]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+[101]: https://developer.mozilla.org/docs/Web/HTML/Element/Input
+
+[102]: https://getbootstrap.com/docs/3.3/components/#glyphicons

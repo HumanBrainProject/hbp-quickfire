@@ -7,11 +7,13 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
 import { toJS } from "mobx";
-import { ControlLabel, Alert } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 import InputRange from "react-input-range";
 import injectStyles from "react-jss";
 import { isObject, isFunction } from "lodash";
 import { getPrecision, lowerPrecision } from "../Helpers";
+
+import FieldLabel from "./FieldLabel";
 
 const sliderColor = "#007bff";
 const backgroundColor = "#a9a9a9";
@@ -177,14 +179,14 @@ export default class Slider extends React.Component {
       return this.renderReadMode();
     }
 
-    let { label, value, min, max, formatLabel, step, disabled, readOnly, validationErrors } = this.props.field;
+    let { value, min, max, formatLabel, step, disabled, readOnly, validationErrors } = this.props.field;
     let { classes } = this.props;
     if (value == null) {
       value = toJS(min);
     }
     return (
       <div className={`quickfire-field-slider ${disabled? "quickfire-field-disabled": ""} ${readOnly? "quickfire-field-readonly": ""}`}>
-        {label && <ControlLabel className={"quickfire-label"}>{label}</ControlLabel>}
+        <FieldLabel field={this.props.field}/>
         <input style={{display:"none"}} type="text" ref={ref=>this.hiddenInputRef = ref}/>
         <div className={`quickfire-slider ${classes.slider}`}>
           <InputRange
@@ -205,7 +207,6 @@ export default class Slider extends React.Component {
 
   renderReadMode(){
     let {
-      label,
       value,
       disabled,
       readOnly
@@ -215,7 +216,7 @@ export default class Slider extends React.Component {
 
     return (
       <div className={`quickfire-field-slider quickfire-readmode ${classes.readMode} ${disabled? "quickfire-field-disabled": ""} ${readOnly? "quickfire-field-readonly": ""}`}>
-        {label && <ControlLabel className={"quickfire-label"}>{label}</ControlLabel>}
+        <FieldLabel field={this.props.field}/>
         {isFunction(this.props.readModeRendering)?
           this.props.readModeRendering(this.props.field)
           :

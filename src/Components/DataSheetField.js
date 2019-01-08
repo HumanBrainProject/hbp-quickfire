@@ -7,12 +7,13 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
 import { toJS } from "mobx";
-import { FormGroup, ControlLabel, Glyphicon, Alert, Button, DropdownButton, MenuItem } from "react-bootstrap";
+import { FormGroup, Glyphicon, Alert, Button, DropdownButton, MenuItem } from "react-bootstrap";
 import ReactDataSheet from "react-datasheet";
 import injectStyles from "react-jss";
 import { isFunction } from "lodash";
 
 import SingleField from "./SingleField";
+import FieldLabel from "./FieldLabel";
 import { isArray, isObject } from "lodash";
 
 const styles = {
@@ -456,7 +457,7 @@ export default class DataSheetField extends React.Component {
     }
 
     const { field, classes } = this.props;
-    const { label, value: values, disabled, readOnly, validationState, validationErrors, max, clipContent } = field;
+    const { value: values, disabled, readOnly, validationState, validationErrors, max, clipContent } = field;
 
     const grid = this.prepareData();
 
@@ -464,7 +465,7 @@ export default class DataSheetField extends React.Component {
       <FormGroup
         className={`quickfire-field-data-sheet ${!values.length? "quickfire-empty-field": ""}  ${disabled? "quickfire-field-disabled": ""} ${readOnly? "quickfire-field-readonly": ""}`}
         validationState={validationState}>
-        {label && <ControlLabel className={"quickfire-label"}>{label}</ControlLabel>}
+        <FieldLabel field={this.props.field}/>
 
         <div>
           <div className={"quickfire-data-sheet-container"} onChange={this.handleChange} onKeyDown={this.handleKeyDown}>
@@ -495,12 +496,12 @@ export default class DataSheetField extends React.Component {
 
   renderReadMode(){
     const {field} = this.props;
-    const {label, value, disabled, readOnly, clipContent} = field;
+    const {value, disabled, readOnly, clipContent} = field;
     const grid = this.prepareData();
 
     return (
       <div className={`quickfire-field-data-sheet ${!value.length? "quickfire-empty-field":""} quickfire-readmode ${disabled? "quickfire-field-disabled": ""} ${readOnly? "quickfire-field-readonly": ""}`}>
-        {label && <ControlLabel className={"quickfire-label"}>{label}</ControlLabel>}
+        <FieldLabel field={this.props.field}/>
         {isFunction(this.props.readModeRendering)?
           this.props.readModeRendering(this.props.field)
           :
