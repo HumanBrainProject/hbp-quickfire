@@ -221,7 +221,7 @@ export default class TreeSelectField extends DefaultField{
       match = this.rfind(nodes, node =>
         isString(this.mappingValue) || isNumber(this.mappingValue)
           ? node[this.mappingValue] === valueToMatch[this.mappingValue]
-          : this.mappingValue.every(prop => node[prop] && valueToMatch[prop] && node[prop] === valueToMatch[prop])
+          : this.mappingValue.every(prop => (typeof node[prop] != "undefined") && (typeof valueToMatch[prop] != "undefined") && node[prop] === valueToMatch[prop]) // Allow the prop to be null, if necessary
 
         , this.mappingChildren);
     }
