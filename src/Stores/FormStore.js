@@ -8,11 +8,14 @@ import * as mobx from "mobx";
 import { observable, action } from "mobx";
 import { cloneDeep, has, isString, uniqueId, isFunction } from "lodash";
 import Validator from "validatorjs";
+import React from "react";
 
 import axios from "axios";
 
 import * as Fields from "./Fields";
 import optionsStore from "./OptionsStore";
+
+import {components} from "../Components/Field";
 
 const typesMapping = {
   "CheckBox": Fields.CheckBoxField,
@@ -25,7 +28,8 @@ const typesMapping = {
   "TextArea": Fields.TextAreaField,
   "TreeSelect": Fields.TreeSelectField,
   "Slider": Fields.Slider,
-  "DataSheet": Fields.DataSheetField
+  "DataSheet": Fields.DataSheetField,
+  "Default": Fields.DefaultField
 };
 
 let pathNodeSeparator = "/";
@@ -372,6 +376,21 @@ export default class FormStore {
 
   static getPathNodeSeparator(){
     return pathNodeSeparator;
+  }
+
+  static registerCustomField(fieldName, component, fieldStore){
+    if(components[fieldName] !== undefined || typesMapping[fieldName] !== undefined){
+      throw "Quickfire:registerCustomField: A field with that name is already registered";
+    }
+    if(!(component.prototype instanceof React.Component)){
+      throw "Quickfire:registerCustomField: component parameter must inherit React.Component";
+    }
+    if(!(fieldStore.prototype instanceof typesMapping.Default)){
+      throw "Quickfire:registerCustomField: fieldStore parameter must inherit Formstore.typesMapping.Default";
+    }
+
+    components[fieldName] = component;
+    typesMapping[fieldName] = fieldStore;
   }
 }
 
