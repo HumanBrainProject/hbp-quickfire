@@ -151,6 +151,7 @@ export default class Layout extends React.Component {
               <Route exact path="/License" component={Views.License}/>
               <Route exact path="/Confirm" component={Views.Confirm}/>
               <Route exact path="/Alert" component={Views.Alert}/>
+              <Route exact path="/CustomField" component={Views.CustomField}/>
             </div>
         </div>
       </Router>

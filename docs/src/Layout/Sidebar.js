@@ -107,6 +107,8 @@ export default class Sidebar extends React.Component{
           <li><NavLink className={"navlink"} activeClassName="active" to="/TextArea">TextArea</NavLink></li>
           <li><NavLink className={"navlink"} activeClassName="active" to="/TreeSelect">TreeSelect</NavLink></li>
           <li><NavLink className={"navlink"} activeClassName="active" to="/Slider">Slider</NavLink></li>
+          <li>&nbsp;</li>
+          <li><NavLink className={"navlink"} activeClassName="active" to="/CustomField">Custom field</NavLink></li>
         </ul>
         <hr/>
 
