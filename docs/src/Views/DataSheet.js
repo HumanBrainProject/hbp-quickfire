@@ -126,6 +126,30 @@ export default class DataSheetView extends View {
           }}
         />
 
+        <hr/>
+
+        <h4>Read mode</h4>
+        <View.ShowField 
+          definition={{
+            type:"DataSheet",
+            label:"Basic example",
+            readMode:true,
+            headers:[{
+              key:"col1",
+              label:"Col1"
+            },{
+              key:"col2",
+              label:"Col2"
+            }],
+            value:[
+              {col1:"Ipsum", col2:"dolor"},
+              {col1:"amet", col2:"consectetur"}
+            ]
+          }}
+        />
+
+        <hr/>
+
       </div>
     );
   }
