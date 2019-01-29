@@ -219,9 +219,9 @@ You can also find the API documentation below:
 -   [action][87]
 -   [action][88]
 -   [action][89]
--   [action][90]
+-   [toJS][90]
 -   [toJS][91]
--   [toJS][92]
+-   [computed][92]
 -   [OptionsStore][93]
 
 ## 
@@ -543,6 +543,7 @@ A simple text input
 
 -   `label` **[string][97]** "" - The field label
 -   `labelTooltip` **[string][97]** "" - The field label tooltip message
+-   `labelTooltipPlacement` **[string][97]** "top" - The field label tooltip message position
 -   `type` **[string][97]** "InputText"
 -   `value` **[string][97]** "" - The current value of the field
 -   `defaultValue` **[string][97]** "" - The defaultValue of the field
@@ -591,6 +592,7 @@ Field options are the same as for the InputTextField
 
 -   `label` **[string][97]** "" - The field label
 -   `labelTooltip` **[string][97]** "" - The field label tooltip message
+-   `labelTooltipPlacement` **[string][97]** "top" - The field label tooltip message position
 -   `type` **[string][97]** "InputText"
 -   `value` **[string][97]** "" - The current value of the field
 -   `defaultValue` **[string][97]** "" - The defaultValue of the field
@@ -634,6 +636,7 @@ has to be called by the app with &lt;Field.Duplicate/> component
 
 -   `label` **[string][97]** "" - The field label
 -   `labelTooltip` **[string][97]** "" - The field label tooltip message
+-   `labelTooltipPlacement` **[string][97]** "top" - The field label tooltip message position
 -   `buttonLabel` **[string][97]** "Add an item" - The label used for adding an item to the repeatable fields
 -   `type` **[string][97]** "Nested"
 -   `min` **[number][100]** 1 - min of nested children the field can have
@@ -688,6 +691,7 @@ A simple select input field
 
 -   `label` **[string][97]** "" - The field label
 -   `labelTooltip` **[string][97]** "" - The field label tooltip message
+-   `labelTooltipPlacement` **[string][97]** "top" - The field label tooltip message position
 -   `type` **[string][97]** "Select"
 -   `value` **[string][97]** "" - The current value of the field
 -   `defaultValue` **[string][97]** "" - The defaultValue of the field
@@ -716,6 +720,7 @@ through the call of the "onAddCustomValue" callback passed in paramter
 
 -   `label` **[string][97]** "" - The field label
 -   `labelTooltip` **[string][97]** "" - The field label tooltip message
+-   `labelTooltipPlacement` **[string][97]** "top" - The field label tooltip message position
 -   `type` **[string][97]** "DropdownSelect"
 -   `value` **[array][98]** \[] - The current value of the field
 -   `defaultValue` **[array][98]** \[] - The defaultValue of the field
@@ -746,6 +751,7 @@ Form component allowing to select multiple values from a tree structure
 
 -   `label` **[string][97]** "" - The field label
 -   `labelTooltip` **[string][97]** "" - The field label tooltip message
+-   `labelTooltipPlacement` **[string][97]** "top" - The field label tooltip message position
 -   `type` **[string][97]** "TreeSelect"
 -   `value` **[array][98]** \[] - The current value of the field
 -   `defaultValue` **[array][98]** \[] - The defaultValue of the field
@@ -767,6 +773,9 @@ Form component allowing to select multiple values from a tree structure
 -   `disabled` **[boolean][96]** false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
 -   `readOnly` **[boolean][96]** false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
 -   `readMode` **[boolean][96]** false - If true, displays the field as label and value without the actual form input
+-   `groupByNodes` **[array][98]** \[] - If provided, will display selected values grouped by the provided node matches
+-   `groupByLevel` **integer** null - If provided, will display selected values grouped by level
+-   `otherGroupLabel` **[string][97]** "Other values" - Label used for the group that contains values that doesn't fit into a group
 
 ### CheckBoxField
 
@@ -778,6 +787,7 @@ A simple checkbox
 
 -   `label` **[string][97]** "" - The field label
 -   `labelTooltip` **[string][97]** "" - The field label tooltip message
+-   `labelTooltipPlacement` **[string][97]** "top" - The field label tooltip message position
 -   `type` **[string][97]** "CheckBox"
 -   `value` **[string][97]** false - The current value of the field
 -   `defaultValue` **[string][97]** false - The defaultValue of the field
@@ -796,6 +806,7 @@ Form component allowing to select on/multiple values from a group of checkboxes/
 
 -   `label` **[string][97]** "" - The field label
 -   `labelTooltip` **[string][97]** "" - The field label tooltip message
+-   `labelTooltipPlacement` **[string][97]** "top" - The field label tooltip message position
 -   `type` **[string][97]** "GroupSelect"
 -   `value` **[array][98]** \[] - The current value of the field
 -   `defaultValue` **[array][98]** \[] - The defaultValue of the field
@@ -825,6 +836,7 @@ It uses the react-datasheet npm package to display to field
 
 -   `label` **[string][97]** "" - The field label
 -   `labelTooltip` **[string][97]** "" - The field label tooltip message
+-   `labelTooltipPlacement` **[string][97]** "top" - The field label tooltip message position
 -   `type` **[string][97]** "DataSheet"
 -   `value` **[array][98]** \[] - The current value of the field
 -   `defaultValue` **[array][98]** \[] - The defaultValue of the field
@@ -859,6 +871,7 @@ Slider input field
 
 -   `label` **[string][97]** "" - The field label
 -   `labelTooltip` **[string][97]** "" - The field label tooltip message
+-   `labelTooltipPlacement` **[string][97]** "top" - The field label tooltip message position
 -   `type` **[string][97]** "Slider"
 -   `value` **([number][100] \| [Range][101])** null - The current value. If only a number is provided, a single slider will get rendered. If a range object {min:x, max:y} is provided, two sliders will get rendered.
 -   `defaultValue` **([number][100] \| [Range][101])** null - The defaultValue of the field
@@ -997,13 +1010,6 @@ Copyright (c) Human Brain Project
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 
-## action
-
-Copyright (c) Human Brain Project
-
-This source code is licensed under the MIT license found in the
-LICENSE file in the root directory of this source tree.
-
 ## toJS
 
 Copyright (c) Human Brain Project
@@ -1012,6 +1018,13 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 
 ## toJS
+
+Copyright (c) Human Brain Project
+
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+
+## computed
 
 Copyright (c) Human Brain Project
 
@@ -1203,11 +1216,11 @@ LICENSE file in the root directory of this source tree.
 
 [89]: #action-3
 
-[90]: #action-4
+[90]: #tojs
 
-[91]: #tojs
+[91]: #tojs-1
 
-[92]: #tojs-1
+[92]: #computed
 
 [93]: #optionsstore
 

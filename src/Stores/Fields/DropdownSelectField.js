@@ -14,6 +14,7 @@ import optionsStore from "../OptionsStore";
  * @name Options
  * @param {string} label "" - The field label
  * @param {string} labelTooltip "" - The field label tooltip message
+ * @param {string} labelTooltipPlacement "top" - The field label tooltip message position
  * @param {string} type "DropdownSelect"
  * @param {array} value [] - The current value of the field
  * @param {array} defaultValue [] - The defaultValue of the field

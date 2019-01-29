@@ -14,6 +14,7 @@ import {Field} from "hbp-quickfire";
 let properties = [
   [`label`, `string`, `""`, `The field label`],
   [`labelTooltip`, `string`, `null`, `The field label tooltip message`],
+  [`labelTooltipPlacement`, `string`, `"top"`, `The field label tooltip placement`],
   [`buttonLabel`, `string`, `"Add an item"`, `The label used for adding an item to the repeatable fields`],
   [`min`, `number`, `1`, `min of nested children the field can have`],
   [`max`, `number`, `1`, `max of nested children the field can have`],

@@ -10,6 +10,7 @@ import View from "./_View";
 let properties = [
   [`label`, `string`, `""`, `The field label`],
   [`labelTooltip`, `string`, `null`, `The field label tooltip message`],
+  [`labelTooltipPlacement`, `string`, `"top"`, `The field label tooltip placement`],
   [`value`, `array`, `[]`, `The current value of the field`],
   [`defaultValue`, `array`, `[]`, `The defaultValue of the field`],
   [`max`, `number`, `Infinity`, `Maximum values that the field can have`],
