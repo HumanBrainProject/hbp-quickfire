@@ -19,7 +19,8 @@ export default class FieldLabel extends React.Component {
   render() {
     let {
       label,
-      labelTooltip
+      labelTooltip,
+      labelTooltipPlacement
     } = this.props.field;
 
     if(!label){
@@ -28,7 +29,7 @@ export default class FieldLabel extends React.Component {
       return (
         <ControlLabel className={"quickfire-label"}>
           {label}&nbsp;
-          <OverlayTrigger placement="top" overlay={<Tooltip id={this.props.formStore.getGeneratedKey(this.props.field, "label-tooltip")}>{labelTooltip}</Tooltip>}>
+          <OverlayTrigger placement={labelTooltipPlacement} overlay={<Tooltip id={this.props.formStore.getGeneratedKey(this.props.field, "label-tooltip")}>{labelTooltip}</Tooltip>}>
             <Glyphicon glyph={"question-sign"}/>
           </OverlayTrigger>
         </ControlLabel>

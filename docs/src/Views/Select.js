@@ -10,6 +10,7 @@ import View from "./_View";
 let properties = [
   [`label`, `string`, `""`, `The field label`],
   [`labelTooltip`, `string`, `null`, `The field label tooltip message`],
+  [`labelTooltipPlacement`, `string`, `"top"`, `The field label tooltip placement`],
   [`value`, `string`, `""`, `The current value of the field`],
   [`defaultValue`, `string`, `""`, `The defaultValue of the field`],
   [`options`, `array`, `[]`, `An array of strings or objects with value and label defined by the mapping`],

@@ -510,7 +510,8 @@ export default class DataSheetField extends React.Component {
               ref={ref => this.dataSheetRef = ref}
               overflow={clipContent?"clip":"wrap"}
               data={grid}
-              valueRenderer={this.renderCell}
+              valueRenderer={cell => cell.value}
+              valueViewer={this.renderCell}
               rowRenderer={this.renderRow}
               sheetRenderer={this.renderSheet}
               keyFn={this.keyGenerator}

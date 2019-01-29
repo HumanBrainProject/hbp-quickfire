@@ -10,6 +10,7 @@ import View from "./_View";
 let properties = [
   [`label`, `string`, `""`, `The field label`],
   [`labelTooltip`, `string`, `null`, `The field label tooltip message`],
+  [`labelTooltipPlacement`, `string`, `"top"`, `The field label tooltip placement`],
   [`value`, `array`, `[]`, `The current value of the field`],
   [`defaultValue`, `array`, `[]`, `The defaultValue of the field`],
   [`headers`, `array`, `[]`, `The headers of the datasheet, must be an array of objects dscribing at least a "label" and a "key" property. See below for more details on headers options`],
@@ -125,6 +126,30 @@ export default class DataSheetView extends View {
             ]
           }}
         />
+
+        <hr/>
+
+        <h4>Read mode</h4>
+        <View.ShowField 
+          definition={{
+            type:"DataSheet",
+            label:"Basic example",
+            readMode:true,
+            headers:[{
+              key:"col1",
+              label:"Col1"
+            },{
+              key:"col2",
+              label:"Col2"
+            }],
+            value:[
+              {col1:"Ipsum", col2:"dolor"},
+              {col1:"amet", col2:"consectetur"}
+            ]
+          }}
+        />
+
+        <hr/>
 
       </div>
     );

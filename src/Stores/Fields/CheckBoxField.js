@@ -13,6 +13,7 @@ import DefaultField from "./DefaultField";
  * @name Options
  * @param {string} label "" - The field label
  * @param {string} labelTooltip "" - The field label tooltip message
+ * @param {string} labelTooltipPlacement "top" - The field label tooltip message position
  * @param {string} type "CheckBox"
  * @param {string} value false - The current value of the field
  * @param {string} defaultValue false - The defaultValue of the field

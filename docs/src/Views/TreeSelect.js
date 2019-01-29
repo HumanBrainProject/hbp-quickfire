@@ -13,6 +13,7 @@ import mockupTreeData from "../MockupData/HBP_MEM_0000000.json";
 let properties = [
   [`label`, `string`, `""`, `The field label`],
   [`labelTooltip`, `string`, `null`, `The field label tooltip message`],
+  [`labelTooltipPlacement`, `string`, `"top"`, `The field label tooltip placement`],
   [`value`, `array`, `[]`, `The current value of the field`],
   [`defaultValue`, `array`, `[]`, `The defaultValue of the field`],
   [`data`, `array`, `{}`, `The tree structure to select from, must be an object with eventually an array of children`],
