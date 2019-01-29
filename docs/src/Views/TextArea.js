@@ -10,6 +10,7 @@ import View from "./_View";
 let properties = [
   [`label`, `string`, `""`, `The field label`],
   [`labelTooltip`, `string`, `null`, `The field label tooltip message`],
+  [`labelTooltipPlacement`, `string`, `"top"`, `The field label tooltip placement`],
   [`value`, `string`, `""`, `The current value of the field`],
   [`defaultValue`, `string`, `""`, `The defaultValue of the field`],
   [`emptyToNull`, `boolean`, `true`, `Flag that determines if empty values are transformed to null in the value function of the formStore`],

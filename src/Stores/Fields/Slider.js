@@ -13,6 +13,7 @@ import DefaultField from "./DefaultField";
  * @name Options
  * @param {string} label "" - The field label
  * @param {string} labelTooltip "" - The field label tooltip message
+ * @param {string} labelTooltipPlacement "top" - The field label tooltip message position
  * @param {string} type "Slider"
  * @param {number|Range} value null - The current value. If only a number is provided, a single slider will get rendered. If a range object {min:x, max:y} is provided, two sliders will get rendered.
  * @param {number|Range} defaultValue null - The defaultValue of the field

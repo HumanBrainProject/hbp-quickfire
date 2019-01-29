@@ -12,6 +12,7 @@ export default class DefaultField{
   @observable type = "Default";
   @observable label = null;
   @observable labelTooltip = null;
+  @observable labelTooltipPlacement = "top";
   @observable value = null;
   @observable placeholder = null;
   @observable defaultValue = null;
@@ -39,7 +40,9 @@ export default class DefaultField{
 
   //Properties are used to know what's part of a field definition
   static get properties(){
-    return ["type", "label", "labelTooltip", "value", "defaultValue", "emptyToNull", "disabled", "readOnly", "readAndDeleteOnly", "readMode", "validationRules", "customErrorMessages", "validationOptions", "customValidationFunctions", "placeholder"];
+    return ["type", "label", "labelTooltip", "labelTooltipPlacement", "value", "defaultValue", "emptyToNull", "disabled",
+      "readOnly", "readAndDeleteOnly", "readMode", "validationRules", "customErrorMessages", "validationOptions",
+      "customValidationFunctions", "placeholder"];
   }
 
   constructor(fieldData, store, path){
