@@ -10,7 +10,7 @@ import injectStyles from "react-jss";
 import { FormGroup, FormControl, InputGroup, Button, Glyphicon, Alert } from "react-bootstrap";
 import autosize from "autosize";
 import getLineHeight from "line-height";
-import { isFunction } from "lodash";
+import { isFunction, isString } from "lodash";
 
 import FieldLabel from "./FieldLabel";
 import clipboard from "../Stores/ClipboardStore";
@@ -183,7 +183,7 @@ export default class InputTextField extends React.Component {
           this.props.readModeRendering(this.props.field)
           : this.props.componentClass === "textarea"?
             <div className="quickfire-readmode-value quickfire-readmode-textarea-value">
-              {value.split("\n").map((line, index) => {
+              {isString(value) && value.split("\n").map((line, index) => {
                 return(
                   <p key={line+(""+index)}>{line}</p>
                 );
