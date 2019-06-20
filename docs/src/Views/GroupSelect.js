@@ -18,7 +18,7 @@ let properties = [
   [`cacheOptionsUrl`, `boolean`, `false`, `whether to cache optionsUrl fetched response`],
   [`mappingValue`, `string | array`, `"value"`, `The name(s) of the option object field(s) related to the option value, used to match passed in values to actual options`],
   [`mappingLabel`, `string`, `"label"`, `the name of the option object field related to the option label`],
-  [`mappingReturn`, `string`, `null`, `the property of the option object used to return the value(s) - null will return the whole object`],
+  [`mappingReturn`, `string | array`, `null`, `the property/properties of the option object used to return the value(s) - null will return the whole object`],
   [`returnSingle`, `boolean`, `boolean`, `wether or not to return the first value or an array of values`],
   [`max`, `number`, `Infinity`, `Maximum values that the field can have`],
   [`emptyToNull`, `boolean`, `false`, `Flag that determines if empty values are transformed to null in the value function of the formStore`],

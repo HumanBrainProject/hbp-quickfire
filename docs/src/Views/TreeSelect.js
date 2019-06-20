@@ -22,7 +22,7 @@ let properties = [
   [`mappingValue`, `string | array`, `"value"`, `The name(s) of the node object field(s) related to the node value, used to match passed in values to actual tree nodes`],
   [`mappingLabel`, `string`, `"label"`, `The name of the node object field related to the node label`],
   [`mappingChildren`, `string`, `"children"`, `The name of the node object field related to the node children`],
-  [`mappingReturn`, `string`, `null`, `The property of the option object used to return the value(s) - null will return the whole object`],
+  [`mappingReturn`, `string | array`, `null`, `The property/properties of the option object used to return the value(s) - null will return the whole object`],
   [`returnSingle`, `boolean`, `boolean`, `Wether or not to return the first value or an array of values`],
   [`max`, `number`, `Infinity`, `Maximum values that the field can have`],
   [`selectOnlyLeaf`, `boolean`, `false`, `If enabled, only leaves can be selected and not the intermediary nodes`],

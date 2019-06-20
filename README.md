@@ -731,7 +731,7 @@ through the call of the "onAddCustomValue" callback passed in paramter
 -   `allowCustomValues` **[boolean][96]** false - if the field should try to accept user inputed values
 -   `mappingValue` **([string][97] \| [array][98])** "value" - The name(s) of the option object field(s) related to the option value, used to match passed in values to actual options
 -   `mappingLabel` **[string][97]** "label" - the name of the option object field related to the option label
--   `mappingReturn` **[string][97]** null - the property of the option object used to return the value(s) - null will return the whole object
+-   `mappingReturn` **([string][97] \| [array][98])** null - the property/properties of the option object used to return the value(s) - null will return the whole object
 -   `returnSingle` **[boolean][96]** boolean - wether or not to return the first value or an array of values
 -   `max` **[number][100]** Infinity - Maximum values that the field can have
 -   `emptyToNull` **[boolean][96]** false - Flag that determines if empty values are transformed to null in the value function of the formStore
@@ -762,7 +762,7 @@ Form component allowing to select multiple values from a tree structure
 -   `mappingValue` **([string][97] \| [array][98])** "value" - The name(s) of the node object field(s) related to the node value, used to match passed in values to actual tree nodes
 -   `mappingLabel` **[string][97]** "label" - the name of the node object field related to the node label
 -   `mappingChildren` **[string][97]** "children" - the name of the node object field related to the node children
--   `mappingReturn` **[string][97]** null - the property of the option object used to return the value(s) - null will return the whole object
+-   `mappingReturn` **([string][97] \| [array][98])** null - the property/properties of the option object used to return the value(s) - null will return the whole object
 -   `returnSingle` **[boolean][96]** boolean - wether or not to return the first value or an array of values
 -   `max` **[number][100]** Infinity - Maximum values that the field can have
 -   `selectOnlyLeaf` **[boolean][96]** false - If enabled, only leaves can be selected and not the intermediary nodes
@@ -816,7 +816,7 @@ Form component allowing to select on/multiple values from a group of checkboxes/
 -   `path` **[string][97]** "" - Field path
 -   `mappingValue` **([string][97] \| [array][98])** "value" - The name(s) of the option object field(s) related to the option value, used to match passed in values to actual options
 -   `mappingLabel` **[string][97]** "label" - the name of the option object field related to the option label
--   `mappingReturn` **[string][97]** null - the property of the option object used to return the value(s) - null will return the whole object
+-   `mappingReturn` **([string][97] \| [array][98])** null - the property/properties of the option object used to return the value(s) - null will return the whole object
 -   `returnSingle` **[boolean][96]** boolean - wether or not to return the first value or an array of values
 -   `max` **[number][100]** Infinity - Maximum values that the field can have
 -   `emptyToNull` **[boolean][96]** false - Flag that determines if empty values are transformed to null in the value function of the formStore
