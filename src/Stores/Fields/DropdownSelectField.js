@@ -25,7 +25,7 @@ import optionsStore from "../OptionsStore";
  * @param {boolean} allowCustomValues  false - if the field should try to accept user inputed values
  * @param {string | array} mappingValue "value" - The name(s) of the option object field(s) related to the option value, used to match passed in values to actual options
  * @param {string} mappingLabel "label" - the name of the option object field related to the option label
- * @param {string} mappingReturn null - the property of the option object used to return the value(s) - null will return the whole object
+ * @param {string | array} mappingReturn null - the property/properties of the option object used to return the value(s) - null will return the whole object
  * @param {boolean} returnSingle boolean - wether or not to return the first value or an array of values
  * @param {number} max Infinity - Maximum values that the field can have
  * @param {boolean} emptyToNull false - Flag that determines if empty values are transformed to null in the value function of the formStore

@@ -19,7 +19,7 @@ let properties = [
   [`allowCustomValues`, `boolean`, ` false`, `if the field should try to accept user inputed values`],
   [`mappingValue`, `string | array`, `"value"`, `The name(s) of the option object field(s) related to the option value, used to match passed in values to actual options`],
   [`mappingLabel`, `string`, `"label"`, `the name of the option object field related to the option label`],
-  [`mappingReturn`, `string`, `null`, `the property of the option object used to return the value(s) - null will return the whole object`],
+  [`mappingReturn`, `string | array`, `null`, `the property/properties of the option object used to return the value(s) - null will return the whole object`],
   [`returnSingle`, `boolean`, `boolean`, `wether or not to return the first value or an array of values`],
   [`max`, `number`, `Infinity`, `Maximum number of values that the field can have`],
   [`emptyToNull`, `boolean`, `false`, `Flag that determines if empty values are transformed to null in the value function of the FormStore`],
@@ -86,6 +86,15 @@ export default class DropdownSelect extends View{
           max:1,
           mappingReturn:"value",
           returnSingle: true
+        }}/>
+        <hr/>
+
+        <h4>Mapping the returned value with array</h4>
+        <View.ShowField definition={{
+          type:"DropdownSelect",
+          label:"Select a country",
+          options:countryList,
+          mappingReturn:["value"],
         }}/>
         <hr/>
 

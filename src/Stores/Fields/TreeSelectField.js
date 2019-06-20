@@ -25,7 +25,7 @@ import optionsStore from "../OptionsStore";
  * @param {string | array} mappingValue "value" - The name(s) of the node object field(s) related to the node value, used to match passed in values to actual tree nodes
  * @param {string} mappingLabel "label" - the name of the node object field related to the node label
  * @param {string} mappingChildren "children" - the name of the node object field related to the node children
- * @param {string} mappingReturn null - the property of the option object used to return the value(s) - null will return the whole object
+ * @param {string | array} mappingReturn null - the property/properties of the option object used to return the value(s) - null will return the whole object
  * @param {boolean} returnSingle boolean - wether or not to return the first value or an array of values
  * @param {number} max Infinity - Maximum values that the field can have
  * @param {boolean} selectOnlyLeaf false - If enabled, only leaves can be selected and not the intermediary nodes
