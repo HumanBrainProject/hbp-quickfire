@@ -160,4 +160,31 @@ describe("GroupSelect Component", () => {
     mountPoint.find('input[type="radio"]').at(1).simulate('change', { target: { checked: true } });
     expect(mountPoint.instance().value[0].value).toBe("fr");
   });
+
+  it("should return only value when mappingReturn is string", () => {
+    let mountPoint = mount(
+      <SingleField 
+        type="GroupSelect"  
+        options={fakeOptions}
+        max={1}
+        returnSingle={true}
+        mappingReturn="value"/>
+    );
+    mountPoint.find('input[type="radio"]').first().simulate('change', { target: { checked: true } });
+    expect(mountPoint.instance().value).toBe("fr");
+  });
+
+  it("should return object when mappingReturn is an array of keys", () => {
+    let mountPoint = mount(
+      <SingleField 
+        type="GroupSelect"  
+        options={fakeOptions}
+        max={1}
+        returnSingle={true}
+        mappingReturn={["value"]}/>
+    );
+    mountPoint.find('input[type="radio"]').first().simulate('change', { target: { checked: true } });
+    expect(mountPoint.instance().value).toEqual({value: "fr"});
+  });
+
  });

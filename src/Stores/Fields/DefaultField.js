@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 import { action, observable, toJS, isObservableArray } from "mobx";
-import { merge, isArray, remove, isObject } from "lodash";
+import { merge, isArray, remove, isObject, pick } from "lodash";
 import Validator from "validatorjs";
 
 export default class DefaultField{
@@ -125,10 +125,19 @@ export default class DefaultField{
 
   mapReturnValue(value){
     if(this.mappingReturn){
+      const mappingReturn = toJS(this.mappingReturn);
       if(isArray(value)){
-        value = value.map( obj => obj[this.mappingReturn]);
+        if (isArray(mappingReturn)) {
+          value = value.map( obj => pick(obj, mappingReturn));
+        } else {
+          value = value.map( obj => obj[mappingReturn]);
+        }
       } else if(isObject(value)){
-        value = value[this.mappingReturn];
+        if (isArray(mappingReturn)) {
+          value = pick(value, mappingReturn);
+        } else {
+          value = value[mappingReturn];
+        }
       }
     }
     if(this.returnSingle && isArray(value)){
