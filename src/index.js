@@ -15,6 +15,7 @@ export { default as GenericList } from "./Components/GenericList";
 export { default as Slider } from "./Components/Slider";
 export { default as Confirm } from "./Components/Confirm";
 export { default as Alert } from "./Components/Alert";
+export { components as Components } from "./Components/Field";
 
 /* Export usable Stores */
 /**
