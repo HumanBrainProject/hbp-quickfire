@@ -332,7 +332,7 @@ export default class DropdownSelectField extends React.Component {
     let filteredOptions = [];
     if(dropdownOpen){
       filteredOptions = filter(options, (option) => {
-        return option[mappingLabel].match(regexSearch);
+        return option[mappingLabel] != null && option[mappingLabel].match(regexSearch);
       });
       filteredOptions = difference(filteredOptions, values);
     }
