@@ -601,6 +601,7 @@ through the call of the "onAddCustomValue" callback passed in paramter
 -   `cacheOptionsUrl` **[string][97]** false - whether to cache optionsUrl fetching response
 -   `path` **[string][97]** "" - Field path
 -   `allowCustomValues` **[boolean][96]** false - if the field should try to accept user inputed values
+-   `customValueLabel` **[string][97]** "Add a value:" - Label that gets displayed when entering a new custom value. allowCustomValues need to be true for this to show up.
 -   `mappingValue` **([string][97] \| [array][98])** "value" - The name(s) of the option object field(s) related to the option value, used to match passed in values to actual options
 -   `mappingLabel` **[string][97]** "label" - the name of the option object field related to the option label
 -   `mappingReturn` **([string][97] \| [array][98])** null - the property/properties of the option object used to return the value(s) - null will return the whole object
