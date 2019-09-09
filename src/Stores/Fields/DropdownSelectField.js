@@ -23,6 +23,7 @@ import optionsStore from "../OptionsStore";
  * @param {string} cacheOptionsUrl false - whether to cache optionsUrl fetching response
  * @param {string} path "" - Field path
  * @param {boolean} allowCustomValues  false - if the field should try to accept user inputed values
+ * @param {string} customValueLabel  "Add a value:" - Label that gets displayed when entering a new custom value. allowCustomValues need to be true for this to show up.
  * @param {string | array} mappingValue "value" - The name(s) of the option object field(s) related to the option value, used to match passed in values to actual options
  * @param {string} mappingLabel "label" - the name of the option object field related to the option label
  * @param {string | array} mappingReturn null - the property/properties of the option object used to return the value(s) - null will return the whole object
@@ -43,6 +44,7 @@ export default class DropdownSelectField extends DefaultField{
   @observable optionsUrl = null;
   @observable cacheOptionsUrl = false;
   @observable allowCustomValues =  false;
+  @observable customValueLabel = "Add a value:";
   @observable mappingValue = "value";
   @observable mappingLabel = "label";
   @observable mappingReturn = null;
@@ -54,7 +56,7 @@ export default class DropdownSelectField extends DefaultField{
   __emptyValue = () => [];
 
   static get properties(){
-    return union(super.properties,["value", "defaultValue", "options", "optionsUrl", "cacheOptionsUrl", "allowCustomValues",
+    return union(super.properties,["value", "defaultValue", "options", "optionsUrl", "cacheOptionsUrl", "allowCustomValues", "customValueLabel",
       "mappingValue", "mappingLabel", "mappingReturn", "returnSingle", "max", "listPosition", "closeDropdownAfterInteraction"]);
   }
 
