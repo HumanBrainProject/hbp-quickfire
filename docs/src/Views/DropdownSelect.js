@@ -17,6 +17,7 @@ let properties = [
   [`optionsUrl`, `string`, `null`, `URL to fetch the select options from`],
   [`cacheOptionsUrl`, `boolean`, `false`, `whether to cache optionsUrl fetched response`],
   [`allowCustomValues`, `boolean`, ` false`, `if the field should try to accept user inputed values`],
+  [`customValueLabel`, `string`, ` Add a value:`, `Label that gets displayed when entering a new custom value. allowCustomValues need to be true for this to show up`],
   [`mappingValue`, `string | array`, `"value"`, `The name(s) of the option object field(s) related to the option value, used to match passed in values to actual options`],
   [`mappingLabel`, `string`, `"label"`, `the name of the option object field related to the option label`],
   [`mappingReturn`, `string | array`, `null`, `the property/properties of the option object used to return the value(s) - null will return the whole object`],

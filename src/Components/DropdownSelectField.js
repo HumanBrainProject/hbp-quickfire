@@ -322,7 +322,7 @@ export default class DropdownSelectField extends React.Component {
     }
 
     let { classes, formStore } = this.props;
-    let { options, value: values, mappingLabel, listPosition, disabled, readOnly, max, allowCustomValues, validationErrors, validationState } = this.props.field;
+    let { options, value: values, mappingLabel, listPosition, disabled, readOnly, max, allowCustomValues, customValueLabel, validationErrors, validationState } = this.props.field;
 
     let dropdownOpen = (!disabled && !readOnly && values.length < max && this.wrapperRef && this.wrapperRef.contains(document.activeElement));
     let dropdownClass = dropdownOpen? "open": "";
@@ -401,7 +401,7 @@ export default class DropdownSelectField extends React.Component {
                 {allowCustomValues && this.state.userInputValue?
                   <MenuItem className={"quickfire-dropdown-item"} key={this.state.userInputValue} onSelect={this.handleSelect.bind(this, this.state.userInputValue)}>
                     <div tabIndex={-1} className={"option"} onKeyDown={this.handleSelect.bind(this, this.state.userInputValue)}>
-                      <em>Add a value: </em> <strong>{this.state.userInputValue}</strong>
+                      <em>{customValueLabel}&nbsp;</em> <strong>{this.state.userInputValue}</strong>
                     </div>
                   </MenuItem>
                   :null}
