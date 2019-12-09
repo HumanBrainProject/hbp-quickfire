@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) Human Brain Project
  *
  * This source code is licensed under the MIT license found in the
