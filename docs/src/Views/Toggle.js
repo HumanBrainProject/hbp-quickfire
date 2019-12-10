@@ -13,23 +13,25 @@ let properties = [
   [`labelTooltipPlacement`, `string`, `"top"`, `The field label tooltip placement`],
   [`value`,`string`, `false`,`The current value of the field`],
   [`defaultValue`,`string`, `false`,`The defaultValue of the field`],
+  [`color`,`string`, `#06D6A0`,`The color when the toggle is on`],
+  [`size`,`string`, `medium`,`The size of the toggle`],
+  [`inline`,`boolean`, `false`,`Whether the toggle should be displayed inline or not`],
   [`disabled`, `boolean`, `false`, `Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()`],
   [`readOnly`, `boolean`, `false`, `Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()`],
   [`readMode`,`boolean`,`false`,`If true, displays the field as label and value without the actual form input`]
 ];
 
-export default class CheckBox extends View{
+export default class Toggle extends View {
   constructor(props){
     super(props);
-
     this.state = {};
   }
 
-  render(){ 
+  render(){
     return (
       <div>
-        <h2>CheckBox</h2>
-        <p>A simple checkbox field</p>
+        <h2>Toggle</h2>
+        <p>A simple toggle</p>
 
         <h3>Properties:</h3>
         <View.ShowInfoProperties properties={properties}/>
@@ -38,40 +40,70 @@ export default class CheckBox extends View{
 
         <h4>Basic usage</h4>
         <View.ShowField definition={{
-          type:"CheckBox",
-          label:"Do you accept this simple checkbox?"
+          type:"Toggle",
+          label:"Please toggle me"
         }}/>
         <hr/>
 
-        <h4>With the box already ticked</h4>
+        <h4>Custom color</h4>
         <View.ShowField definition={{
-          type:"CheckBox",
-          label:"Checked by default",
-          value:true
+          type:"Toggle",
+          label:"If you click me, you'll discover an amazing color",
+          color:"#ffd400"
         }}/>
         <hr/>
+
+        <h4>Custom size</h4>
+        <View.ShowField definition={{
+          type:"Toggle",
+          color:"#001D96",
+          label:"Large",
+          size:"large"
+        }}/>
+        <View.ShowField definition={{
+          type:"Toggle",
+          color:"#FFFFFF",
+          label:"Medium"
+        }}/>
+        <View.ShowField definition={{
+          type:"Toggle",
+          color:"#ED2436",
+          label:"Small",
+          size:"small"
+        }}/>
+        <hr/>
+
+        <h4>Inline</h4>
+        <View.ShowField definition={{
+          type:"Toggle",
+          label:"My toggle sits right next to me",
+          inline:true
+        }}/>
+        <hr/>   
 
         <h4>Disabled / ReadOnly</h4>
         <p>The disabled state makes the input impossible to edit, and the value WON'T BE processed and returned by the <code>FormStore.getValues()</code> method</p>
         <View.ShowField definition={{
-          type:"CheckBox",
-          label:"Some uneditable checkbox",
+          type:"Toggle",
+          label:"Some uneditable toggle",
           value: false,
           disabled: true
         }}/>
+        <hr/>
 
         <p>The readOnly state makes the input impossible to edit, and the value WILL BE processed and returned by the <code>FormStore.getValues()</code> method</p>
         <View.ShowField definition={{
-          type:"CheckBox",
-          label:"Some uneditable checkbox",
+          type:"Toggle",
+          label:"Some uneditable toggle",
           value: true,
           readOnly: true
         }}/>
+        <hr/>
 
         <h4>ReadMode</h4>
         <p>A field displayed in readMode only displays the value as text, without the actual form input</p>
         <View.ShowField definition={{
-          type:"CheckBox",
+          type:"Toggle",
           label:"Field in read mode",
           value: true,
           readMode: true

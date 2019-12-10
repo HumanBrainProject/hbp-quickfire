@@ -13,13 +13,11 @@ import {SingleField} from "hbp-quickfire";
 
 import injectStyles from "react-jss";
 
-import SyntaxHighlighter, { registerLanguage } from "react-syntax-highlighter/prism-light";
-import jsx from 'react-syntax-highlighter/languages/prism/jsx';
-import json from 'react-syntax-highlighter/languages/prism/json';
+import SyntaxHighlighter from "react-syntax-highlighter/prism-light";
 import darcula from 'react-syntax-highlighter/styles/prism/darcula';
 import { stripIndent } from "common-tags";
 
-export default class View extends React.Component{
+export default class View extends React.Component {
   componentDidMount() {
     document.querySelector("#contentBody").scrollTo(0, 0);
   }
