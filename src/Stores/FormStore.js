@@ -19,6 +19,7 @@ import {components} from "../Components/Field";
 
 const typesMapping = {
   "CheckBox": Fields.CheckBoxField,
+  "Toggle": Fields.ToggleField,
   "DropdownSelect": Fields.DropdownSelectField,
   "GroupSelect": Fields.GroupSelectField,
   "InputText": Fields.InputTextField,

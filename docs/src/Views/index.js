@@ -7,6 +7,7 @@
 export { default as Introduction } from "./Introduction";
 export { default as InputText } from "./InputText";
 export { default as CheckBox } from "./CheckBox";
+export { default as Toggle } from "./Toggle";
 export { default as DropdownSelect } from "./DropdownSelect";
 export { default as GroupSelect } from "./GroupSelect";
 export { default as InputTextMultiple } from "./InputTextMultiple";

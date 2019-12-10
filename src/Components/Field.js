@@ -17,6 +17,7 @@ import SelectField from "./SelectField";
 import DropdownSelectField from "./DropdownSelectField";
 import TreeSelectField from "./TreeSelectField";
 import CheckBoxField from "./CheckBoxField.js";
+import ToggleField from "./ToggleField.js";
 import GroupSelectField from "./GroupSelectField.js";
 import Slider from "./Slider.js";
 import DataSheetField from "./DataSheetField.js";
@@ -32,6 +33,7 @@ export let components = {
   DropdownSelect: DropdownSelectField,
   TreeSelect: TreeSelectField,
   CheckBox: CheckBoxField,
+  Toggle: ToggleField,
   GroupSelect: GroupSelectField,
   Slider: Slider,
   DataSheet: DataSheetField
