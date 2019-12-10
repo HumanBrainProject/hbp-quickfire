@@ -8,8 +8,7 @@ import React from "react";
 import { inject, observer } from "mobx-react";
 import injectStyles from "react-jss";
 import { FormGroup, Alert } from "react-bootstrap";
-import { isFunction } from "lodash";
-import nextId from "react-id-generator";
+import { isFunction, uniqueId } from "lodash";
 
 import FieldLabel from "./FieldLabel";
 
@@ -42,7 +41,6 @@ const styles = {
     alignItems: "center",
     justifyContent: "space-between",
     cursor: "pointer",
-    background: "grey",
     position: "relative",
     transition: "background-color .2s",
     marginBottom: "0px",
@@ -77,8 +75,8 @@ const styles = {
     top: "2px",
     left: "3px",
     borderRadius: "100%",
-    transition: "0.2s",
     background: "#fff",
+    transition: "0.2s",
     boxShadow: "0 0 2px 0 rgba(10, 10, 10, 0.29)",
     "&.large": {
       width: "30px",
@@ -110,6 +108,15 @@ const styles = {
 @inject("formStore")
 @observer
 export default class ToggleField extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {htmlId: null};
+  }
+
+  componentDidMount() {
+    // generate random id
+    this.setState({htmlId: uniqueId('toggle-')});
+  }
 
   handleChange = () => {
     let field = this.props.field;
@@ -128,15 +135,14 @@ export default class ToggleField extends React.Component {
 
   render() {
     let { classes } = this.props;
-    let { value, disabled, readOnly, color="#06D6A0", size="medium", inline=false, validationErrors, validationState } = this.props.field;
-
-    // generate random id
-    const htmlId = nextId();
+    let { value, disabled, readOnly, onColor="#06D6A0", offColor="#808080", size="medium", inline=false, validationErrors, validationState } = this.props.field;
 
     // force readOnly mode for readMode
     if(this.props.formStore.readMode || this.props.field.readMode){
       readOnly = true;
     }
+
+    const bgColor = value ? onColor : offColor;
 
     return (
       <FormGroup
@@ -149,13 +155,13 @@ export default class ToggleField extends React.Component {
           onChange={this.handleChange}
           checked={value}
           className={classes.react_switch_checkbox}
-          id={htmlId}
+          id={this.state.htmlId}
           type="checkbox"
         />
         <label
-          style={{ background: value && color }}
+          style={{ background: bgColor }}
           className={`${classes.react_switch_label} ${size} ${disabled?"disabled":""} ${readOnly?"readonly":""} ${inline?"inline":""}`}
-          htmlFor={htmlId}
+          htmlFor={this.state.htmlId}
         >
           <span className={`${classes.react_switch_button} ${size}`} />
         </label>

@@ -13,7 +13,8 @@ let properties = [
   [`labelTooltipPlacement`, `string`, `"top"`, `The field label tooltip placement`],
   [`value`,`string`, `false`,`The current value of the field`],
   [`defaultValue`,`string`, `false`,`The defaultValue of the field`],
-  [`color`,`string`, `#06D6A0`,`The color when the toggle is on`],
+  [`onColor`,`string`, `#06D6A0`,`The color when the toggle is on`],
+  [`offColor`,`string`, `#808080`,`The color when the toggle is off`],
   [`size`,`string`, `medium`,`The size of the toggle`],
   [`inline`,`boolean`, `false`,`Whether the toggle should be displayed inline or not`],
   [`disabled`, `boolean`, `false`, `Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()`],
@@ -49,25 +50,26 @@ export default class Toggle extends View {
         <View.ShowField definition={{
           type:"Toggle",
           label:"If you click me, you'll discover an amazing color",
-          color:"#ffd400"
+          onColor:"#ffd400",
+          offColor:"#26e09f"
         }}/>
         <hr/>
 
         <h4>Custom size</h4>
         <View.ShowField definition={{
           type:"Toggle",
-          color:"#001D96",
+          onColor:"#001D96",
           label:"Large",
           size:"large"
         }}/>
         <View.ShowField definition={{
           type:"Toggle",
-          color:"#FFFFFF",
+          onColor:"#FFFFFF",
           label:"Medium"
         }}/>
         <View.ShowField definition={{
           type:"Toggle",
-          color:"#ED2436",
+          onColor:"#ED2436",
           label:"Small",
           size:"small"
         }}/>
