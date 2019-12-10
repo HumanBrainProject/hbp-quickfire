@@ -21,7 +21,8 @@ import DefaultField from "./DefaultField";
  * @param {boolean} disabled false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
  * @param {boolean} readOnly false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
  * @param {boolean} readMode false - If true, displays the field as label and value without the actual form input
- * @param {string} color #06D6A0 - The background of the toggle when it's on
+ * @param {string} onColor #06D6A0 - The background of the toggle when it's on
+ * @param {string} offColor #808080 - The background of the toggle when it's off
  * @param {string} size medium - The size of the toggle
  * @param {boolean} inline false - Whether the toggle should be displayed inline or not
  */
@@ -29,13 +30,14 @@ import DefaultField from "./DefaultField";
 export default class ToggleField extends DefaultField {
   @observable value = false;
   @observable defaultValue = false;
-  @observable color = "#06D6A0";
+  @observable onColor = "#06D6A0";
+  @observable offColor = "#808080";
   @observable size = "medium";
   @observable inline = false;
 
   __emptyValue = () => false;
 
   static get properties(){
-    return union(super.properties,["value", "defaultValue", "color", "size", "inline"]);
+    return union(super.properties,["value", "defaultValue", "onColor", "offColor", "size", "inline"]);
   }
 }
