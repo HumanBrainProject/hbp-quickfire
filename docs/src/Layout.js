@@ -132,6 +132,7 @@ export default class Layout extends React.Component {
               <Route exact path="/" component={Views.Introduction}/>
               <Route exact path="/InputText" component={Views.InputText}/>
               <Route exact path="/CheckBox" component={Views.CheckBox}/>
+              <Route exact path="/Toggle" component={Views.Toggle}/>
               <Route exact path="/DataSheet" component={Views.DataSheet}/>
               <Route exact path="/DropdownSelect" component={Views.DropdownSelect}/>
               <Route exact path="/GroupSelect" component={Views.GroupSelect}/>
