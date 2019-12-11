@@ -51,6 +51,8 @@ publish:
     - git push --force git@gitlab.humanbrainproject.org:HumanBrainProject/hbp-quickfire-docs-app.git HEAD:master
     # Move to root folder again
     - cd $root
+    # Remove any changes from the git repo (package-lock.json for example)
+    - git checkout .
     # Resolve the number version from the tag name
     - npm version $(echo $CI_COMMIT_REF_NAME | sed 's/.*publish-v\(.*\)$/\1/g')
     # Publish to npm registry
