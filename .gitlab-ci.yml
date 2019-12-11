@@ -36,12 +36,6 @@ publish:
   script:
     # Force push tag's HEAD to master branch on the github repository
     - git push --force git@github.com:HumanBrainProject/hbp-quickfire.git HEAD:master
-    # Resolve the number version from the tag name
-    - npm version $(echo $CI_COMMIT_REF_NAME | sed 's/.*publish-v\(.*\)$/\1/g')
-    # Install dependencies
-    - npm install
-    # Publish to npm registry
-    - npm --unsafe-perm publish
     # Move to the docs folder, install the dependencies of the docs app and create a build
     - cd docs
     - npm install
@@ -50,6 +44,14 @@ publish:
     # Push it to a repository that will inform via a webhook the platform in charge of deploying it
     - git init && git add . && git commit -m"CI auto-build commit"
     - git push --force git@gitlab.humanbrainproject.org:HumanBrainProject/hbp-quickfire-docs-app.git HEAD:master
+    # Move to root folder again
+    - cd ..
+    # Resolve the number version from the tag name
+    - npm version $(echo $CI_COMMIT_REF_NAME | sed 's/.*publish-v\(.*\)$/\1/g')
+    # Install dependencies
+    - npm install
+    # Publish to npm registry
+    - npm --unsafe-perm publish
   tags:
     - docker-runner
 
