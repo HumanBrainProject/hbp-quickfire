@@ -59,17 +59,20 @@ export default class Toggle extends View {
         <View.ShowField definition={{
           type:"Toggle",
           onColor:"#001D96",
+          offColor:"#000000",
           label:"Large",
           size:"large"
         }}/>
         <View.ShowField definition={{
           type:"Toggle",
           onColor:"#FFFFFF",
+          offColor:"#DD0000",
           label:"Medium"
         }}/>
         <View.ShowField definition={{
           type:"Toggle",
           onColor:"#ED2436",
+          offColor:"#FFCE00",
           label:"Small",
           size:"small"
         }}/>
