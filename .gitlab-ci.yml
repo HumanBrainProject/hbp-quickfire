@@ -35,7 +35,7 @@ publish:
     - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
   script:
     # Store root folder
-    root=$(pwd)
+    - root=$(pwd)
     # Force push tag's HEAD to master branch on the github repository
     - git push --force git@github.com:HumanBrainProject/hbp-quickfire.git HEAD:master
     # Install dependencies
