@@ -25,11 +25,10 @@ publish:
   before_script:
     - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
     - eval $(ssh-agent -s)
-    - echo "$SSH_PRIVATE_DEPLOY" > ~/my-ssh-key
-    - chmod 400 ~/my-ssh-key
+    - chmod 400 $SSH_PRIVATE_DEPLOY
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-    - ssh-add ~/my-ssh-key
+    - ssh-add $SSH_PRIVATE_DEPLOY
     - git config --global user.email "platform@humanbrainproject.eu"
     - git config --global user.name "HumanBrainProject"
     - ssh-keyscan -H github.com >> ~/.ssh/known_hosts
