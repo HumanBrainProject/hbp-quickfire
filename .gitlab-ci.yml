@@ -34,6 +34,8 @@ publish:
     - ssh-keyscan -H gitlab.humanbrainproject.org >> ~/.ssh/known_hosts
     - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
   script:
+    # Store root folder
+    root=$(pwd)
     # Force push tag's HEAD to master branch on the github repository
     - git push --force git@github.com:HumanBrainProject/hbp-quickfire.git HEAD:master
     # Install dependencies
@@ -48,7 +50,7 @@ publish:
     - git init && git add . && git commit -m"CI auto-build commit"
     - git push --force git@gitlab.humanbrainproject.org:HumanBrainProject/hbp-quickfire-docs-app.git HEAD:master
     # Move to root folder again
-    - cd ..
+    - cd $root
     # Resolve the number version from the tag name
     - npm version $(echo $CI_COMMIT_REF_NAME | sed 's/.*publish-v\(.*\)$/\1/g')
     # Publish to npm registry
