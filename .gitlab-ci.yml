@@ -36,6 +36,9 @@ publish:
   script:
     # Force push tag's HEAD to master branch on the github repository
     - git push --force git@github.com:HumanBrainProject/hbp-quickfire.git HEAD:master
+    # Install dependencies
+    - npm install
+    - npm run build
     # Move to the docs folder, install the dependencies of the docs app and create a build
     - cd docs
     - npm install
@@ -48,8 +51,6 @@ publish:
     - cd ..
     # Resolve the number version from the tag name
     - npm version $(echo $CI_COMMIT_REF_NAME | sed 's/.*publish-v\(.*\)$/\1/g')
-    # Install dependencies
-    - npm install
     # Publish to npm registry
     - npm --unsafe-perm publish
   tags:
