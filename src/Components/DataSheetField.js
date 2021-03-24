@@ -466,7 +466,7 @@ export default class DataSheetField extends React.Component {
     }
 
     const { field, classes } = this.props;
-    const { value: values, disabled, readOnly, validationState, validationErrors, max, clipContent } = field;
+    const { value: values, disabled, readOnly, validationState, validationErrors, max, clipContent, buttonLabel } = field;
 
     const grid = this.prepareData();
 
@@ -490,7 +490,7 @@ export default class DataSheetField extends React.Component {
               keyFn={this.keyGenerator}
               dataEditor={this.renderDataEditor}
             />
-            <Button disabled={values.length >= max || readOnly || disabled} bsClass={`${classes.btnAddRow} quickfire-data-sheet-add-button btn btn-primary btn-xs`} onClick={this.handleAddRow}>Add a row</Button>
+            <Button disabled={values.length >= max || readOnly || disabled} bsClass={`${classes.btnAddRow} quickfire-data-sheet-add-button btn btn-primary btn-xs`} onClick={this.handleAddRow}>{buttonLabel}</Button>
           </div>
           <input style={{display:"none"}} type="text" ref={ref=>this.hiddenInputRef = ref}/>
         </div>
