@@ -7,7 +7,7 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
 import { toJS } from "mobx";
-import { FormGroup, Glyphicon, Alert, Button, DropdownButton, MenuItem } from "react-bootstrap";
+import { FormGroup, Glyphicon, Alert, Button, DropdownButton, MenuItem, OverlayTrigger, Tooltip } from "react-bootstrap";
 import ReactDataSheet from "react-datasheet";
 import injectStyles from "react-jss";
 import { isFunction } from "lodash";
@@ -415,7 +415,16 @@ export default class DataSheetField extends React.Component {
           <tr>
             {field.headers.map(header => {
               if(header.show !== false){
-                return <th key={header.key} className={"cell read-only"} style={{width:header.width}}>{header.label}</th>;
+                return <th key={header.key} className={"cell read-only"} style={{width:header.width}}>
+                  {header.label}&nbsp;
+                  {header.labelTooltip ?
+                    <OverlayTrigger placement={header.labelTooltipPlacement || "top"} overlay={<Tooltip id={formStore.getGeneratedKey(this.props.field, "label-tooltip")}>{header.labelTooltip}</Tooltip>}>
+                      <Glyphicon glyph={"question-sign"}/>
+                    </OverlayTrigger>
+                    :
+                    null
+                  }
+                </th>;
               }
             }).filter(cell => cell !== undefined)}
             {(rowControlRemove || rowControlMove || rowControlDuplicate || rowControlAdd)
@@ -457,7 +466,7 @@ export default class DataSheetField extends React.Component {
     }
 
     const { field, classes } = this.props;
-    const { value: values, disabled, readOnly, validationState, validationErrors, max, clipContent } = field;
+    const { value: values, disabled, readOnly, validationState, validationErrors, max, clipContent, buttonLabel } = field;
 
     const grid = this.prepareData();
 
@@ -481,7 +490,7 @@ export default class DataSheetField extends React.Component {
               keyFn={this.keyGenerator}
               dataEditor={this.renderDataEditor}
             />
-            <Button disabled={values.length >= max || readOnly || disabled} bsClass={`${classes.btnAddRow} quickfire-data-sheet-add-button btn btn-primary btn-xs`} onClick={this.handleAddRow}>Add a row</Button>
+            <Button disabled={values.length >= max || readOnly || disabled} bsClass={`${classes.btnAddRow} quickfire-data-sheet-add-button btn btn-primary btn-xs`} onClick={this.handleAddRow}>{buttonLabel}</Button>
           </div>
           <input style={{display:"none"}} type="text" ref={ref=>this.hiddenInputRef = ref}/>
         </div>

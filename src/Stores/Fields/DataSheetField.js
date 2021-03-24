@@ -30,6 +30,7 @@ import DefaultField from "./DefaultField";
  * @param {boolean} disabled false - Is the field disabled or not, a disabled field won't be editable or processed by FormStore.getValues()
  * @param {boolean} readOnly false - Is the field readOnly or not, a readOnly field won't be editable but will be processed by FormStore.getValues()
  * @param {boolean} readMode false - If true, displays the field as label and value without the actual form input
+ * @param {string} buttonLabel "Add a row" - The label used for the button to add a row
  * @name HeaderOptions
  * @param {string} key "" - The column key that will be used in the values row for input and output
  * @param {string} label "" - The column label
@@ -52,12 +53,13 @@ export default class DataSheetField extends DefaultField{
   @observable rowControlAdd = true;
   @observable clipContent = false;
   @observable returnEmptyRows = false;
+  @observable buttonLabel = "Add a row";
 
   __emptyValue = () => [];
 
   static get properties(){
     return union(super.properties, ["value", "defaultValue", "headers", "min", "max", "rowControlRemove",
-      "rowControlMove", "rowControlDuplicate", "rowControlAdd", "clipContent", "returnEmptyRows"]);
+      "rowControlMove", "rowControlDuplicate", "rowControlAdd", "clipContent", "returnEmptyRows", "buttonLabel"]);
   }
 
   constructor(fieldData, store, path){
