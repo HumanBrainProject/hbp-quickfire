@@ -37,7 +37,7 @@ publish:
     # Store root folder
     - root=$(pwd)
     # Force push tag's HEAD to master branch on the github repository
-    - git push --force git@github.com:HumanBrainProject/hbp-quickfire.git HEAD:master
+    - git push --force https://$HBP_BOT_GITHUB_TOKEN@github.com/HumanBrainProject/hbp-quickfire.git HEAD:master
     # Install dependencies
     - npm install
     - npm run build
